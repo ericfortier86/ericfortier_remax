@@ -356,6 +356,77 @@
       background: rgba(220, 38, 38, .12);
     }
 
+    /* ===== Google Reviews block (added) ===== */
+    .gr{
+      margin-top: 14px;
+      border-radius: 16px;
+      padding: 14px 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .gr-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .gr-left{ min-width: 0; }
+    .gr-title{
+      margin: 0;
+      font-size: 14.5px;
+      font-weight: 950;
+      letter-spacing: -0.01em;
+    }
+    .gr-sub{
+      margin: 6px 0 0;
+      color: rgba(255,255,255,.78);
+      font-weight: 650;
+      font-size: 13.2px;
+    }
+    .gr-stars{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      margin-top: 8px;
+      color: rgba(255,255,255,.92);
+      font-weight: 900;
+      flex-wrap: wrap;
+    }
+    .gr-stars .stars{
+      letter-spacing: 2px;
+      color: rgba(255, 215, 120, .95);
+      text-shadow: 0 10px 18px rgba(0,0,0,.25);
+    }
+    .gr-actions{
+      display:flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .gr-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 13.5px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.12);
+      color: rgba(255,255,255,.94);
+      transition: transform .06s ease, filter .15s ease;
+    }
+    .gr-link:hover{ filter: brightness(1.05); }
+    .gr-link:active{ transform: translateY(1px); }
+    .gr-link.primary{
+      border-color: rgba(77,163,255,.35);
+      background: linear-gradient(135deg, rgba(77,163,255,.28), rgba(47,123,255,.18));
+    }
+    /* ===== end Google Reviews block ===== */
+
     /* Minimal below section */
     .below{
       margin-top: 18px;
@@ -559,6 +630,41 @@
                   Vos informations demeurent confidentielles.
                 </p>
               </form>
+
+              <!-- ===== Google Reviews block (added) ===== -->
+              <!-- Update rating/count below anytime (data-rating / data-count) -->
+              <div class="gr" id="googleReviews" data-rating="4.9" data-count="56" aria-label="Avis Google">
+                <div class="gr-top">
+                  <div class="gr-left">
+                    <p class="gr-title">Avis Google</p>
+
+                    <div class="gr-stars">
+                      <span class="stars" aria-hidden="true">★★★★★</span>
+                      <span>
+                        <strong id="grRating">4.9</strong>/5 · <span id="grCount">56</span> avis
+                      </span>
+                    </div>
+
+                    <p class="gr-sub">
+                      Consultez les avis vérifiés sur Google pour vous faire une idée rapidement.
+                    </p>
+
+                    <div class="gr-actions">
+                      <a class="gr-link primary" target="_blank" rel="noopener"
+                        href="https://search.google.com/local/reviews?placeid=ChIJN6pSO-oczkwRokearKk12eE">
+                        Voir les avis Google →
+                      </a>
+
+                      <a class="gr-link" target="_blank" rel="noopener"
+                        href="https://search.google.com/local/writereview?placeid=ChIJN6pSO-oczkwRokearKk12eE">
+                        Laisser un avis
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- ===== end Google Reviews block ===== -->
+
             </aside>
           </div>
 
@@ -613,6 +719,18 @@
         const el = document.getElementById(k);
         if (el) el.value = params.get(k) || "";
       });
+    })();
+
+    // Optional: keep rating/count in one place (data attributes)
+    (function(){
+      const box = document.getElementById("googleReviews");
+      if(!box) return;
+      const r = box.getAttribute("data-rating");
+      const c = box.getAttribute("data-count");
+      const rEl = document.getElementById("grRating");
+      const cEl = document.getElementById("grCount");
+      if (rEl && r) rEl.textContent = r;
+      if (cEl && c) cEl.textContent = c;
     })();
 
     // AJAX submit (Formspree)
