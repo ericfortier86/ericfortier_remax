@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Évaluation gratuite | Gatineau</title>
+  <meta name="description" content="Obtenez une évaluation gratuite et réaliste de votre propriété à Gatineau, basée sur les données du marché local. Sans obligation." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Évaluation gratuite | Gatineau" />
+  <meta property="og:description" content="Découvrez combien vaut votre propriété à Gatineau. Évaluation gratuite, sans obligation." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --ink: #0f172a;          /* slate-900 */
+      --muted: #475569;        /* slate-600 */
+      --line: #e2e8f0;         /* slate-200 */
+      --card: #ffffff;
+      --soft: #f8fafc;         /* slate-50 */
+      --brand: #0b5fff;        /* bleu (ajuste pour coller à ton site) */
+      --brand-dark: #0847c7;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      --shadow2: 0 8px 20px rgba(15, 23, 42, .06);
+      --max: 1100px;
+      --focus: rgba(11, 95, 255, 0.18);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--ink);
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(11,95,255,.10), transparent 55%),
+                  radial-gradient(1200px 600px at 80% 0%, rgba(15,23,42,.06), transparent 60%),
+                  var(--bg);
+      line-height: 1.45;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 60px; }
+
+    /* Top bar (minimal) */
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 10px 0 18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      font-weight: 700; letter-spacing: .2px;
+    }
+    .logo{
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(11,95,255,1), rgba(8,71,199,1));
+      box-shadow: var(--shadow2);
+    }
+    .top .badge{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.8);
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* Hero grid */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items: start;
+      margin-top: 12px;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-left{
+      padding: 34px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(800px 220px at 18% 0%, rgba(11,95,255,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-left > *{ position: relative; }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+    .sub{
+      margin: 0 0 18px;
+      font-size: 16.5px;
+      color: var(--muted);
+      max-width: 55ch;
+    }
+    .checks{
+      display:grid;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 0;
+      list-style: none;
+      color: #1f2937;
+      font-weight: 600;
+    }
+    .checks li{
+      display:flex; align-items:flex-start; gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(248,250,252,.65);
+    }
+    .checks svg{ flex: 0 0 20px; margin-top: 2px; color: var(--brand); }
+
+    /* Form */
+    .form-card{ padding: 22px; }
+    .form-title{
+      font-size: 18px;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+    }
+    .form-note{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    form{ display:grid; gap: 12px; }
+
+    label{ font-size: 13px; color: var(--muted); font-weight: 600; }
+    .field{ display:grid; gap: 6px; }
+
+    input, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: box-shadow .15s ease, border-color .15s ease;
+    }
+    textarea{ min-height: 88px; resize: vertical; }
+    input:focus, textarea:focus{
+      border-color: rgba(11,95,255,.55);
+      box-shadow: 0 0 0 6px var(--focus);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,95,255,.25);
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 14px 28px rgba(11,95,255,.18);
+      transition: transform .06s ease, filter .15s ease;
+    }
+    .btn:hover{ filter: brightness(1.02); }
+    .btn:active{ transform: translateY(1px); }
+
+    .fineprint{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+
+    /* Sections */
+    .section{
+      margin-top: 26px;
+      padding: 26px 22px;
+    }
+    .section h2{
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    .section p{ margin: 0; color: var(--muted); }
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .mini{
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255,255,255,.8);
+    }
+    .mini h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+    .mini p{ margin: 0; font-size: 14px; color: var(--muted); }
+
+    .cta{
+      text-align:center;
+      padding: 26px 22px;
+      margin-top: 18px;
+      background: radial-gradient(900px 260px at 50% 0%, rgba(11,95,255,.12), transparent 62%), #fff;
+    }
+    .cta h2{ margin: 0 0 8px; font-size: 24px; }
+    .cta p{ margin: 0 0 14px; color: var(--muted); }
+    .cta .btn{ width: min(420px, 100%); }
+
+    /* Footer */
+    footer{
+      margin-top: 22px;
+      padding: 18px 6px 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      display:flex; justify-content:space-between; gap: 12px; flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .hero-left{ padding: 26px 18px; }
+      .form-card{ padding: 18px; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .top{ padding-bottom: 12px; }
+      .top .badge{ display:none; }
+    }
+
+    /* Small helper (error / success) */
+    .alert{
+      display:none;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 14px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      color: var(--ink);
+    }
+    .alert.show{ display:block; }
+    .alert.success{
+      border-color: rgba(22, 163, 74, .35);
+      background: rgba(22, 163, 74, .08);
+    }
+    .alert.error{
+      border-color: rgba(220, 38, 38, .35);
+      background: rgba(220, 38, 38, .08);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand" aria-label="Marque">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px; color: var(--muted); font-weight:700;">Service immobilier</div>
+          <div style="font-size:16px; font-weight:900; letter-spacing:-0.01em;">Évaluation gratuite • Gatineau</div>
+        </div>
+      </div>
+
+      <div class="badge" aria-label="Confiance">
+        <span aria-hidden="true">✔</span>
+        Sans obligation • Confidentialité respectée
+      </div>
+    </div>
+
+    <main>
+      <section class="hero">
+        <!-- Left hero content -->
+        <div class="card hero-left">
+          <div class="kicker">
+            <span aria-hidden="true">📍</span> Gatineau (QC) • Marché local
+          </div>
+
+          <h1>Combien vaut votre propriété à Gatineau?</h1>
+          <p class="sub">
+            Obtenez une évaluation gratuite et réaliste, basée sur les données actuelles du marché local.
+          </p>
+
+          <ul class="checks">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Analyse locale précise (ventes comparables à Gatineau)
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Résultat personnalisé, clair et expliqué
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Sans pression • Sans engagement • Confidentialiel
+            </li>
+          </ul>
+        </div>
+
+        <!-- Form card -->
+        <aside class="card form-card" aria-label="Formulaire d'évaluation">
+          <h2 class="form-title">👉 Obtenir mon évaluation gratuite</h2>
+          <p class="form-note">
+            Remplissez ce court formulaire (moins d’une minute). Je vous contacte sous peu.
+          </p>
+
+          <!-- Alerts -->
+          <div id="formAlert" class="alert" role="status" aria-live="polite"></div>
+
+          <!--
+            IMPORTANT:
+            - Remplace action="#" par ton endpoint (Formspree / Zapier / CRM / WordPress).
+            - Exemple Formspree: action="https://formspree.io/f/VOTRE_ID_FORM"
+            - Ou un endpoint Zapier: action="https://hooks.zapier.com/hooks/catch/XXXX/YYYY"
+          -->
+          <form id="leadForm" action="#" method="post" autocomplete="on">
+            <div class="field">
+              <label for="prenom">Prénom</label>
+              <input id="prenom" name="prenom" type="text" required />
+            </div>
+
+            <div class="field">
+              <label for="nom">Nom</label>
+              <input id="nom" name="nom" type="text" required />
+            </div>
+
+            <div class="field">
+              <label for="courriel">Courriel</label>
+              <input id="courriel" name="courriel" type="email" inputmode="email" required />
+            </div>
+
+            <div class="field">
+              <label for="telephone">Téléphone</label>
+              <input id="telephone" name="telephone" type="tel" inputmode="tel" required placeholder="Ex. 819-555-1234" />
+            </div>
+
+            <div class="field">
+              <label for="adresse">Adresse complète de la propriété</label>
+              <textarea id="adresse" name="adresse" required placeholder="Numéro, rue, secteur, code postal (si possible)"></textarea>
+            </div>
+
+            <!-- Hidden fields (useful for tracking) -->
+            <input type="hidden" id="utm_source" name="utm_source" />
+            <input type="hidden" id="utm_medium" name="utm_medium" />
+            <input type="hidden" id="utm_campaign" name="utm_campaign" />
+            <input type="hidden" id="utm_term" name="utm_term" />
+            <input type="hidden" id="utm_content" name="utm_content" />
+
+            <button class="btn" type="submit">
+              Obtenir mon évaluation gratuite
+              <span aria-hidden="true">→</span>
+            </button>
+
+            <p class="fineprint">
+              En soumettant ce formulaire, vous acceptez d’être contacté au sujet de votre demande d’évaluation.
+              Vos informations demeurent confidentielles.
+            </p>
+          </form>
+        </aside>
+      </section>
+
+      <!-- Section: Why -->
+      <section class="card section" aria-label="Pourquoi demander une évaluation">
+        <h2>Pourquoi demander une évaluation professionnelle?</h2>
+        <p>
+          Les estimateurs automatisés donnent souvent des résultats approximatifs. Une évaluation locale vous aide à connaître
+          la valeur réelle de votre propriété aujourd’hui, selon les ventes récentes et la demande dans votre secteur.
+        </p>
+
+        <div class="grid-3" role="list">
+          <div class="mini" role="listitem">
+            <h3>Valeur réaliste</h3>
+            <p>Basée sur des ventes comparables récentes à Gatineau, pas sur une moyenne générale.</p>
+          </div>
+          <div class="mini" role="listitem">
+            <h3>Demande du marché</h3>
+            <p>Comprendre l’intérêt des acheteurs et l’impact sur votre prix de vente potentiel.</p>
+          </div>
+          <div class="mini" role="listitem">
+            <h3>Décision éclairée</h3>
+            <p>Que vous vendiez maintenant ou plus tard, vous partez avec une information concrète.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: How it works -->
+      <section class="card section" aria-label="Comment ça fonctionne">
+        <h2>Comment se déroule l’évaluation?</h2>
+
+        <div class="grid-3" role="list">
+          <div class="mini" role="listitem">
+            <h3>1️⃣ Vous remplissez le formulaire</h3>
+            <p>Prénom, coordonnées et adresse. Cela prend moins d’une minute.</p>
+          </div>
+          <div class="mini" role="listitem">
+            <h3>2️⃣ Analyse du marché local</h3>
+            <p>Comparaison avec les ventes récentes et les propriétés similaires dans votre secteur.</p>
+          </div>
+          <div class="mini" role="listitem">
+            <h3>3️⃣ Résultat personnalisé</h3>
+            <p>Vous recevez une estimation claire, expliquée, et adaptée à votre propriété.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:14px;">
+          <strong>Aucune pression, aucune obligation de vendre.</strong> L’objectif est de vous donner une valeur fiable pour planifier la suite.
+        </p>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="card cta" aria-label="Appel à l'action final">
+        <h2>Vous voulez connaître la valeur de votre propriété?</h2>
+        <p>Rapide • Confidentiel • Sans obligation</p>
+        <a class="btn" href="#leadForm" onclick="document.getElementById('prenom').focus(); return false;">
+          Demander mon évaluation gratuite →
+        </a>
+      </section>
+
+      <footer>
+        <div>Service immobilier à Gatineau • © <span id="year"></span></div>
+        <div>Conçu pour une expérience mobile rapide et sans distractions.</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Capture UTM params into hidden fields
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      const map = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
+      map.forEach(k => {
+        const el = document.getElementById(k);
+        if (el) el.value = params.get(k) || "";
+      });
+    })();
+
+    // Basic client-side validation + graceful alert (works even if you keep normal POST)
+    const form = document.getElementById('leadForm');
+    const alertBox = document.getElementById('formAlert');
+
+    form.addEventListener('submit', function(e){
+      // If action is "#", prevent submit and show a message so you don’t lose leads accidentally
+      if (form.getAttribute('action') === '#') {
+        e.preventDefault();
+        showAlert(
+          "⚠️ Le formulaire n’est pas encore connecté. Remplacez l’attribut action=\"#\" par votre endpoint (Formspree/Zapier/CRM).",
+          "error"
+        );
+        return;
+      }
+      // Optional: show a quick “sending…” message
+      showAlert("Envoi en cours…", "success");
+    });
+
+    function showAlert(msg, type){
+      alertBox.textContent = msg;
+      alertBox.className = "alert show " + (type || "");
+    }
+  </script>
+</body>
+</html>
