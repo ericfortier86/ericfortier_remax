@@ -15,12 +15,12 @@
   <style>
     :root{
       --bg: #ffffff;
-      --ink: #0f172a;          /* slate-900 */
-      --muted: #475569;        /* slate-600 */
-      --line: #e2e8f0;         /* slate-200 */
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
       --card: #ffffff;
-      --soft: #f8fafc;         /* slate-50 */
-      --brand: #0b5fff;        /* bleu (ajuste pour coller à ton site) */
+      --soft: #f8fafc;
+      --brand: #0b5fff;
       --brand-dark: #0847c7;
       --radius: 16px;
       --shadow: 0 10px 30px rgba(15, 23, 42, .08);
@@ -44,7 +44,7 @@
     a{ color: inherit; text-decoration: none; }
     .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 60px; }
 
-    /* Top bar (minimal) */
+    /* Top bar */
     .top{
       display:flex; align-items:center; justify-content:space-between;
       gap: 14px;
@@ -59,27 +59,34 @@
       background: linear-gradient(135deg, rgba(11,95,255,1), rgba(8,71,199,1));
       box-shadow: var(--shadow2);
     }
-    .top .badge{
-      display:inline-flex; align-items:center; gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.8);
-      color: var(--muted);
-      font-size: 13px;
-      white-space: nowrap;
+    .remax{
+      height: 46px;
+      opacity: .95;
+      filter: drop-shadow(0 8px 12px rgba(15,23,42,.08));
     }
 
     /* Hero grid */
     .hero{
+      position: relative;
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap: 22px;
       align-items: start;
       margin-top: 12px;
     }
+    .top-banner{
+      position:absolute;
+      inset: 0;
+      height: 340px;
+      background: linear-gradient(135deg, rgba(11,95,255,.12), rgba(255,255,255,.88));
+      border-radius: 22px;
+      z-index: 0;
+      pointer-events:none;
+    }
 
     .card{
+      position: relative;
+      z-index: 1;
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -88,18 +95,10 @@
 
     .hero-left{
       padding: 34px 28px;
-      position: relative;
       overflow: hidden;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(6px);
     }
-    .hero-left:before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(800px 220px at 18% 0%, rgba(11,95,255,.14), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-left > *{ position: relative; }
-
     .kicker{
       display:inline-flex;
       align-items:center;
@@ -113,6 +112,34 @@
       font-size: 13px;
     }
 
+    .profile{
+      display:flex;
+      align-items:center;
+      gap: 16px;
+      margin: 18px 0 12px;
+    }
+    .profile img{
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 10px 22px rgba(0,0,0,.14);
+      background: #fff;
+    }
+    .profile .meta{
+      display:grid;
+      gap: 4px;
+    }
+    .profile .meta strong{
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+    .profile .meta span{
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     h1{
       margin: 14px 0 10px;
       font-size: clamp(28px, 3.2vw, 44px);
@@ -123,7 +150,7 @@
       margin: 0 0 18px;
       font-size: 16.5px;
       color: var(--muted);
-      max-width: 55ch;
+      max-width: 58ch;
     }
     .checks{
       display:grid;
@@ -139,24 +166,27 @@
       padding: 10px 12px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      background: rgba(248,250,252,.65);
+      background: rgba(248,250,252,.75);
     }
     .checks svg{ flex: 0 0 20px; margin-top: 2px; color: var(--brand); }
 
     /* Form */
-    .form-card{ padding: 22px; }
+    .form-card{
+      padding: 22px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(6px);
+    }
     .form-title{
       font-size: 18px;
-      margin: 0 0 12px;
+      margin: 0 0 8px;
       letter-spacing: -0.01em;
     }
     .form-note{
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       color: var(--muted);
       font-size: 13.5px;
     }
     form{ display:grid; gap: 12px; }
-
     label{ font-size: 13px; color: var(--muted); font-weight: 600; }
     .field{ display:grid; gap: 6px; }
 
@@ -170,7 +200,7 @@
       outline: none;
       transition: box-shadow .15s ease, border-color .15s ease;
     }
-    textarea{ min-height: 88px; resize: vertical; }
+    textarea{ min-height: 86px; resize: vertical; }
     input:focus, textarea:focus{
       border-color: rgba(11,95,255,.55);
       box-shadow: 0 0 0 6px var(--focus);
@@ -213,6 +243,7 @@
       letter-spacing: -0.01em;
     }
     .section p{ margin: 0; color: var(--muted); }
+
     .grid-3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -223,7 +254,7 @@
       border: 1px solid var(--line);
       border-radius: 14px;
       padding: 14px;
-      background: rgba(255,255,255,.8);
+      background: rgba(255,255,255,.9);
     }
     .mini h3{
       margin: 0 0 8px;
@@ -236,32 +267,14 @@
       text-align:center;
       padding: 26px 22px;
       margin-top: 18px;
-      background: radial-gradient(900px 260px at 50% 0%, rgba(11,95,255,.12), transparent 62%), #fff;
+      background: radial-gradient(900px 260px at 50% 0%, rgba(11,95,255,.12), transparent 62%), rgba(255,255,255,.92);
+      backdrop-filter: blur(6px);
     }
     .cta h2{ margin: 0 0 8px; font-size: 24px; }
     .cta p{ margin: 0 0 14px; color: var(--muted); }
     .cta .btn{ width: min(420px, 100%); }
 
-    /* Footer */
-    footer{
-      margin-top: 22px;
-      padding: 18px 6px 0;
-      color: var(--muted);
-      font-size: 12.5px;
-      display:flex; justify-content:space-between; gap: 12px; flex-wrap:wrap;
-    }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-      .hero-left{ padding: 26px 18px; }
-      .form-card{ padding: 18px; }
-      .grid-3{ grid-template-columns: 1fr; }
-      .top{ padding-bottom: 12px; }
-      .top .badge{ display:none; }
-    }
-
-    /* Small helper (error / success) */
+    /* Alerts */
     .alert{
       display:none;
       border-radius: 12px;
@@ -270,6 +283,7 @@
       border: 1px solid var(--line);
       background: var(--soft);
       color: var(--ink);
+      margin-bottom: 10px;
     }
     .alert.show{ display:block; }
     .alert.success{
@@ -279,6 +293,24 @@
     .alert.error{
       border-color: rgba(220, 38, 38, .35);
       background: rgba(220, 38, 38, .08);
+    }
+
+    footer{
+      margin-top: 22px;
+      padding: 18px 6px 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      display:flex; justify-content:space-between; gap: 12px; flex-wrap:wrap;
+    }
+
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .top-banner{ height: 220px; }
+      .hero-left{ padding: 26px 18px; }
+      .form-card{ padding: 18px; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .remax{ height: 42px; }
+      .profile img{ width: 84px; height: 84px; }
     }
   </style>
 </head>
@@ -294,18 +326,27 @@
         </div>
       </div>
 
-      <div class="badge" aria-label="Confiance">
-        <span aria-hidden="true">✔</span>
-        Sans obligation • Confidentialité respectée
-      </div>
+      <!-- Logo RE/MAX (placer votre fichier dans assets/remax.png) -->
+      <img class="remax" src="assets/remax.png" alt="RE/MAX" />
     </div>
 
     <main>
       <section class="hero">
+        <div class="top-banner" aria-hidden="true"></div>
+
         <!-- Left hero content -->
         <div class="card hero-left">
           <div class="kicker">
             <span aria-hidden="true">📍</span> Gatineau (QC) • Marché local
+          </div>
+
+          <!-- Photo personnelle (placer votre fichier dans assets/eric-fortier.jpg) -->
+          <div class="profile">
+            <img src="assets/eric-fortier.jpg" alt="Courtier immobilier à Gatineau" />
+            <div class="meta">
+              <strong>Service immobilier à Gatineau</strong>
+              <span>Évaluation professionnelle • Sans obligation</span>
+            </div>
           </div>
 
           <h1>Combien vaut votre propriété à Gatineau?</h1>
@@ -342,16 +383,10 @@
             Remplissez ce court formulaire (moins d’une minute). Je vous contacte sous peu.
           </p>
 
-          <!-- Alerts -->
           <div id="formAlert" class="alert" role="status" aria-live="polite"></div>
 
-          <!--
-            IMPORTANT:
-            - Remplace action="#" par ton endpoint (Formspree / Zapier / CRM / WordPress).
-            - Exemple Formspree: action="https://formspree.io/f/VOTRE_ID_FORM"
-            - Ou un endpoint Zapier: action="https://hooks.zapier.com/hooks/catch/XXXX/YYYY"
-          -->
-          <form id="leadForm" action="#" method="post" autocomplete="on">
+          <!-- Formspree branché -->
+          <form id="leadForm" action="https://formspree.io/f/mbddarae" method="POST" autocomplete="on">
             <div class="field">
               <label for="prenom">Prénom</label>
               <input id="prenom" name="prenom" type="text" required />
@@ -377,16 +412,18 @@
               <textarea id="adresse" name="adresse" required placeholder="Numéro, rue, secteur, code postal (si possible)"></textarea>
             </div>
 
-            <!-- Hidden fields (useful for tracking) -->
+            <!-- UTM pour Google Ads -->
             <input type="hidden" id="utm_source" name="utm_source" />
             <input type="hidden" id="utm_medium" name="utm_medium" />
             <input type="hidden" id="utm_campaign" name="utm_campaign" />
             <input type="hidden" id="utm_term" name="utm_term" />
             <input type="hidden" id="utm_content" name="utm_content" />
 
+            <!-- Honeypot anti-spam (laisser vide) -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
             <button class="btn" type="submit">
-              Obtenir mon évaluation gratuite
-              <span aria-hidden="true">→</span>
+              Obtenir mon évaluation gratuite <span aria-hidden="true">→</span>
             </button>
 
             <p class="fineprint">
@@ -397,7 +434,6 @@
         </aside>
       </section>
 
-      <!-- Section: Why -->
       <section class="card section" aria-label="Pourquoi demander une évaluation">
         <h2>Pourquoi demander une évaluation professionnelle?</h2>
         <p>
@@ -421,7 +457,6 @@
         </div>
       </section>
 
-      <!-- Section: How it works -->
       <section class="card section" aria-label="Comment ça fonctionne">
         <h2>Comment se déroule l’évaluation?</h2>
 
@@ -445,7 +480,6 @@
         </p>
       </section>
 
-      <!-- Final CTA -->
       <section class="card cta" aria-label="Appel à l'action final">
         <h2>Vous voulez connaître la valeur de votre propriété?</h2>
         <p>Rapide • Confidentiel • Sans obligation</p>
@@ -456,41 +490,52 @@
 
       <footer>
         <div>Service immobilier à Gatineau • © <span id="year"></span></div>
-        <div>Conçu pour une expérience mobile rapide et sans distractions.</div>
+        <div>Page conçue pour une expérience mobile rapide et sans distractions.</div>
       </footer>
     </main>
   </div>
 
   <script>
-    // Footer year
+    // Année dans le footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Capture UTM params into hidden fields
+    // UTM params -> hidden fields
     (function(){
       const params = new URLSearchParams(window.location.search);
-      const map = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
-      map.forEach(k => {
+      const keys = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
+      keys.forEach(k => {
         const el = document.getElementById(k);
         if (el) el.value = params.get(k) || "";
       });
     })();
 
-    // Basic client-side validation + graceful alert (works even if you keep normal POST)
+    // Envoi AJAX (pas de reload) + message succès/erreur
     const form = document.getElementById('leadForm');
     const alertBox = document.getElementById('formAlert');
 
-    form.addEventListener('submit', function(e){
-      // If action is "#", prevent submit and show a message so you don’t lose leads accidentally
-      if (form.getAttribute('action') === '#') {
-        e.preventDefault();
-        showAlert(
-          "⚠️ Le formulaire n’est pas encore connecté. Remplacez l’attribut action=\"#\" par votre endpoint (Formspree/Zapier/CRM).",
-          "error"
-        );
-        return;
-      }
-      // Optional: show a quick “sending…” message
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+
       showAlert("Envoi en cours…", "success");
+
+      try{
+        const formData = new FormData(form);
+
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if(res.ok){
+          form.reset();
+          showAlert("✅ Merci! Votre demande a bien été envoyée. Je vous contacte sous peu.", "success");
+        } else {
+          showAlert("❌ Oups… Impossible d’envoyer pour le moment. Réessayez dans quelques minutes.", "error");
+        }
+      } catch(err){
+        showAlert("❌ Erreur réseau. Vérifiez votre connexion et réessayez.", "error");
+      }
     });
 
     function showAlert(msg, type){
