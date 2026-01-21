@@ -469,7 +469,7 @@
       border-color: rgba(77,163,255,.35);
       background: linear-gradient(135deg, rgba(77,163,255,.28), rgba(47,123,255,.18));
     }
-    /* ===== end Google Reviews block ===== */
+    /* ===== end Google Reviews block (added) ===== */
 
     /* Minimal below section */
     .below{
@@ -796,7 +796,7 @@
       if (cEl && c) cEl.textContent = c;
     })();
 
-    // AJAX submit (Formspree)
+    // AJAX submit (Formspree) + redirect to thank-you page
     const form = document.getElementById('leadForm');
     const alertBox = document.getElementById('formAlert');
 
@@ -813,8 +813,8 @@
         });
 
         if(res.ok){
-          form.reset();
-          showAlert("✅ Merci! Votre demande a bien été envoyée. Je vous contacte sous peu.", "success");
+          // ✅ IMPORTANT: redirect to a real thank-you page so Google Ads can track by URL
+          window.location.href = "/merci.html";
         } else {
           showAlert("❌ Oups… Impossible d’envoyer pour le moment. Réessayez dans quelques minutes.", "error");
         }
