@@ -161,7 +161,6 @@
       overflow: hidden;
     }
 
-    /* Use <img> to ensure "photo complète" visible with good dimensions */
     .left-photo img{
       width: 100%;
       height: 100%;
@@ -171,7 +170,6 @@
       filter: contrast(1.02) saturate(1.02);
     }
 
-    /* subtle overlay over photo for readability */
     .left-photo::after{
       content:"";
       position:absolute;
@@ -182,7 +180,6 @@
       pointer-events:none;
     }
 
-    /* Identity badge on photo */
     .id-badge{
       position:absolute;
       left: 18px;
@@ -212,7 +209,6 @@
       font-size: 13.5px;
     }
 
-    /* Right: content */
     .right{
       padding: 26px 26px 22px;
       display:grid;
@@ -234,7 +230,6 @@
       max-width: 62ch;
     }
 
-    /* Bullets: minimal */
     .bullets{
       margin: 4px 0 0;
       padding: 0;
@@ -261,7 +256,6 @@
       color: rgba(77,163,255,.95);
     }
 
-    /* Form container: glass */
     .formWrap{
       margin-top: 2px;
       border-radius: 18px;
@@ -283,7 +277,6 @@
       font-weight: 650;
     }
 
-    /* ===== CTA téléphone (dans la zone formulaire) ===== */
     .callbox{
       margin: 10px 0 14px;
       padding: 12px 12px;
@@ -325,7 +318,6 @@
       flex: 0 0 auto;
       opacity: .95;
     }
-    /* ===== fin CTA téléphone ===== */
 
     form{ display:grid; gap: 10px; }
     .row{
@@ -380,6 +372,68 @@
     .btn:hover{ filter: brightness(1.03); }
     .btn:active{ transform: translateY(1px); }
 
+    /* --- NEW: bouton secondaire (retour) --- */
+    .btn.secondary{
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: none;
+      font-weight: 900;
+    }
+
+    /* --- NEW: wrapper boutons étapes --- */
+    .step-actions{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .step-actions.two{
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* --- NEW: indicateur étape --- */
+    .step-indicator{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin: 0 0 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.86);
+      font-weight: 850;
+      font-size: 13px;
+    }
+    .step-dots{
+      display:flex;
+      gap: 6px;
+    }
+    .step-dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.08);
+    }
+    .step-dot.active{
+      border-color: rgba(77,163,255,.65);
+      background: rgba(77,163,255,.40);
+      box-shadow: 0 0 0 5px rgba(77,163,255,.14);
+    }
+
+    /* --- NEW: masquage étapes --- */
+    .step-pane{ display:none; }
+    .step-pane.active{ display:block; }
+
+    /* --- NEW: helper text --- */
+    .helper{
+      margin: 8px 0 0;
+      color: rgba(255,255,255,.68);
+      font-size: 12.5px;
+      font-weight: 650;
+    }
+
     .fineprint{
       margin: 10px 0 0;
       color: rgba(255,255,255,.66);
@@ -388,7 +442,6 @@
       font-weight: 600;
     }
 
-    /* Alerts */
     .alert{
       display:none;
       border-radius: 14px;
@@ -410,7 +463,6 @@
       background: rgba(220, 38, 38, .12);
     }
 
-    /* ===== Google Reviews block (added) ===== */
     .gr{
       margin-top: 14px;
       border-radius: 16px;
@@ -479,9 +531,7 @@
       border-color: rgba(77,163,255,.35);
       background: linear-gradient(135deg, rgba(77,163,255,.28), rgba(47,123,255,.18));
     }
-    /* ===== end Google Reviews block (added) ===== */
 
-    /* Minimal below section */
     .below{
       margin-top: 18px;
       padding: 18px 6px 0;
@@ -565,6 +615,9 @@
       .steps{
         grid-template-columns: 1fr;
       }
+      .step-actions.two{
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 520px){
@@ -585,14 +638,12 @@
           </div>
         </div>
 
-        <!-- Logo RE/MAX (nouveau, plus gros) -->
         <img class="remax" src="assets/remax-wide.png" alt="RE/MAX" />
       </header>
 
       <main class="glass" aria-label="Évaluation gratuite">
         <section class="hero">
 
-          <!-- LEFT: photo pleine hauteur -->
           <div class="left-photo" aria-label="Photo professionnelle">
             <img src="assets/eric-fortier.jpg" alt="Éric Fortier, courtier immobilier" />
             <div class="id-badge">
@@ -601,7 +652,6 @@
             </div>
           </div>
 
-          <!-- RIGHT: content + form -->
           <div class="right">
             <div>
               <h1>Avant de vendre, sachez exactement combien vaut votre maison à Gatineau</h1>
@@ -635,7 +685,6 @@
               <h2 class="form-title">👉 Obtenez votre évaluation gratuitement</h2>
               <p class="form-note">🔒 Aucune obligation — Vos informations restent confidentielles</p>
 
-              <!-- ✅ CTA téléphone (dans la zone formulaire) -->
               <div class="callbox" aria-label="Contact direct par téléphone">
                 <div class="calltext">
                   Vous préférez parler tout de suite? Appelez-moi :
@@ -652,60 +701,88 @@
                   Appeler maintenant
                 </a>
               </div>
-              <!-- fin CTA téléphone -->
 
               <div id="formAlert" class="alert" role="status" aria-live="polite"></div>
 
+              <!-- ✅ FORMULAIRE 2 ÉTAPES -->
               <form id="leadForm" action="https://formspree.io/f/mbddarae" method="POST" autocomplete="on">
-                <div class="row">
-                  <div>
-                    <label for="prenom">Prénom</label>
-                    <input id="prenom" name="prenom" type="text" required />
-                  </div>
-                  <div>
-                    <label for="nom">Nom</label>
-                    <input id="nom" name="nom" type="text" required />
-                  </div>
-                </div>
 
-                <div class="row">
-                  <div>
-                    <label for="courriel">Courriel</label>
-                    <input id="courriel" name="courriel" type="email" inputmode="email" required />
-                  </div>
-                  <div>
-                    <label for="telephone">Téléphone</label>
-                    <input id="telephone" name="telephone" type="tel" inputmode="tel" required placeholder="Ex. 819-555-1234" />
+                <!-- NEW: indicateur -->
+                <div class="step-indicator" aria-label="Progression du formulaire">
+                  <span id="stepLabel">Étape 1 sur 2</span>
+                  <div class="step-dots" aria-hidden="true">
+                    <span class="step-dot active" id="dot1"></span>
+                    <span class="step-dot" id="dot2"></span>
                   </div>
                 </div>
 
-                <div>
-                  <label for="adresse">Adresse complète de la propriété</label>
-                  <textarea id="adresse" name="adresse" required placeholder="Numéro, Rue, Secteur, Code postal (si possible)"></textarea>
+                <!-- ÉTAPE 1 -->
+                <div class="step-pane active" id="step1">
+                  <div>
+                    <label for="adresse">Adresse complète de la propriété</label>
+                    <textarea id="adresse" name="adresse" required placeholder="Numéro, Rue, Secteur, Code postal (si possible)"></textarea>
+                    <p class="helper">On commence par l’adresse. Ensuite, vos coordonnées.</p>
+                  </div>
+
+                  <div class="step-actions">
+                    <button class="btn" type="button" id="nextStep">
+                      Continuer <span aria-hidden="true">→</span>
+                    </button>
+                  </div>
                 </div>
 
-                <!-- UTM pour Google Ads -->
-                <input type="hidden" id="utm_source" name="utm_source" />
-                <input type="hidden" id="utm_medium" name="utm_medium" />
-                <input type="hidden" id="utm_campaign" name="utm_campaign" />
-                <input type="hidden" id="utm_term" name="utm_term" />
-                <input type="hidden" id="utm_content" name="utm_content" />
+                <!-- ÉTAPE 2 -->
+                <div class="step-pane" id="step2" aria-hidden="true">
+                  <div class="row">
+                    <div>
+                      <label for="prenom">Prénom</label>
+                      <input id="prenom" name="prenom" type="text" required />
+                    </div>
+                    <div>
+                      <label for="nom">Nom</label>
+                      <input id="nom" name="nom" type="text" required />
+                    </div>
+                  </div>
 
-                <!-- Honeypot anti-spam -->
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+                  <div class="row">
+                    <div>
+                      <label for="courriel">Courriel</label>
+                      <input id="courriel" name="courriel" type="email" inputmode="email" required />
+                    </div>
+                    <div>
+                      <label for="telephone">Téléphone</label>
+                      <input id="telephone" name="telephone" type="tel" inputmode="tel" required placeholder="Ex. 819-555-1234" />
+                    </div>
+                  </div>
 
-                <button class="btn" type="submit">
-                  Découvrir combien vaut ma maison <span aria-hidden="true">→</span>
-                </button>
+                  <!-- UTM pour Google Ads -->
+                  <input type="hidden" id="utm_source" name="utm_source" />
+                  <input type="hidden" id="utm_medium" name="utm_medium" />
+                  <input type="hidden" id="utm_campaign" name="utm_campaign" />
+                  <input type="hidden" id="utm_term" name="utm_term" />
+                  <input type="hidden" id="utm_content" name="utm_content" />
 
-                <p class="fineprint">
-                  En soumettant ce formulaire, vous acceptez d’être contacté au sujet de votre demande d’évaluation.
-                  Vos informations demeurent confidentielles.
-                </p>
+                  <!-- Honeypot anti-spam -->
+                  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+                  <div class="step-actions two">
+                    <button class="btn secondary" type="button" id="backStep">
+                      ← Retour
+                    </button>
+
+                    <button class="btn" type="submit" id="submitBtn">
+                      Découvrir combien vaut ma maison <span aria-hidden="true">→</span>
+                    </button>
+                  </div>
+
+                  <p class="fineprint">
+                    En soumettant ce formulaire, vous acceptez d’être contacté au sujet de votre demande d’évaluation.
+                    Vos informations demeurent confidentielles.
+                  </p>
+                </div>
+
               </form>
 
-              <!-- ===== Google Reviews block (added) ===== -->
-              <!-- Update rating/count below anytime (data-rating / data-count) -->
               <div class="gr" id="googleReviews" data-rating="4.9" data-count="56" aria-label="Avis Google">
                 <div class="gr-top">
                   <div class="gr-left">
@@ -736,7 +813,6 @@
                   </div>
                 </div>
               </div>
-              <!-- ===== end Google Reviews block ===== -->
 
             </aside>
           </div>
@@ -794,7 +870,7 @@
       });
     })();
 
-    // Optional: keep rating/count in one place (data attributes)
+    // Google reviews numbers (data attributes)
     (function(){
       const box = document.getElementById("googleReviews");
       if(!box) return;
@@ -806,13 +882,87 @@
       if (cEl && c) cEl.textContent = c;
     })();
 
-    // AJAX submit (Formspree) + redirect to thank-you page
+    // --- NEW: logique formulaire 2 étapes ---
     const form = document.getElementById('leadForm');
     const alertBox = document.getElementById('formAlert');
 
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+
+    const nextBtn = document.getElementById('nextStep');
+    const backBtn = document.getElementById('backStep');
+
+    const stepLabel = document.getElementById('stepLabel');
+    const dot1 = document.getElementById('dot1');
+    const dot2 = document.getElementById('dot2');
+
+    function goToStep(n){
+      if(n === 1){
+        step1.classList.add('active');
+        step2.classList.remove('active');
+        step2.setAttribute('aria-hidden', 'true');
+
+        stepLabel.textContent = "Étape 1 sur 2";
+        dot1.classList.add('active');
+        dot2.classList.remove('active');
+
+        // focus address
+        const adresse = document.getElementById('adresse');
+        if(adresse) adresse.focus({preventScroll:false});
+      } else {
+        step1.classList.remove('active');
+        step2.classList.add('active');
+        step2.setAttribute('aria-hidden', 'false');
+
+        stepLabel.textContent = "Étape 2 sur 2";
+        dot1.classList.remove('active');
+        dot2.classList.add('active');
+
+        // focus first field
+        const prenom = document.getElementById('prenom');
+        if(prenom) prenom.focus({preventScroll:false});
+      }
+    }
+
+    nextBtn.addEventListener('click', function(){
+      const adresse = document.getElementById('adresse');
+      const value = (adresse?.value || "").trim();
+      if(!value){
+        showAlert("⚠️ Indiquez l’adresse de la propriété pour continuer.", "error");
+        adresse?.focus();
+        return;
+      }
+      showAlert("", ""); // clear
+      alertBox.className = "alert"; // hide
+      goToStep(2);
+    });
+
+    backBtn.addEventListener('click', function(){
+      showAlert("", "");
+      alertBox.className = "alert";
+      goToStep(1);
+    });
+
+    // Optionnel: Enter sur étape 1 -> next
+    document.getElementById('adresse').addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && !e.shiftKey){
+        e.preventDefault();
+        nextBtn.click();
+      }
+    });
+
+    // AJAX submit (Formspree) + redirect to thank-you page
     form.addEventListener('submit', async function(e){
       e.preventDefault();
       showAlert("Envoi en cours…", "success");
+
+      // sécurité : si quelqu’un force submit depuis étape 1
+      const adresse = document.getElementById('adresse');
+      if(!adresse.value.trim()){
+        showAlert("⚠️ Indiquez l’adresse de la propriété.", "error");
+        goToStep(1);
+        return;
+      }
 
       try{
         const formData = new FormData(form);
@@ -823,7 +973,6 @@
         });
 
         if(res.ok){
-          // ✅ IMPORTANT: redirect to a real thank-you page so Google Ads can track by URL
           window.location.href = "/merci.html";
         } else {
           showAlert("❌ Oups… Impossible d’envoyer pour le moment. Réessayez dans quelques minutes.", "error");
@@ -834,6 +983,11 @@
     });
 
     function showAlert(msg, type){
+      if(!msg){
+        alertBox.textContent = "";
+        alertBox.className = "alert";
+        return;
+      }
       alertBox.textContent = msg;
       alertBox.className = "alert show " + (type || "");
     }
