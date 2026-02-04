@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comparable – 199 Rue de Pointe-Gatineau (Vendu)</title>
+  <style>
+    :root {
+      --ink:#111827; --muted:#6b7280; --line:#e5e7eb; --bg:#f9fafb; --card:#ffffff;
+      --accent:#111827;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink); background:var(--bg);
+    }
+    .page { max-width:980px; margin:24px auto; padding:0 16px 48px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+    .hdr {
+      padding:18px 20px 14px; border-bottom:1px solid var(--line);
+      display:flex; gap:16px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+    }
+    .hdr h1 { font-size:20px; margin:0 0 6px; letter-spacing:.2px; }
+    .meta { display:flex; flex-wrap:wrap; gap:10px 14px; color:var(--muted); font-size:13px; }
+    .meta span { white-space:nowrap; }
+    .badge {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border:1px solid var(--line); border-radius:10px; background:#fff;
+    }
+    .price { font-size:20px; font-weight:800; }
+    .sold { font-size:12px; color:var(--muted); }
+    .cent {
+      padding:14px 20px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#fff, #fcfcfd);
+      display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px 14px;
+    }
+    .kpi { padding:10px 10px; border:1px solid var(--line); border-radius:10px; background:#fff; }
+    .kpi .k { font-size:12px; color:var(--muted); margin-bottom:4px; }
+    .kpi .v { font-weight:700; font-size:14px; }
+    .content { padding:16px 20px 8px; display:grid; grid-template-columns: 1.1fr .9fr; gap:16px; }
+    @media (max-width: 900px) { .content { grid-template-columns:1fr; } .cent { grid-template-columns:1fr 1fr; } }
+    .sec { border:1px solid var(--line); border-radius:12px; background:#fff; overflow:hidden; }
+    .sec h2 { margin:0; padding:10px 12px; font-size:14px; background:#f3f4f6; border-bottom:1px solid var(--line); }
+    .sec .body { padding:12px; }
+    .grid {
+      display:grid; grid-template-columns: 1fr 1fr; gap:8px 12px;
+      font-size:13px;
+    }
+    .row { display:flex; justify-content:space-between; gap:12px; border-bottom:1px dashed #eef2f7; padding:6px 0; }
+    .row:last-child { border-bottom:none; }
+    .lab { color:var(--muted); }
+    .val { font-weight:600; text-align:right; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th, td { border-bottom:1px solid var(--line); padding:8px 8px; text-align:left; vertical-align:top; }
+    th { font-size:12px; color:var(--muted); font-weight:700; background:#fafafa; }
+    .note { padding:14px 20px 18px; color:var(--muted); font-size:12px; }
+    .footer {
+      margin-top:10px; color:var(--muted); font-size:12px; line-height:1.45;
+    }
+    .disclaimer {
+      border-top:1px solid var(--line); padding:12px 20px; background:#fff; font-size:12px; color:var(--muted);
+    }
+    .mono { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <header class="hdr">
+        <div>
+          <h1>199 Rue de Pointe-Gatineau, Gatineau (Gatineau) J8T 2E2</h1>
+          <div class="meta">
+            <span><strong>Région:</strong> Outaouais</span>
+            <span><strong>Municipalité:</strong> Gatineau (Gatineau)</span>
+            <span><strong>Quartier:</strong> Saint-Rosaire</span>
+            <span class="mono"><strong>No ref.:</strong> 27320704</span>
+          </div>
+        </div>
+        <div class="badge">
+          <div>
+            <div class="price mono">490 000 $</div>
+            <div class="sold">Vendu en 54 jours</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="cent">
+        <div class="kpi"><div class="k">Genre de propriété</div><div class="v mono">Maison de plain-pied</div></div>
+<div class="kpi"><div class="k">Type de bâtiment</div><div class="v mono">Isolé (détaché)</div></div>
+<div class="kpi"><div class="k">Année de construction</div><div class="v mono">1971</div></div>
+<div class="kpi"><div class="k">Superficie habitable</div><div class="v mono">97,55 mc</div></div>
+<div class="kpi"><div class="k">Superficie du terrain</div><div class="v mono">809,28 mc</div></div>
+<div class="kpi"><div class="k">Chambres</div><div class="v mono">3+0</div></div>
+<div class="kpi"><div class="k">Salles de bains</div><div class="v mono">2+0</div></div>
+<div class="kpi"><div class="k">Nb. pièces</div><div class="v mono">11</div></div>
+      </section>
+
+      <section class="content">
+        <div class="sec">
+          <h2>Informations générales</h2>
+          <div class="body">
+            <div class="row"><div class="lab">Cadastre</div><div class="val mono">1271631</div></div>
+<div class="row"><div class="lab">Zonage</div><div class="val mono">Résidentiel</div></div>
+<div class="row"><div class="lab">Cert. de localisation</div><div class="val mono">Oui (2022)</div></div>
+<div class="row"><div class="lab">Occupation</div><div class="val mono">30 jours PA/PL acceptée</div></div>
+<div class="row"><div class="lab">Date PA acceptée</div><div class="val mono">2025-12-12</div></div>
+<div class="row"><div class="lab">Levée des conditions</div><div class="val mono">2025-12-19</div></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <h2>Évaluation & taxes</h2>
+          <div class="body">
+            <div class="row"><div class="lab">Éval. municipale (2022) – Terrain</div><div class="val mono">241 400 $</div></div>
+<div class="row"><div class="lab">Éval. municipale (2022) – Bâtiment</div><div class="val mono">152 500 $</div></div>
+<div class="row"><div class="lab">Éval. municipale (2022) – Total</div><div class="val mono">393 900 $</div></div>
+<div class="row"><div class="lab">Taxes municipales (2025)</div><div class="val mono">2 969 $</div></div>
+<div class="row"><div class="lab">Taxes scolaires (2025)</div><div class="val mono">263 $</div></div>
+          </div>
+        </div>
+
+        <div class="sec" style="grid-column:1 / -1;">
+          <h2>Pièces</h2>
+          <div class="body">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:12%">Niveau</th>
+                  <th style="width:34%">Pièce</th>
+                  <th style="width:18%">Dimensions</th>
+                  <th style="width:18%">Revêtement</th>
+                  <th>Info</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="mono">RDC</td><td>Hall d&#x27;entrée/Vestibule</td><td class="mono">1,63 x 1,4 m</td><td>Céramique</td><td></td></tr>
+<tr><td class="mono">RDC</td><td>Salon</td><td class="mono">4,14 x 3,15 m</td><td>Bois</td><td></td></tr>
+<tr><td class="mono">RDC</td><td>Salle à manger</td><td class="mono">2,77 x 2,95 m</td><td>Bois</td><td></td></tr>
+<tr><td class="mono">RDC</td><td>Cuisine</td><td class="mono">2,77 x 3,81 m</td><td>Céramique</td><td></td></tr>
+<tr><td class="mono">RDC</td><td>Chambre à coucher principale</td><td class="mono">3,51 x 3,63 m</td><td>Bois</td><td></td></tr>
+<tr><td class="mono">RDC</td><td>Chambre à coucher</td><td class="mono">2,49 x 3,58 m</td><td>Bois</td><td></td></tr>
+<tr><td class="mono">RDC</td><td>Chambre à coucher</td><td class="mono">2,39 x 2,97 m</td><td>Bois</td><td></td></tr>
+<tr><td class="mono">RDC</td><td>Salle de bains</td><td class="mono">2,77 x 1,5 m</td><td>Céramique</td><td></td></tr>
+<tr><td class="mono">SS1</td><td>Salle familiale</td><td class="mono">4,88 x 7,01 m</td><td>Plancher flottant</td><td></td></tr>
+<tr><td class="mono">SS1</td><td>Salle de bains</td><td class="mono">4,6 x 3,23 m</td><td>Céramique</td><td>laveuse/sécheuse</td></tr>
+<tr><td class="mono">SS1</td><td>Rangement</td><td class="mono">3,2 x 2,67 m</td><td>Plancher flottant</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="sec">
+          <h2>Caractéristiques</h2>
+          <div class="body">
+            <div class="row"><div class="lab">Approvisionnement eau</div><div class="val mono">Municipalité</div></div>
+<div class="row"><div class="lab">Système d&#x27;égouts</div><div class="val mono">Municipalité</div></div>
+<div class="row"><div class="lab">Fondation</div><div class="val mono">Béton coulé</div></div>
+<div class="row"><div class="lab">Revêtement toiture</div><div class="val mono">Bardeaux d&#x27;asphalte</div></div>
+<div class="row"><div class="lab">Revêtement extérieur</div><div class="val mono">Fibre pressée, Pierre de béton</div></div>
+<div class="row"><div class="lab">Fenestration</div><div class="val mono">PVC</div></div>
+<div class="row"><div class="lab">Type de fenestration</div><div class="val mono">Manivelle (battant)</div></div>
+<div class="row"><div class="lab">Énergie/Chauffage</div><div class="val mono">Électricité, Gaz naturel</div></div>
+<div class="row"><div class="lab">Mode de chauffage</div><div class="val mono">Air soufflé (pulsé)</div></div>
+<div class="row"><div class="lab">Foyer/poêle</div><div class="val mono">Foyer au gaz</div></div>
+<div class="row"><div class="lab">Stationnement</div><div class="val mono">Allée asphalte (3)</div></div>
+<div class="row"><div class="lab">Terrain</div><div class="val mono">Bordé par des haies, Clôturé</div></div>
+<div class="row"><div class="lab">Sous-sol</div><div class="val mono">6 pieds et plus, Totalement aménagé</div></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <h2>Inclusions / Exclusions</h2>
+          <div class="body">
+            <div class="row"><div class="lab">Inclusions</div><div class="val" style="font-weight:600; text-align:left; max-width:72%;">luminaires, store de la chambre principale, store du salon, gazebo en métal, table de vitre et les chaises, jardins en étage dans la cour arrière, tondeuse; four, réfrigérateur, lave-vaisselle, laveuse, sécheuse.</div></div>
+            <div class="row"><div class="lab">Exclusions</div><div class="val" style="font-weight:600; text-align:left; max-width:72%;">(non précisé)</div></div>
+          </div>
+        </div>
+
+        <div class="sec" style="grid-column:1 / -1;">
+          <h2>Remarques</h2>
+          <div class="body">
+            <div style="font-size:13px; line-height:1.55;">Petit coins de paradis en plein centre ville! À moins de 15 minutes d&#x27;Ottawa, quartier tranquille de Gatineau. 3 chambres au RDC, salon lumineux, cuisine au goût du jour, grande salle de bain avec walk-in et rangements au sous-sol. Cour privée clôturée avec gazebo, terrasse, remise et petit cabanon. Plusieurs améliorations (isolation, fournaise, thermopompe, chauffe-eau, prise pour voiture électrique, rénovations du sous-sol – fenêtres, planchers, douche et salle de lavage).</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="disclaimer">
+        <strong>Note :</strong> Fiche de comparable – mise en page inspirée des fiches de type Centris, sans affiliation.
+      </div>
+    </div>
+
+    <div class="footer">
+      Généré pour usage de comparaison de marché. Données tirées du document fourni (PDF) – 2026-02-04 15:25.
+    </div>
+  </div>
+</body>
+</html>
