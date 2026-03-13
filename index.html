@@ -1,991 +1,1086 @@
 <!doctype html>
 <html lang="fr-CA">
 <head>
-  
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-852570859"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-852570859');
 </script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Évaluation gratuite | Gatineau</title>
-  <meta name="description" content="Obtenez une évaluation gratuite et réaliste de votre propriété à Gatineau, basée sur les données du marché local. Sans obligation." />
-  <meta name="robots" content="index,follow" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Évaluation gratuite | Gatineau" />
-  <meta property="og:description" content="Découvrez combien vaut votre propriété à Gatineau. Évaluation gratuite, sans obligation." />
-  <meta property="og:type" content="website" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Évaluation gratuite | Éric Fortier — Courtier RE/MAX Gatineau</title>
+<meta name="description" content="Obtenez une évaluation gratuite et réaliste de votre propriété à Gatineau, basée sur les données du marché local. Sans obligation." />
+<meta name="robots" content="index,follow" />
+<meta property="og:title" content="Évaluation gratuite | Gatineau" />
+<meta property="og:description" content="Découvrez combien vaut votre propriété à Gatineau. Évaluation gratuite, sans obligation." />
+<meta property="og:type" content="website" />
 
-  <style>
-    :root{
-      --max: 1180px;
-      --radius: 22px;
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
 
-      /* overlay un peu plus clair qu'avant */
-      --overlayA: rgba(10, 14, 22, .52);
-      --overlayB: rgba(10, 14, 22, .26);
+<style>
+/* ══════════════════════════════════════════
+   TOKENS
+══════════════════════════════════════════ */
+:root {
+  --cream:       #f5f0e8;
+  --cream2:      #ede7d9;
+  --ink:         #0f0e0c;
+  --ink2:        #2a2724;
+  --ink3:        #4a4642;
+  --gold:        #c9a84c;
+  --gold-line:   rgba(201,168,76,.30);
+  --blue:        #1e4fc2;
+  --blue2:       #2d5fd4;
+  --blue-soft:   rgba(30,79,194,.08);
+  --white:       #ffffff;
+  --r-lg:        20px;
+  --r-md:        14px;
+  --r-sm:        10px;
+  --sh-sm:       0 2px 8px  rgba(15,14,12,.07);
+  --sh-md:       0 8px 32px rgba(15,14,12,.10);
+  --sh-lg:       0 20px 60px rgba(15,14,12,.13);
+}
 
-      --glassA: rgba(255,255,255,.12);
-      --glassB: rgba(255,255,255,.07);
-      --line: rgba(255,255,255,.18);
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-      --muted: rgba(255,255,255,.84);
-      --muted2: rgba(255,255,255,.68);
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-      --shadow: 0 18px 60px rgba(0,0,0,.33);
-      --shadow2: 0 12px 30px rgba(0,0,0,.25);
+/* ══════════════════════════════════════════
+   TOPBAR
+══════════════════════════════════════════ */
+.topbar {
+  background: var(--white);
+  border-bottom: 1px solid rgba(15,14,12,.08);
+  padding: 0 clamp(14px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 62px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--sh-sm);
+}
 
-      --brand: #4da3ff;
-      --brand2: #2f7bff;
-    }
+.logo-zone {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
 
-    *{ box-sizing: border-box; }
-    html, body{ height: 100%; }
-    body{
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: #fff;
-      line-height: 1.45;
-      background: #070b12;
-    }
+.logo-icon {
+  width: 32px; height: 32px;
+  border-radius: 9px;
+  background: var(--ink);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.logo-icon svg { width: 16px; height: 16px; }
 
-    /* Background image + overlay */
-    .bg{
-      min-height: 100vh;
-      background-image:
-        linear-gradient(135deg, var(--overlayA), var(--overlayB)),
-        url("assets/background.jpg");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
+.logo-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.logo-text .name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700; font-size: 14.5px;
+  letter-spacing: -0.02em; color: var(--ink); line-height: 1;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.logo-text .tag {
+  font-size: 11px; font-weight: 500; color: var(--ink3);
+}
 
-    .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 22px 18px 56px;
-    }
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
 
-    /* Top bar */
-    header.top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 16px;
-      padding: 8px 0 16px;
-    }
+.remax-img { height: 36px; opacity: .95; display: block; }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      min-width: 0;
-    }
-    .dot{
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.2));
-      box-shadow: 0 10px 22px rgba(0,0,0,.35);
-      flex: 0 0 auto;
-    }
-    .brand-title{
-      display:flex;
-      flex-direction:column;
-      gap: 2px;
-      min-width: 0;
-    }
-    .brand-title small{
-      color: var(--muted2);
-      font-weight: 850;
-      letter-spacing: .25px;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-    .brand-title strong{
-      font-size: 16px;
-      font-weight: 950;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.call-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 15px; border-radius: 999px;
+  background: var(--ink); color: var(--white);
+  text-decoration: none; font-size: 13px; font-weight: 600;
+  transition: background .15s, transform .1s;
+  white-space: nowrap;
+}
+.call-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+.call-pill:hover { background: var(--ink2); transform: translateY(-1px); }
+.call-pill:active { transform: none; }
 
-    /* RE/MAX logo bigger as trust */
-    .remax{
-      height: 68px;
-      opacity: .98;
-      filter: drop-shadow(0 14px 24px rgba(0,0,0,.38));
-      flex: 0 0 auto;
-    }
+/* ══════════════════════════════════════════
+   DESKTOP LAYOUT  (> 1024px)
+══════════════════════════════════════════ */
+main {
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+  padding: clamp(24px, 4vw, 56px) clamp(16px, 4vw, 48px);
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 32px;
+  align-items: start;
+}
 
-    /* Glass container */
-    .glass{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, var(--glassA), var(--glassB));
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      overflow: hidden;
-      position: relative;
-    }
-    .glass::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(900px 360px at 18% 0%, rgba(77,163,255,.20), transparent 60%);
-      pointer-events:none;
-    }
+/* Left column */
+.left { display: grid; gap: 24px; }
 
-    /* Hero: left full-height photo + right content */
-    .hero{
-      position: relative;
-      display:grid;
-      grid-template-columns: .95fr 1.05fr;
-      min-height: 560px;
-    }
-    .hero > *{ position: relative; z-index: 1; }
+/* ── Agent card ── */
+.agent-card {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid rgba(15,14,12,.08);
+  box-shadow: var(--sh-md);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 340px;
+}
 
-    /* Left: full-height photo panel */
-    .left-photo{
-      position: relative;
-      min-height: 560px;
-      background: rgba(255,255,255,.04);
-      overflow: hidden;
-    }
+.agent-photo {
+  position: relative; overflow: hidden;
+  background: #fff;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.agent-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 15%; display: block;
+}
+.agent-photo::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 55%, rgba(255,255,255,.95) 100%),
+    linear-gradient(180deg, transparent 60%, rgba(255,255,255,.10) 100%);
+}
 
-    .left-photo img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 25%;
-      display:block;
-      filter: contrast(1.02) saturate(1.02);
-    }
+.agent-info {
+  padding: 28px;
+  display: flex; flex-direction: column;
+  justify-content: center; gap: 15px;
+}
 
-    .left-photo::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.30), rgba(0,0,0,.06) 55%, rgba(0,0,0,.00)),
-        radial-gradient(900px 420px at 20% 10%, rgba(77,163,255,.14), transparent 60%);
-      pointer-events:none;
-    }
+.badge-remax {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 10px 5px 6px; border-radius: 999px;
+  background: #dc2626; color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; width: fit-content;
+}
+.badge-remax::before {
+  content: ''; width: 16px; height: 16px; border-radius: 50%;
+  background: rgba(255,255,255,.25); flex-shrink: 0;
+}
 
-    .id-badge{
-      position:absolute;
-      left: 18px;
-      bottom: 18px;
-      right: 18px;
-      padding: 14px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(10,14,22,.28);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: var(--shadow2);
-      z-index: 2;
-    }
-    .id-badge strong{
-      display:block;
-      font-size: 18px;
-      font-weight: 950;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-    .id-badge span{
-      display:block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 13.5px;
-    }
+h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(24px, 2.6vw, 38px);
+  font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--ink);
+}
+h1 em { font-style: normal; color: var(--blue); }
 
-    .right{
-      padding: 26px 26px 22px;
-      display:grid;
-      gap: 16px;
-      align-content: start;
-    }
+.agent-sub { font-size: 15px; font-weight: 400; color: var(--ink3); line-height: 1.5; }
 
-    h1{
-      margin: 0;
-      font-size: clamp(30px, 3.2vw, 46px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-    }
-    .sub{
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      font-weight: 650;
-      max-width: 62ch;
-    }
+.agent-meta {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 500; color: var(--ink3);
+}
+.agent-meta::before {
+  content: ''; width: 28px; height: 2px;
+  background: var(--gold); border-radius: 2px; flex-shrink: 0;
+}
 
-    .bullets{
-      margin: 4px 0 0;
-      padding: 0;
-      list-style: none;
-      display:grid;
-      gap: 10px;
-    }
-    .bullets li{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      color: rgba(255,255,255,.90);
-      font-weight: 650;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-    .bullets svg{
-      width: 20px;
-      height: 20px;
-      margin-top: 2px;
-      flex: 0 0 auto;
-      color: rgba(77,163,255,.95);
-    }
+/* ── Trust strip ── */
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
 
-    .formWrap{
-      margin-top: 2px;
-      border-radius: 18px;
-      padding: 18px;
-      background: rgba(10, 14, 22, .24);
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 18px 50px rgba(0,0,0,.22);
-    }
-    .form-title{
-      margin: 0 0 6px;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-      font-weight: 950;
-    }
-    .form-note{
-      margin: 0 0 14px;
-      color: var(--muted2);
-      font-size: 13.5px;
-      font-weight: 650;
-    }
+.trust-item {
+  border-radius: var(--r-md); background: var(--white);
+  border: 1px solid rgba(15,14,12,.08);
+  padding: 16px 14px; box-shadow: var(--sh-sm);
+  display: flex; flex-direction: column; gap: 5px;
+  transition: transform .15s, box-shadow .15s;
+}
+.trust-item:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
 
-    .callbox{
-      margin: 10px 0 14px;
-      padding: 12px 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .callbox .calltext{
-      color: rgba(255,255,255,.86);
-      font-weight: 800;
-      font-size: 13.5px;
-    }
-    .callbtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 950;
-      font-size: 13.5px;
-      border: 1px solid rgba(77,163,255,.35);
-      background: linear-gradient(135deg, rgba(77,163,255,.28), rgba(47,123,255,.18));
-      color: rgba(255,255,255,.96);
-      transition: transform .06s ease, filter .15s ease;
-      white-space: nowrap;
-    }
-    .callbtn:hover{ filter: brightness(1.05); }
-    .callbtn:active{ transform: translateY(1px); }
-    .callbtn svg{
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-      opacity: .95;
-    }
+.trust-icon {
+  width: 34px; height: 34px; border-radius: var(--r-sm);
+  background: var(--blue-soft);
+  display: grid; place-items: center;
+  color: var(--blue); margin-bottom: 2px;
+}
+.trust-icon svg { width: 17px; height: 17px; }
 
-    form{ display:grid; gap: 10px; }
-    .row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    label{
-      display:block;
-      font-size: 12.5px;
-      color: rgba(255,255,255,.74);
-      font-weight: 850;
-      margin: 0 0 6px;
-      letter-spacing: .2px;
-    }
-    input, textarea{
-      width: 100%;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.08);
-      color: #fff;
-      font-size: 15px;
-      outline: none;
-      transition: box-shadow .15s ease, border-color .15s ease, background .15s ease;
-    }
-    input::placeholder, textarea::placeholder{ color: rgba(255,255,255,.55); }
-    textarea{ min-height: 86px; resize: vertical; }
-    input:focus, textarea:focus{
-      border-color: rgba(77,163,255,.55);
-      box-shadow: 0 0 0 6px rgba(77,163,255,.18);
-      background: rgba(255,255,255,.10);
-    }
+.trust-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 13.5px; font-weight: 700;
+  letter-spacing: -0.01em; color: var(--ink);
+}
+.trust-desc { font-size: 12px; font-weight: 400; color: var(--ink3); line-height: 1.4; }
 
-    .btn{
-      margin-top: 4px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 13px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(77,163,255,.35);
-      background: linear-gradient(135deg, rgba(77,163,255,.95), rgba(47,123,255,.95));
-      color: #fff;
-      font-weight: 950;
-      font-size: 15px;
-      cursor: pointer;
-      box-shadow: 0 18px 45px rgba(47,123,255,.25);
-      transition: transform .06s ease, filter .15s ease;
-    }
-    .btn:hover{ filter: brightness(1.03); }
-    .btn:active{ transform: translateY(1px); }
+/* ── How it works ── */
+.how {
+  background: var(--white); border-radius: var(--r-lg);
+  border: 1px solid rgba(15,14,12,.08);
+  box-shadow: var(--sh-sm); padding: 22px 24px;
+}
 
-    /* --- NEW: bouton secondaire (retour) --- */
-    .btn.secondary{
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.18);
-      box-shadow: none;
-      font-weight: 900;
-    }
+.section-label {
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+}
 
-    /* --- NEW: wrapper boutons étapes --- */
-    .step-actions{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .step-actions.two{
-      grid-template-columns: 1fr 1fr;
-    }
+.how h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 19px; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 18px; color: var(--ink);
+}
 
-    /* --- NEW: indicateur étape --- */
-    .step-indicator{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin: 0 0 12px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      color: rgba(255,255,255,.86);
-      font-weight: 850;
-      font-size: 13px;
-    }
-    .step-dots{
-      display:flex;
-      gap: 6px;
-    }
-    .step-dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.20);
-      background: rgba(255,255,255,.08);
-    }
-    .step-dot.active{
-      border-color: rgba(77,163,255,.65);
-      background: rgba(77,163,255,.40);
-      box-shadow: 0 0 0 5px rgba(77,163,255,.14);
-    }
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px; position: relative;
+}
+.steps-row::before {
+  content: ''; position: absolute;
+  top: 19px;
+  left: calc(33.33% / 2 + 10px);
+  right: calc(33.33% / 2 + 10px);
+  height: 1px;
+  background: var(--gold-line);
+  pointer-events: none;
+}
 
-    /* --- NEW: masquage étapes --- */
-    .step-pane{ display:none; }
-    .step-pane.active{ display:block; }
+.step-item { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 
-    /* --- NEW: helper text --- */
-    .helper{
-      margin: 8px 0 0;
-      color: rgba(255,255,255,.68);
-      font-size: 12.5px;
-      font-weight: 650;
-    }
+.step-num {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--ink); color: var(--white);
+  font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700;
+  display: grid; place-items: center; flex-shrink: 0; position: relative; z-index: 1;
+}
+.step-title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.step-desc  { font-size: 12.5px; color: var(--ink3); line-height: 1.4; }
 
-    .fineprint{
-      margin: 10px 0 0;
-      color: rgba(255,255,255,.66);
-      font-size: 12.2px;
-      line-height: 1.35;
-      font-weight: 600;
-    }
+/* ── Google reviews ── */
+.gr-card {
+  border-radius: var(--r-lg); background: var(--white);
+  border: 1px solid rgba(15,14,12,.08); box-shadow: var(--sh-sm);
+  padding: 18px 22px;
+  display: flex; align-items: center; gap: 18px;
+}
+.gr-stars-big { font-size: 21px; letter-spacing: 2px; color: #f59e0b; line-height: 1; flex-shrink: 0; }
+.gr-divider   { width: 1px; height: 38px; background: rgba(15,14,12,.10); flex-shrink: 0; }
+.gr-score {
+  font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 800;
+  letter-spacing: -0.04em; color: var(--ink); line-height: 1;
+}
+.gr-label { font-size: 12px; color: var(--ink3); font-weight: 400; margin-top: 3px; }
+.gr-label strong { color: var(--ink); font-weight: 600; }
+.gr-cta {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 15px; border-radius: 999px;
+  border: 1px solid rgba(15,14,12,.12); background: transparent;
+  color: var(--ink2); font-size: 13px; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+  transition: background .15s, border-color .15s;
+}
+.gr-cta:hover { background: var(--cream); border-color: rgba(15,14,12,.22); }
 
-    .alert{
-      display:none;
-      border-radius: 14px;
-      padding: 10px 12px;
-      font-size: 14px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.08);
-      color: rgba(255,255,255,.92);
-      margin-bottom: 10px;
-      font-weight: 750;
-    }
-    .alert.show{ display:block; }
-    .alert.success{
-      border-color: rgba(22, 163, 74, .35);
-      background: rgba(22, 163, 74, .12);
-    }
-    .alert.error{
-      border-color: rgba(220, 38, 38, .35);
-      background: rgba(220, 38, 38, .12);
-    }
+/* ══════════════════════════════════════════
+   FORM CARD  (right column on desktop)
+══════════════════════════════════════════ */
+.form-card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(15,14,12,.08);
+  box-shadow: var(--sh-lg);
+  position: sticky; top: 78px;
+  overflow: hidden;
+}
 
-    .gr{
-      margin-top: 14px;
-      border-radius: 16px;
-      padding: 14px 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .gr-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 12px;
-    }
-    .gr-left{ min-width: 0; }
-    .gr-title{
-      margin: 0;
-      font-size: 14.5px;
-      font-weight: 950;
-      letter-spacing: -0.01em;
-    }
-    .gr-sub{
-      margin: 6px 0 0;
-      color: rgba(255,255,255,.78);
-      font-weight: 650;
-      font-size: 13.2px;
-    }
-    .gr-stars{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      margin-top: 8px;
-      color: rgba(255,255,255,.92);
-      font-weight: 900;
-      flex-wrap: wrap;
-    }
-    .gr-stars .stars{
-      letter-spacing: 2px;
-      color: rgba(255, 215, 120, .95);
-      text-shadow: 0 10px 18px rgba(0,0,0,.25);
-    }
-    .gr-actions{
-      display:flex;
-      gap: 10px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-    }
-    .gr-link{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 12px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 900;
-      font-size: 13.5px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.12);
-      color: rgba(255,255,255,.94);
-      transition: transform .06s ease, filter .15s ease;
-    }
-    .gr-link:hover{ filter: brightness(1.05); }
-    .gr-link:active{ transform: translateY(1px); }
-    .gr-link.primary{
-      border-color: rgba(77,163,255,.35);
-      background: linear-gradient(135deg, rgba(77,163,255,.28), rgba(47,123,255,.18));
-    }
+.form-card-header {
+  background: var(--ink);
+  padding: 20px 22px 18px;
+  position: relative; overflow: hidden;
+}
+.form-card-header::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 130px; height: 130px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.22), transparent 70%);
+  pointer-events: none;
+}
+.form-card-header h2 {
+  font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700;
+  letter-spacing: -0.025em; color: var(--white); line-height: 1.2; margin-bottom: 7px;
+}
+.form-card-header p {
+  font-size: 12.5px; color: rgba(255,255,255,.60); font-weight: 400;
+  display: flex; align-items: center; gap: 5px;
+}
 
-    .below{
-      margin-top: 18px;
-      padding: 18px 6px 0;
-      display:grid;
-      gap: 12px;
-    }
-    .strip{
-      border-radius: 18px;
-      padding: 16px 18px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .strip h2{
-      margin: 0 0 8px;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-      font-weight: 950;
-    }
-    .strip p{
-      margin: 0;
-      color: rgba(255,255,255,.76);
-      font-weight: 650;
-    }
+.form-card-body { padding: 20px 22px 22px; }
 
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .step{
-      border-radius: 16px;
-      padding: 14px 14px;
-      background: rgba(0,0,0,.16);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-    .step strong{
-      display:block;
-      font-weight: 950;
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
-    }
-    .step span{
-      color: rgba(255,255,255,.74);
-      font-weight: 650;
-      font-size: 13.5px;
-    }
+/* Step bar */
+.step-indicator {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px; gap: 12px;
+}
+.step-label {
+  font-size: 11.5px; font-weight: 600; color: var(--ink3);
+  letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap;
+}
+.step-bar {
+  flex: 1; height: 4px; border-radius: 4px;
+  background: var(--cream2); overflow: hidden;
+}
+.step-bar-fill {
+  height: 100%; border-radius: 4px; background: var(--blue);
+  width: 50%;
+  transition: width .35s cubic-bezier(.4,0,.2,1);
+}
 
-    footer{
-      margin-top: 18px;
-      padding: 10px 6px 0;
-      color: rgba(255,255,255,.62);
-      font-size: 12.5px;
-      display:flex;
-      justify-content:space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      font-weight: 650;
-    }
+/* Call box */
+.callbox {
+  margin-bottom: 16px; padding: 12px 13px;
+  border-radius: var(--r-md); background: var(--cream);
+  border: 1px solid rgba(15,14,12,.08);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; flex-wrap: wrap;
+}
+.calltext { font-size: 12.5px; font-weight: 400; color: var(--ink3); }
+.calltext strong { color: var(--ink); display: block; font-size: 13.5px; margin-top: 2px; }
+.callbtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 13px; border-radius: var(--r-sm);
+  background: var(--ink); color: var(--white);
+  text-decoration: none; font-size: 12.5px; font-weight: 600;
+  transition: background .15s, transform .1s; white-space: nowrap;
+}
+.callbtn:hover { background: var(--ink2); transform: translateY(-1px); }
+.callbtn svg { width: 13px; height: 13px; }
 
-    @media (max-width: 980px){
-      .bg{ background-attachment: scroll; }
-      .hero{
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-      .left-photo{
-        min-height: 360px;
-      }
-      .right{
-        padding: 18px;
-      }
-      .row{
-        grid-template-columns: 1fr;
-      }
-      .remax{
-        height: 56px;
-      }
-      .steps{
-        grid-template-columns: 1fr;
-      }
-      .step-actions.two{
-        grid-template-columns: 1fr;
-      }
-    }
+/* Alert */
+.alert {
+  display: none; padding: 10px 13px; border-radius: var(--r-sm);
+  font-size: 13px; font-weight: 500; margin-bottom: 12px;
+  border: 1px solid transparent;
+}
+.alert.show   { display: block; }
+.alert.success{ background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
+.alert.error  { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+.alert.info   { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
 
-    @media (max-width: 520px){
-      .remax{ height: 50px; }
-      .id-badge strong{ font-size: 16px; }
-      .id-badge span{ font-size: 13px; }
-    }
-  </style>
+/* Form fields */
+form { display: grid; gap: 11px; }
+.field { display: grid; gap: 5px; }
+
+label {
+  font-size: 12px; font-weight: 600; color: var(--ink2); letter-spacing: 0.01em;
+}
+
+input, textarea {
+  width: 100%; padding: 11px 12px;
+  border-radius: var(--r-sm); border: 1.5px solid rgba(15,14,12,.15);
+  background: var(--white); color: var(--ink);
+  font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 400;
+  outline: none; -webkit-appearance: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+input::placeholder, textarea::placeholder { color: rgba(15,14,12,.35); }
+textarea { min-height: 80px; resize: vertical; line-height: 1.45; }
+input:focus, textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(30,79,194,.12);
+}
+
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 18px; border-radius: var(--r-md);
+  background: var(--blue); color: var(--white);
+  font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700;
+  letter-spacing: -0.01em; border: none; cursor: pointer; width: 100%;
+  box-shadow: 0 4px 20px rgba(30,79,194,.25);
+  transition: background .15s, transform .1s, box-shadow .15s;
+  position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.08), transparent);
+}
+.btn-primary:hover {
+  background: var(--blue2); transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(30,79,194,.32);
+}
+.btn-primary:active { transform: none; }
+.btn-primary:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 12px 15px; border-radius: var(--r-md);
+  background: transparent; color: var(--ink3);
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  border: 1.5px solid rgba(15,14,12,.15); cursor: pointer; width: 100%;
+  transition: background .15s, border-color .15s;
+}
+.btn-secondary:hover { background: var(--cream); border-color: rgba(15,14,12,.25); }
+
+.step-actions { display: grid; gap: 8px; }
+.step-actions.two { grid-template-columns: 1fr 1.8fr; }
+
+.step-pane { display: none; }
+.step-pane.active { display: grid; gap: 11px; }
+
+.fineprint {
+  margin-top: 9px; font-size: 11px; color: rgba(15,14,12,.42);
+  line-height: 1.45; text-align: center;
+}
+
+/* Guarantee row */
+.guarantee-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; padding-top: 13px;
+  border-top: 1px solid rgba(15,14,12,.07);
+  margin-top: 4px; flex-wrap: wrap;
+}
+.guarantee-item {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 500; color: var(--ink3);
+}
+.guarantee-item svg { width: 12px; height: 12px; color: #16a34a; flex-shrink: 0; }
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer {
+  border-top: 1px solid rgba(15,14,12,.08);
+  padding: 14px clamp(14px, 4vw, 48px);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  font-size: 11.5px; color: var(--ink3); font-weight: 400;
+  background: var(--white);
+}
+
+/* ══════════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.left > * { animation: fadeUp .45s ease both; }
+.left > *:nth-child(1) { animation-delay: .04s; }
+.left > *:nth-child(2) { animation-delay: .10s; }
+.left > *:nth-child(3) { animation-delay: .16s; }
+.left > *:nth-child(4) { animation-delay: .22s; }
+.form-card { animation: fadeUp .45s ease .06s both; }
+
+
+/* ══════════════════════════════════════════
+   TABLET  768px – 1024px
+   Two-column topbar stays. Main becomes
+   single column but form is pulled up to
+   sit right after a compact agent banner.
+══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  main {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px clamp(14px, 3vw, 32px);
+  }
+
+  /* On tablet: reorder — form appears before left content via CSS order */
+  .left  { order: 2; gap: 18px; }
+  aside  { order: 1; }
+
+  /* Form card no longer sticky */
+  .form-card { position: static; box-shadow: var(--sh-md); }
+
+  /* Agent card: side-by-side but shorter photo */
+  .agent-card {
+    grid-template-columns: 200px 1fr;
+    min-height: 260px;
+  }
+
+  /* Trust strip: 3 columns still fit on tablet */
+  .trust-strip { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .trust-item  { padding: 14px 12px; }
+
+  /* Steps: horizontal on tablet */
+  .steps-row { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Tablet narrower (600–768px) ── */
+@media (max-width: 768px) {
+  .topbar { height: 56px; }
+  .remax-img { height: 30px; }
+
+  /* Agent card: photo on top, info below */
+  .agent-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .agent-photo {
+    height: 240px;
+  }
+  /* Photo fade becomes bottom gradient when stacked */
+  .agent-photo::after {
+    background:
+      linear-gradient(180deg, transparent 45%, rgba(255,255,255,.90) 100%);
+  }
+  .agent-info { padding: 18px 20px 20px; gap: 12px; }
+
+  h1 { font-size: clamp(22px, 5vw, 30px); }
+  .agent-sub { font-size: 14px; }
+
+  /* Trust: 3 cols still OK at 600+ */
+  .trust-strip { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+
+  /* Steps inline with number + text */
+  .steps-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .steps-row::before { display: none; }
+  .step-item { flex-direction: row; gap: 12px; align-items: flex-start; }
+  .step-num  { flex-shrink: 0; }
+}
+
+
+/* ══════════════════════════════════════════
+   MOBILE  < 600px
+   FORM FIRST strategy:
+   – Topbar shows only logo + phone pill
+   – Mobile hero: small photo strip + title
+     then FORM immediately
+   – Trust / how-it-works / reviews below
+══════════════════════════════════════════ */
+@media (max-width: 600px) {
+
+  /* ── Topbar ── */
+  .topbar { height: 52px; padding: 0 14px; gap: 8px; }
+  .logo-text .tag  { display: none; }
+  .remax-img       { height: 26px; }
+  /* phone pill: icon only */
+  .call-pill span  { display: none; }
+  .call-pill       { padding: 8px 10px; border-radius: 50%; }
+
+  /* ── Main: single column, tighter padding ── */
+  main {
+    padding: 14px 12px 24px;
+    gap: 14px;
+  }
+
+  /* Form comes first */
+  .left  { order: 2; gap: 14px; }
+  aside  { order: 1; }
+
+  /* ── Mobile hero inside agent-card ──
+     Show a horizontal strip: small photo left,
+     title + badge right. No tall photo.        */
+  .agent-card {
+    grid-template-columns: 110px 1fr;
+    min-height: auto;
+    border-radius: var(--r-md);
+  }
+
+  .agent-photo {
+    height: auto;          /* let it match grid row */
+    min-height: 140px;
+  }
+  /* Mobile photo fade: right edge only */
+  .agent-photo::after {
+    background:
+      linear-gradient(90deg, transparent 50%, rgba(255,255,255,.92) 100%);
+  }
+  .agent-photo img {
+    object-position: 50% 10%;
+  }
+
+  .agent-info { padding: 14px 14px; gap: 10px; }
+  .badge-remax { font-size: 10px; padding: 4px 8px 4px 5px; }
+  h1 { font-size: clamp(17px, 5.5vw, 22px); letter-spacing: -0.025em; }
+  .agent-sub { font-size: 13px; display: none; } /* hidden on mobile to save space */
+  .agent-meta { display: none; }
+
+  /* ── Form card ── */
+  .form-card { border-radius: var(--r-md); box-shadow: var(--sh-md); }
+  .form-card-header { padding: 16px 16px 14px; }
+  .form-card-header h2 { font-size: 16px; }
+  .form-card-body { padding: 16px 16px 18px; }
+
+  /* Bigger tap targets on mobile */
+  input, textarea {
+    font-size: 16px; /* prevents iOS zoom */
+    padding: 13px 12px;
+  }
+  .btn-primary  { padding: 15px 16px; font-size: 15px; }
+  .btn-secondary{ padding: 13px 14px; }
+
+  /* Back/submit stacked on mobile */
+  .step-actions.two { grid-template-columns: 1fr; }
+  .row2             { grid-template-columns: 1fr; }
+
+  /* Call box compact */
+  .callbox      { padding: 11px 12px; }
+  .calltext     { font-size: 12px; }
+  .calltext strong { font-size: 13px; }
+
+  /* ── Trust strip: 1 col horizontal pills ── */
+  .trust-strip {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .trust-item {
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 14px;
+    gap: 12px;
+  }
+  .trust-icon { margin-bottom: 0; flex-shrink: 0; width: 32px; height: 32px; }
+  .trust-desc { display: none; } /* title alone is enough inline */
+
+  /* ── How: steps as numbered list ── */
+  .how { padding: 16px; border-radius: var(--r-md); }
+  .how h2 { font-size: 16px; margin-bottom: 14px; }
+  .steps-row { grid-template-columns: 1fr; gap: 10px; }
+  .steps-row::before { display: none; }
+  .step-item { flex-direction: row; gap: 12px; align-items: flex-start; }
+  .step-num  { width: 32px; height: 32px; font-size: 13px; flex-shrink: 0; }
+
+  /* ── Google reviews ── */
+  .gr-card  { padding: 14px 14px; gap: 12px; flex-wrap: wrap; }
+  .gr-cta   { margin-left: 0; width: 100%; justify-content: center; }
+  .gr-score { font-size: 22px; }
+  .gr-stars-big { font-size: 18px; }
+
+  /* ── Guarantee row ── */
+  .guarantee-row { gap: 10px; }
+  .guarantee-item { font-size: 10.5px; }
+
+  /* ── Footer ── */
+  footer { flex-direction: column; gap: 4px; text-align: center; padding: 12px 14px; }
+
+  /* Animations: simpler on mobile */
+  .left > *, .form-card { animation-duration: .3s; }
+}
+
+/* ── Very small screens < 380px ── */
+@media (max-width: 380px) {
+  .logo-icon   { display: none; }
+  .remax-img   { height: 22px; }
+  h1           { font-size: 16px; }
+  .agent-card  { grid-template-columns: 90px 1fr; }
+  .agent-photo { min-height: 120px; }
+  .form-card-header h2 { font-size: 15px; }
+}
+</style>
 </head>
 
 <body>
-  <div class="bg">
-    <div class="wrap">
+<div style="min-height:100vh; display:grid; grid-template-rows: auto 1fr auto;">
 
-      <header class="top">
-        <div class="brand">
-          <div class="brand-title">
+  <!-- ══ TOPBAR ══ -->
+  <header class="topbar">
+    <div class="logo-zone">
+      <div class="logo-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M3 9.5L12 3l9 6.5V21H3V9.5Z" fill="white" opacity=".9"/>
+          <path d="M9 21V13h6v8" fill="white" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="name">Éric Fortier inc.</span>
+        <span class="tag">Courtier immobilier — Gatineau</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <img class="remax-img" src="assets/remax-wide.png" alt="RE/MAX" />
+      <a class="call-pill" href="tel:+18192103124" aria-label="Appeler Éric Fortier au 819-210-3124">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M22 16.5v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 4.2 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L9.5 9.5a16 16 0 0 0 5 5l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.5Z"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>819-210-3124</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ══ MAIN ══ -->
+  <main>
+
+    <!-- ── LEFT COLUMN (content / trust) ── -->
+    <div class="left">
+
+      <!-- Agent Hero Card -->
+      <div class="agent-card">
+        <div class="agent-photo" aria-label="Éric Fortier, courtier immobilier">
+          <img src="eric-fortier-cropped.webp" alt="Éric Fortier, courtier immobilier RE/MAX Gatineau" />
+        </div>
+        <div class="agent-info">
+          <div class="badge-remax" aria-label="RE/MAX Direct depuis 2012">
+            RE/MAX Direct · Depuis 2012
+          </div>
+          <h1>Avant de vendre, sachez exactement combien vaut votre maison <em>à Gatineau</em></h1>
+          <p class="agent-sub">
+            Évaluation professionnelle, sans pression, sans engagement — par un courtier local avec 14&nbsp;ans d'expérience du marché.
+          </p>
+          <p class="agent-meta">Éric Fortier · Courtier immobilier</p>
+        </div>
+      </div>
+
+      <!-- Trust items -->
+      <div class="trust-strip" role="list" aria-label="Nos engagements">
+        <div class="trust-item" role="listitem">
+          <div class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="trust-title">100 % confidentiel</div>
+            <div class="trust-desc">Vos informations ne sont jamais partagées sans votre accord.</div>
           </div>
         </div>
+        <div class="trust-item" role="listitem">
+          <div class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="trust-title">Résultat en 24&nbsp;h</div>
+            <div class="trust-desc">Rapport d'évaluation personnalisé livré rapidement.</div>
+          </div>
+        </div>
+        <div class="trust-item" role="listitem">
+          <div class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="trust-title">Sans obligation</div>
+            <div class="trust-desc">Aucune pression. Planifiez selon votre calendrier.</div>
+          </div>
+        </div>
+      </div>
 
-        <img class="remax" src="assets/remax-wide.png" alt="RE/MAX" />
-      </header>
+      <!-- How it works -->
+      <div class="how">
+        <p class="section-label">Comment ça fonctionne</p>
+        <h2>Simple. Rapide. Basé sur les données réelles du marché.</h2>
+        <div class="steps-row" role="list">
+          <div class="step-item" role="listitem">
+            <div class="step-num" aria-hidden="true">1</div>
+            <div>
+              <div class="step-title">Votre propriété</div>
+              <div class="step-desc">Entrez l'adresse de votre bien en quelques secondes.</div>
+            </div>
+          </div>
+          <div class="step-item" role="listitem">
+            <div class="step-num" aria-hidden="true">2</div>
+            <div>
+              <div class="step-title">Analyse locale</div>
+              <div class="step-desc">Comparaison avec les ventes récentes à Gatineau.</div>
+            </div>
+          </div>
+          <div class="step-item" role="listitem">
+            <div class="step-num" aria-hidden="true">3</div>
+            <div>
+              <div class="step-title">Résultat clair</div>
+              <div class="step-desc">Estimation réaliste et personnalisée sous 24&nbsp;h.</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <main class="glass" aria-label="Évaluation gratuite">
-        <section class="hero">
+      <!-- Google Reviews -->
+      <div class="gr-card" id="googleReviews" data-rating="4.9" data-count="56" aria-label="Avis Google vérifiés">
+        <div class="gr-stars-big" aria-hidden="true">★★★★★</div>
+        <div class="gr-divider" aria-hidden="true"></div>
+        <div>
+          <div class="gr-score">
+            <span id="grRating">4.9</span><span style="font-size:15px;font-weight:400;color:var(--ink3)">/5</span>
+          </div>
+          <div class="gr-label"><strong id="grCount">56</strong> avis vérifiés sur Google</div>
+        </div>
+        <a class="gr-cta" href="https://search.google.com/local/reviews?placeid=ChIJN6pSO-oczkwRokearKk12eE"
+           target="_blank" rel="noopener" aria-label="Voir les avis Google">
+          Voir les avis
+          <svg viewBox="0 0 24 24" fill="none" width="13" height="13" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
 
-          <div class="left-photo" aria-label="Photo professionnelle">
-            <img src="assets/eric-fortier.jpg" alt="Éric Fortier, courtier immobilier" />
-            <div class="id-badge">
-              <strong>Éric Fortier inc.</strong>
-              <span>Courtier immobilier - RE/MAX Direct depuis 2012</span>
+    </div><!-- /left -->
+
+    <!-- ── RIGHT COLUMN (form) ── -->
+    <aside>
+      <div class="form-card">
+
+        <div class="form-card-header">
+          <h2>Obtenez votre évaluation gratuitement</h2>
+          <p>
+            <span aria-hidden="true">🔒</span>
+            Formulaire sécurisé · Aucune obligation · Données confidentielles
+          </p>
+        </div>
+
+        <div class="form-card-body">
+
+          <div class="step-indicator" aria-label="Progression du formulaire">
+            <span class="step-label" id="stepLabel">Étape 1 sur 2</span>
+            <div class="step-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+              <div class="step-bar-fill" id="stepBarFill"></div>
             </div>
           </div>
 
-          <div class="right">
-            <div>
-              <h1>Avant de vendre, sachez exactement combien vaut votre maison à Gatineau</h1>
-              <p class="sub">
-                Évaluation professionnelle, sans pression, sans engagement — par un courtier local avec 14+ ans d’expérience.
+          <div class="callbox" aria-label="Contact direct par téléphone">
+            <div class="calltext">
+              Vous préférez parler tout de suite?
+              <strong><a href="tel:+18192103124" style="color:inherit;text-decoration:underline;">819-210-3124</a></strong>
+            </div>
+            <a class="callbtn" href="tel:+18192103124" aria-label="Appeler Éric Fortier">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M22 16.5v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 4.2 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L9.5 9.5a16 16 0 0 0 5 5l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.5Z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Appeler
+            </a>
+          </div>
+
+          <div id="formAlert" class="alert" role="status" aria-live="polite"></div>
+
+          <form id="leadForm" action="https://formspree.io/f/mbddarae" method="POST" autocomplete="on" novalidate>
+
+            <!-- STEP 1 -->
+            <div class="step-pane active" id="step1">
+              <div class="field">
+                <label for="adresse">Adresse de la propriété</label>
+                <textarea id="adresse" name="adresse" required
+                  placeholder="Ex : 2310 Rue Saint-Louis, Gatineau, J8T…"
+                  aria-describedby="adresse-hint"></textarea>
+                <p id="adresse-hint" style="font-size:11.5px;color:var(--ink3);margin-top:3px;">
+                  On commence par l'adresse, puis vos coordonnées.
+                </p>
+              </div>
+              <div class="step-actions">
+                <button class="btn-primary" type="button" id="nextStep">
+                  Obtenir mon rapport
+                  <svg viewBox="0 0 24 24" fill="none" width="15" height="15" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="step-pane" id="step2" aria-hidden="true">
+              <div class="row2">
+                <div class="field">
+                  <label for="prenom">Prénom</label>
+                  <input id="prenom" name="prenom" type="text" required autocomplete="given-name" />
+                </div>
+                <div class="field">
+                  <label for="nom">Nom</label>
+                  <input id="nom" name="nom" type="text" required autocomplete="family-name" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="courriel">Courriel</label>
+                <input id="courriel" name="courriel" type="email" inputmode="email" required
+                  autocomplete="email" placeholder="votre@courriel.com" />
+              </div>
+              <div class="field">
+                <label for="telephone">Téléphone</label>
+                <input id="telephone" name="telephone" type="tel" inputmode="tel" required
+                  autocomplete="tel" placeholder="Ex. 819-555-1234" />
+              </div>
+
+              <input type="hidden" id="utm_source"   name="utm_source" />
+              <input type="hidden" id="utm_medium"   name="utm_medium" />
+              <input type="hidden" id="utm_campaign" name="utm_campaign" />
+              <input type="hidden" id="utm_term"     name="utm_term" />
+              <input type="hidden" id="utm_content"  name="utm_content" />
+              <input type="text"   name="_gotcha"    style="display:none" tabindex="-1" autocomplete="off" />
+
+              <div class="step-actions two">
+                <button class="btn-secondary" type="button" id="backStep">← Retour</button>
+                <button class="btn-primary" type="submit" id="submitBtn">Découvrir la valeur →</button>
+              </div>
+
+              <p class="fineprint">
+                En soumettant, vous acceptez d'être contacté au sujet de votre évaluation. Informations confidentielles.
               </p>
             </div>
 
-            <ul class="bullets">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Sans pression. Sans engagement. 100 % confidentiel
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Analyse locale précise (ventes comparables à Gatineau)
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Rapport d'évaluation en 24 h
-              </li>
-            </ul>
+          </form>
 
-            <aside class="formWrap" aria-label="Formulaire d'évaluation">
-              <h2 class="form-title">👉 Obtenez votre évaluation gratuitement</h2>
-              <p class="form-note">🔒 Aucune obligation — Vos informations restent confidentielles</p>
-
-              <div class="callbox" aria-label="Contact direct par téléphone">
-                <div class="calltext">
-                  Vous préférez parler tout de suite? Appelez-moi :
-                  <strong>
-                    <a href="tel:+18192103124" style="color:inherit; text-decoration:underline;">819-210-3124</a>
-                  </strong>
-                </div>
-
-                <a class="callbtn" href="tel:+18192103124" aria-label="Appeler Éric Fortier au 819-210-3124">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M22 16.5v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 4.2 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L9.5 9.5a16 16 0 0 0 5 5l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.5Z"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  Appeler maintenant
-                </a>
-              </div>
-
-              <div id="formAlert" class="alert" role="status" aria-live="polite"></div>
-
-              <!-- ✅ FORMULAIRE 2 ÉTAPES -->
-              <form id="leadForm" action="https://formspree.io/f/mbddarae" method="POST" autocomplete="on">
-
-                <!-- NEW: indicateur -->
-                <div class="step-indicator" aria-label="Progression du formulaire">
-                  <span id="stepLabel">Étape 1 sur 2</span>
-                  <div class="step-dots" aria-hidden="true">
-                    <span class="step-dot active" id="dot1"></span>
-                    <span class="step-dot" id="dot2"></span>
-                  </div>
-                </div>
-
-                <!-- ÉTAPE 1 -->
-                <div class="step-pane active" id="step1">
-                  <div>
-                    <label for="adresse">Adresse de la propriété</label>
-                    <textarea id="adresse" name="adresse" required placeholder="Ex : 2310 Rue Saint-Louis, Gatineau, J8T.."></textarea>
-                    <p class="helper">On commence par l’adresse. Ensuite, vos coordonnées.</p>
-                  </div>
-
-                  <div class="step-actions">
-                    <button class="btn" type="button" id="nextStep">
-                      Obtenir mon rapport <span aria-hidden="true">→</span>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- ÉTAPE 2 -->
-                <div class="step-pane" id="step2" aria-hidden="true">
-                  <div class="row">
-                    <div>
-                      <label for="prenom">Prénom</label>
-                      <input id="prenom" name="prenom" type="text" required />
-                    </div>
-                    <div>
-                      <label for="nom">Nom</label>
-                      <input id="nom" name="nom" type="text" required />
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div>
-                      <label for="courriel">Courriel</label>
-                      <input id="courriel" name="courriel" type="email" inputmode="email" required />
-                    </div>
-                    <div>
-                      <label for="telephone">Téléphone</label>
-                      <input id="telephone" name="telephone" type="tel" inputmode="tel" required placeholder="Ex. 819-555-1234" />
-                    </div>
-                  </div>
-
-                  <!-- UTM pour Google Ads -->
-                  <input type="hidden" id="utm_source" name="utm_source" />
-                  <input type="hidden" id="utm_medium" name="utm_medium" />
-                  <input type="hidden" id="utm_campaign" name="utm_campaign" />
-                  <input type="hidden" id="utm_term" name="utm_term" />
-                  <input type="hidden" id="utm_content" name="utm_content" />
-
-                  <!-- Honeypot anti-spam -->
-                  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-                  <div class="step-actions two">
-                    <button class="btn secondary" type="button" id="backStep">
-                      ← Retour
-                    </button>
-
-                    <button class="btn" type="submit" id="submitBtn">
-                      Découvrir combien vaut ma maison <span aria-hidden="true">→</span>
-                    </button>
-                  </div>
-
-                  <p class="fineprint">
-                    En soumettant ce formulaire, vous acceptez d’être contacté au sujet de votre demande d’évaluation.
-                    Vos informations demeurent confidentielles.
-                  </p>
-                </div>
-
-              </form>
-
-              <div class="gr" id="googleReviews" data-rating="4.9" data-count="56" aria-label="Avis Google">
-                <div class="gr-top">
-                  <div class="gr-left">
-                    <p class="gr-title">Avis Google</p>
-
-                    <div class="gr-stars">
-                      <span class="stars" aria-hidden="true">★★★★★</span>
-                      <span>
-                        <strong id="grRating">4.9</strong>/5 · <span id="grCount">56</span> avis
-                      </span>
-                    </div>
-
-                    <p class="gr-sub">
-                      Consultez les avis vérifiés sur Google pour vous faire une idée rapidement.
-                    </p>
-
-                    <div class="gr-actions">
-                      <a class="gr-link primary" target="_blank" rel="noopener"
-                        href="https://search.google.com/local/reviews?placeid=ChIJN6pSO-oczkwRokearKk12eE">
-                        Voir les avis Google →
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </aside>
-          </div>
-
-        </section>
-      </main>
-
-      <section class="below">
-        <div class="strip">
-          <h2>Comment se déroule l’évaluation?</h2>
-          <p>Simple, rapide, et basée sur les données réelles du marché.</p>
-
-          <div class="steps" role="list">
-            <div class="step" role="listitem">
-              <strong>1) Formulaire</strong>
-              <span>Vous indiquez vos coordonnées et l’adresse de la propriété.</span>
+          <div class="guarantee-row" aria-label="Garanties">
+            <div class="guarantee-item">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Gratuit
             </div>
-            <div class="step" role="listitem">
-              <strong>2) Analyse locale</strong>
-              <span>Comparaison avec les ventes récentes et les propriétés similaires.</span>
+            <div class="guarantee-item">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Sans pression
             </div>
-            <div class="step" role="listitem">
-              <strong>3) Résultat clair</strong>
-              <span>Vous recevez une estimation réaliste, expliquée et personnalisée.</span>
+            <div class="guarantee-item">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Sécurisé
+            </div>
+            <div class="guarantee-item">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Résultat 24&nbsp;h
             </div>
           </div>
+
         </div>
+      </div>
+    </aside>
 
-        <div class="strip">
-          <h2>Sans obligation</h2>
-          <p>
-            Que vous envisagiez de vendre maintenant ou plus tard, l’objectif est de vous donner une vision claire et réaliste de la valeur de votre propriété à Gatineau et ses environs, afin de planifier la suite avec assurance.
-          </p>
-        </div>
-      </section>
+  </main>
 
-      <footer>
-        <div>Service immobilier à Gatineau • © <span id="year"></span></div>
-        <div>Optimisé pour mobile • Formulaire sécurisé via Formspree</div>
-      </footer>
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div>Service immobilier à Gatineau · © <span id="year"></span> Éric Fortier inc.</div>
+    <div>Formulaire sécurisé via Formspree · Optimisé pour mobile</div>
+  </footer>
 
-    </div>
-  </div>
+</div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // UTM params -> hidden fields
-    (function(){
-      const params = new URLSearchParams(window.location.search);
-      const keys = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
-      keys.forEach(k => {
-        const el = document.getElementById(k);
-        if (el) el.value = params.get(k) || "";
+  // UTM
+  (function(){
+    const p = new URLSearchParams(window.location.search);
+    ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(k => {
+      const el = document.getElementById(k);
+      if (el) el.value = p.get(k) || "";
+    });
+  })();
+
+  // Google reviews
+  (function(){
+    const box = document.getElementById("googleReviews");
+    if (!box) return;
+    const rEl = document.getElementById("grRating");
+    const cEl = document.getElementById("grCount");
+    if (rEl) rEl.textContent = box.getAttribute("data-rating") || rEl.textContent;
+    if (cEl) cEl.textContent = box.getAttribute("data-count")  || cEl.textContent;
+  })();
+
+  // Form 2-step
+  const form        = document.getElementById('leadForm');
+  const alertBox    = document.getElementById('formAlert');
+  const step1       = document.getElementById('step1');
+  const step2       = document.getElementById('step2');
+  const nextBtn     = document.getElementById('nextStep');
+  const backBtn     = document.getElementById('backStep');
+  const stepLabel   = document.getElementById('stepLabel');
+  const stepBarFill = document.getElementById('stepBarFill');
+
+  function goToStep(n) {
+    const isOne = n === 1;
+    step1.classList.toggle('active',  isOne);
+    step2.classList.toggle('active', !isOne);
+    step2.setAttribute('aria-hidden', isOne ? 'true' : 'false');
+    stepLabel.textContent   = isOne ? "Étape 1 sur 2" : "Étape 2 sur 2";
+    stepBarFill.style.width = isOne ? "50%" : "100%";
+    const focusId = isOne ? 'adresse' : 'prenom';
+    document.getElementById(focusId)?.focus({ preventScroll: false });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    const adresse = document.getElementById('adresse');
+    if (!(adresse?.value || "").trim()) {
+      showAlert("Veuillez indiquer l'adresse de la propriété pour continuer.", "error");
+      adresse?.focus();
+      return;
+    }
+    clearAlert();
+    goToStep(2);
+  });
+
+  backBtn.addEventListener('click', () => { clearAlert(); goToStep(1); });
+
+  document.getElementById('adresse').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); nextBtn.click(); }
+  });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    const adresse   = document.getElementById('adresse');
+
+    if (!adresse.value.trim()) {
+      showAlert("Veuillez indiquer l'adresse de la propriété.", "error");
+      goToStep(1); return;
+    }
+
+    submitBtn.disabled  = true;
+    submitBtn.textContent = "Envoi en cours…";
+    showAlert("Envoi en cours…", "info");
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST", body: new FormData(form),
+        headers: { "Accept": "application/json" }
       });
-    })();
-
-    // Google reviews numbers (data attributes)
-    (function(){
-      const box = document.getElementById("googleReviews");
-      if(!box) return;
-      const r = box.getAttribute("data-rating");
-      const c = box.getAttribute("data-count");
-      const rEl = document.getElementById("grRating");
-      const cEl = document.getElementById("grCount");
-      if (rEl && r) rEl.textContent = r;
-      if (cEl && c) cEl.textContent = c;
-    })();
-
-    // --- NEW: logique formulaire 2 étapes ---
-    const form = document.getElementById('leadForm');
-    const alertBox = document.getElementById('formAlert');
-
-    const step1 = document.getElementById('step1');
-    const step2 = document.getElementById('step2');
-
-    const nextBtn = document.getElementById('nextStep');
-    const backBtn = document.getElementById('backStep');
-
-    const stepLabel = document.getElementById('stepLabel');
-    const dot1 = document.getElementById('dot1');
-    const dot2 = document.getElementById('dot2');
-
-    function goToStep(n){
-      if(n === 1){
-        step1.classList.add('active');
-        step2.classList.remove('active');
-        step2.setAttribute('aria-hidden', 'true');
-
-        stepLabel.textContent = "Étape 1 sur 2";
-        dot1.classList.add('active');
-        dot2.classList.remove('active');
-
-        // focus address
-        const adresse = document.getElementById('adresse');
-        if(adresse) adresse.focus({preventScroll:false});
+      if (res.ok) {
+        window.location.href = "/merci.html";
       } else {
-        step1.classList.remove('active');
-        step2.classList.add('active');
-        step2.setAttribute('aria-hidden', 'false');
-
-        stepLabel.textContent = "Étape 2 sur 2";
-        dot1.classList.remove('active');
-        dot2.classList.add('active');
-
-        // focus first field
-        const prenom = document.getElementById('prenom');
-        if(prenom) prenom.focus({preventScroll:false});
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Découvrir la valeur →';
+        showAlert("Impossible d'envoyer pour le moment. Veuillez réessayer.", "error");
       }
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Découvrir la valeur →';
+      showAlert("Erreur réseau. Vérifiez votre connexion et réessayez.", "error");
     }
+  });
 
-    nextBtn.addEventListener('click', function(){
-      const adresse = document.getElementById('adresse');
-      const value = (adresse?.value || "").trim();
-      if(!value){
-        showAlert("⚠️ Indiquez l’adresse de la propriété pour continuer.", "error");
-        adresse?.focus();
-        return;
-      }
-      showAlert("", ""); // clear
-      alertBox.className = "alert"; // hide
-      goToStep(2);
-    });
-
-    backBtn.addEventListener('click', function(){
-      showAlert("", "");
-      alertBox.className = "alert";
-      goToStep(1);
-    });
-
-    // Optionnel: Enter sur étape 1 -> next
-    document.getElementById('adresse').addEventListener('keydown', function(e){
-      if(e.key === 'Enter' && !e.shiftKey){
-        e.preventDefault();
-        nextBtn.click();
-      }
-    });
-
-    // AJAX submit (Formspree) + redirect to thank-you page
-    form.addEventListener('submit', async function(e){
-      e.preventDefault();
-      showAlert("Envoi en cours…", "success");
-
-      // sécurité : si quelqu’un force submit depuis étape 1
-      const adresse = document.getElementById('adresse');
-      if(!adresse.value.trim()){
-        showAlert("⚠️ Indiquez l’adresse de la propriété.", "error");
-        goToStep(1);
-        return;
-      }
-
-      try{
-        const formData = new FormData(form);
-        const res = await fetch(form.action, {
-          method: "POST",
-          body: formData,
-          headers: { "Accept": "application/json" }
-        });
-
-        if(res.ok){
-          window.location.href = "/merci.html";
-        } else {
-          showAlert("❌ Oups… Impossible d’envoyer pour le moment. Réessayez dans quelques minutes.", "error");
-        }
-      } catch(err){
-        showAlert("❌ Erreur réseau. Vérifiez votre connexion et réessayez.", "error");
-      }
-    });
-
-    function showAlert(msg, type){
-      if(!msg){
-        alertBox.textContent = "";
-        alertBox.className = "alert";
-        return;
-      }
-      alertBox.textContent = msg;
-      alertBox.className = "alert show " + (type || "");
-    }
-  </script>
+  function showAlert(msg, type) {
+    alertBox.textContent = msg;
+    alertBox.className   = "alert show " + (type || "");
+  }
+  function clearAlert() {
+    alertBox.textContent = "";
+    alertBox.className   = "alert";
+  }
+</script>
 </body>
 </html>
