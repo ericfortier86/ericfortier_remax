@@ -1,1086 +1,488 @@
 <!doctype html>
 <html lang="fr-CA">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-852570859"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-852570859');
-</script>
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Évaluation gratuite | Éric Fortier — Courtier RE/MAX Gatineau</title>
-<meta name="description" content="Obtenez une évaluation gratuite et réaliste de votre propriété à Gatineau, basée sur les données du marché local. Sans obligation." />
-<meta name="robots" content="index,follow" />
-<meta property="og:title" content="Évaluation gratuite | Gatineau" />
-<meta property="og:description" content="Découvrez combien vaut votre propriété à Gatineau. Évaluation gratuite, sans obligation." />
-<meta property="og:type" content="website" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
-
-<style>
-/* ══════════════════════════════════════════
-   TOKENS
-══════════════════════════════════════════ */
-:root {
-  --cream:       #f5f0e8;
-  --cream2:      #ede7d9;
-  --ink:         #0f0e0c;
-  --ink2:        #2a2724;
-  --ink3:        #4a4642;
-  --gold:        #c9a84c;
-  --gold-line:   rgba(201,168,76,.30);
-  --blue:        #1e4fc2;
-  --blue2:       #2d5fd4;
-  --blue-soft:   rgba(30,79,194,.08);
-  --white:       #ffffff;
-  --r-lg:        20px;
-  --r-md:        14px;
-  --r-sm:        10px;
-  --sh-sm:       0 2px 8px  rgba(15,14,12,.07);
-  --sh-md:       0 8px 32px rgba(15,14,12,.10);
-  --sh-lg:       0 20px 60px rgba(15,14,12,.13);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--ink);
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* ══════════════════════════════════════════
-   TOPBAR
-══════════════════════════════════════════ */
-.topbar {
-  background: var(--white);
-  border-bottom: 1px solid rgba(15,14,12,.08);
-  padding: 0 clamp(14px, 4vw, 48px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  height: 62px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--sh-sm);
-}
-
-.logo-zone {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  min-width: 0;
-}
-
-.logo-icon {
-  width: 32px; height: 32px;
-  border-radius: 9px;
-  background: var(--ink);
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-.logo-icon svg { width: 16px; height: 16px; }
-
-.logo-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.logo-text .name {
-  font-family: 'Sora', sans-serif;
-  font-weight: 700; font-size: 14.5px;
-  letter-spacing: -0.02em; color: var(--ink); line-height: 1;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.logo-text .tag {
-  font-size: 11px; font-weight: 500; color: var(--ink3);
-}
-
-.topbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.remax-img { height: 36px; opacity: .95; display: block; }
-
-.call-pill {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 8px 15px; border-radius: 999px;
-  background: var(--ink); color: var(--white);
-  text-decoration: none; font-size: 13px; font-weight: 600;
-  transition: background .15s, transform .1s;
-  white-space: nowrap;
-}
-.call-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
-.call-pill:hover { background: var(--ink2); transform: translateY(-1px); }
-.call-pill:active { transform: none; }
-
-/* ══════════════════════════════════════════
-   DESKTOP LAYOUT  (> 1024px)
-══════════════════════════════════════════ */
-main {
-  max-width: 1240px;
-  margin: 0 auto;
-  width: 100%;
-  padding: clamp(24px, 4vw, 56px) clamp(16px, 4vw, 48px);
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 32px;
-  align-items: start;
-}
-
-/* Left column */
-.left { display: grid; gap: 24px; }
-
-/* ── Agent card ── */
-.agent-card {
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  background: var(--white);
-  border: 1px solid rgba(15,14,12,.08);
-  box-shadow: var(--sh-md);
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  min-height: 340px;
-}
-
-.agent-photo {
-  position: relative; overflow: hidden;
-  background: #fff;
-  display: flex; align-items: flex-end; justify-content: center;
-}
-.agent-photo img {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 15%; display: block;
-}
-.agent-photo::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background:
-    linear-gradient(90deg, transparent 55%, rgba(255,255,255,.95) 100%),
-    linear-gradient(180deg, transparent 60%, rgba(255,255,255,.10) 100%);
-}
-
-.agent-info {
-  padding: 28px;
-  display: flex; flex-direction: column;
-  justify-content: center; gap: 15px;
-}
-
-.badge-remax {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 10px 5px 6px; border-radius: 999px;
-  background: #dc2626; color: #fff;
-  font-family: 'Sora', sans-serif;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.04em; text-transform: uppercase; width: fit-content;
-}
-.badge-remax::before {
-  content: ''; width: 16px; height: 16px; border-radius: 50%;
-  background: rgba(255,255,255,.25); flex-shrink: 0;
-}
-
-h1 {
-  font-family: 'Sora', sans-serif;
-  font-size: clamp(24px, 2.6vw, 38px);
-  font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--ink);
-}
-h1 em { font-style: normal; color: var(--blue); }
-
-.agent-sub { font-size: 15px; font-weight: 400; color: var(--ink3); line-height: 1.5; }
-
-.agent-meta {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px; font-weight: 500; color: var(--ink3);
-}
-.agent-meta::before {
-  content: ''; width: 28px; height: 2px;
-  background: var(--gold); border-radius: 2px; flex-shrink: 0;
-}
-
-/* ── Trust strip ── */
-.trust-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.trust-item {
-  border-radius: var(--r-md); background: var(--white);
-  border: 1px solid rgba(15,14,12,.08);
-  padding: 16px 14px; box-shadow: var(--sh-sm);
-  display: flex; flex-direction: column; gap: 5px;
-  transition: transform .15s, box-shadow .15s;
-}
-.trust-item:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
-
-.trust-icon {
-  width: 34px; height: 34px; border-radius: var(--r-sm);
-  background: var(--blue-soft);
-  display: grid; place-items: center;
-  color: var(--blue); margin-bottom: 2px;
-}
-.trust-icon svg { width: 17px; height: 17px; }
-
-.trust-title {
-  font-family: 'Sora', sans-serif;
-  font-size: 13.5px; font-weight: 700;
-  letter-spacing: -0.01em; color: var(--ink);
-}
-.trust-desc { font-size: 12px; font-weight: 400; color: var(--ink3); line-height: 1.4; }
-
-/* ── How it works ── */
-.how {
-  background: var(--white); border-radius: var(--r-lg);
-  border: 1px solid rgba(15,14,12,.08);
-  box-shadow: var(--sh-sm); padding: 22px 24px;
-}
-
-.section-label {
-  font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
-}
-
-.how h2 {
-  font-family: 'Sora', sans-serif;
-  font-size: 19px; font-weight: 700;
-  letter-spacing: -0.02em; margin-bottom: 18px; color: var(--ink);
-}
-
-.steps-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px; position: relative;
-}
-.steps-row::before {
-  content: ''; position: absolute;
-  top: 19px;
-  left: calc(33.33% / 2 + 10px);
-  right: calc(33.33% / 2 + 10px);
-  height: 1px;
-  background: var(--gold-line);
-  pointer-events: none;
-}
-
-.step-item { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-
-.step-num {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: var(--ink); color: var(--white);
-  font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700;
-  display: grid; place-items: center; flex-shrink: 0; position: relative; z-index: 1;
-}
-.step-title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
-.step-desc  { font-size: 12.5px; color: var(--ink3); line-height: 1.4; }
-
-/* ── Google reviews ── */
-.gr-card {
-  border-radius: var(--r-lg); background: var(--white);
-  border: 1px solid rgba(15,14,12,.08); box-shadow: var(--sh-sm);
-  padding: 18px 22px;
-  display: flex; align-items: center; gap: 18px;
-}
-.gr-stars-big { font-size: 21px; letter-spacing: 2px; color: #f59e0b; line-height: 1; flex-shrink: 0; }
-.gr-divider   { width: 1px; height: 38px; background: rgba(15,14,12,.10); flex-shrink: 0; }
-.gr-score {
-  font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 800;
-  letter-spacing: -0.04em; color: var(--ink); line-height: 1;
-}
-.gr-label { font-size: 12px; color: var(--ink3); font-weight: 400; margin-top: 3px; }
-.gr-label strong { color: var(--ink); font-weight: 600; }
-.gr-cta {
-  margin-left: auto;
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 9px 15px; border-radius: 999px;
-  border: 1px solid rgba(15,14,12,.12); background: transparent;
-  color: var(--ink2); font-size: 13px; font-weight: 600;
-  text-decoration: none; white-space: nowrap;
-  transition: background .15s, border-color .15s;
-}
-.gr-cta:hover { background: var(--cream); border-color: rgba(15,14,12,.22); }
-
-/* ══════════════════════════════════════════
-   FORM CARD  (right column on desktop)
-══════════════════════════════════════════ */
-.form-card {
-  background: var(--white);
-  border-radius: var(--r-lg);
-  border: 1px solid rgba(15,14,12,.08);
-  box-shadow: var(--sh-lg);
-  position: sticky; top: 78px;
-  overflow: hidden;
-}
-
-.form-card-header {
-  background: var(--ink);
-  padding: 20px 22px 18px;
-  position: relative; overflow: hidden;
-}
-.form-card-header::before {
-  content: ''; position: absolute; top: -40px; right: -40px;
-  width: 130px; height: 130px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,168,76,.22), transparent 70%);
-  pointer-events: none;
-}
-.form-card-header h2 {
-  font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700;
-  letter-spacing: -0.025em; color: var(--white); line-height: 1.2; margin-bottom: 7px;
-}
-.form-card-header p {
-  font-size: 12.5px; color: rgba(255,255,255,.60); font-weight: 400;
-  display: flex; align-items: center; gap: 5px;
-}
-
-.form-card-body { padding: 20px 22px 22px; }
-
-/* Step bar */
-.step-indicator {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 16px; gap: 12px;
-}
-.step-label {
-  font-size: 11.5px; font-weight: 600; color: var(--ink3);
-  letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap;
-}
-.step-bar {
-  flex: 1; height: 4px; border-radius: 4px;
-  background: var(--cream2); overflow: hidden;
-}
-.step-bar-fill {
-  height: 100%; border-radius: 4px; background: var(--blue);
-  width: 50%;
-  transition: width .35s cubic-bezier(.4,0,.2,1);
-}
-
-/* Call box */
-.callbox {
-  margin-bottom: 16px; padding: 12px 13px;
-  border-radius: var(--r-md); background: var(--cream);
-  border: 1px solid rgba(15,14,12,.08);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 10px; flex-wrap: wrap;
-}
-.calltext { font-size: 12.5px; font-weight: 400; color: var(--ink3); }
-.calltext strong { color: var(--ink); display: block; font-size: 13.5px; margin-top: 2px; }
-.callbtn {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 9px 13px; border-radius: var(--r-sm);
-  background: var(--ink); color: var(--white);
-  text-decoration: none; font-size: 12.5px; font-weight: 600;
-  transition: background .15s, transform .1s; white-space: nowrap;
-}
-.callbtn:hover { background: var(--ink2); transform: translateY(-1px); }
-.callbtn svg { width: 13px; height: 13px; }
-
-/* Alert */
-.alert {
-  display: none; padding: 10px 13px; border-radius: var(--r-sm);
-  font-size: 13px; font-weight: 500; margin-bottom: 12px;
-  border: 1px solid transparent;
-}
-.alert.show   { display: block; }
-.alert.success{ background: #ecfdf5; border-color: #a7f3d0; color: #065f46; }
-.alert.error  { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
-.alert.info   { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
-
-/* Form fields */
-form { display: grid; gap: 11px; }
-.field { display: grid; gap: 5px; }
-
-label {
-  font-size: 12px; font-weight: 600; color: var(--ink2); letter-spacing: 0.01em;
-}
-
-input, textarea {
-  width: 100%; padding: 11px 12px;
-  border-radius: var(--r-sm); border: 1.5px solid rgba(15,14,12,.15);
-  background: var(--white); color: var(--ink);
-  font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 400;
-  outline: none; -webkit-appearance: none;
-  transition: border-color .15s, box-shadow .15s;
-}
-input::placeholder, textarea::placeholder { color: rgba(15,14,12,.35); }
-textarea { min-height: 80px; resize: vertical; line-height: 1.45; }
-input:focus, textarea:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(30,79,194,.12);
-}
-
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-/* Buttons */
-.btn-primary {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 14px 18px; border-radius: var(--r-md);
-  background: var(--blue); color: var(--white);
-  font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700;
-  letter-spacing: -0.01em; border: none; cursor: pointer; width: 100%;
-  box-shadow: 0 4px 20px rgba(30,79,194,.25);
-  transition: background .15s, transform .1s, box-shadow .15s;
-  position: relative; overflow: hidden;
-}
-.btn-primary::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,.08), transparent);
-}
-.btn-primary:hover {
-  background: var(--blue2); transform: translateY(-1px);
-  box-shadow: 0 8px 28px rgba(30,79,194,.32);
-}
-.btn-primary:active { transform: none; }
-.btn-primary:disabled { opacity: .65; cursor: not-allowed; transform: none; }
-
-.btn-secondary {
-  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
-  padding: 12px 15px; border-radius: var(--r-md);
-  background: transparent; color: var(--ink3);
-  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
-  border: 1.5px solid rgba(15,14,12,.15); cursor: pointer; width: 100%;
-  transition: background .15s, border-color .15s;
-}
-.btn-secondary:hover { background: var(--cream); border-color: rgba(15,14,12,.25); }
-
-.step-actions { display: grid; gap: 8px; }
-.step-actions.two { grid-template-columns: 1fr 1.8fr; }
-
-.step-pane { display: none; }
-.step-pane.active { display: grid; gap: 11px; }
-
-.fineprint {
-  margin-top: 9px; font-size: 11px; color: rgba(15,14,12,.42);
-  line-height: 1.45; text-align: center;
-}
-
-/* Guarantee row */
-.guarantee-row {
-  display: flex; align-items: center; justify-content: center;
-  gap: 14px; padding-top: 13px;
-  border-top: 1px solid rgba(15,14,12,.07);
-  margin-top: 4px; flex-wrap: wrap;
-}
-.guarantee-item {
-  display: flex; align-items: center; gap: 5px;
-  font-size: 11px; font-weight: 500; color: var(--ink3);
-}
-.guarantee-item svg { width: 12px; height: 12px; color: #16a34a; flex-shrink: 0; }
-
-/* ══════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════ */
-footer {
-  border-top: 1px solid rgba(15,14,12,.08);
-  padding: 14px clamp(14px, 4vw, 48px);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; flex-wrap: wrap;
-  font-size: 11.5px; color: var(--ink3); font-weight: 400;
-  background: var(--white);
-}
-
-/* ══════════════════════════════════════════
-   ANIMATIONS
-══════════════════════════════════════════ */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.left > * { animation: fadeUp .45s ease both; }
-.left > *:nth-child(1) { animation-delay: .04s; }
-.left > *:nth-child(2) { animation-delay: .10s; }
-.left > *:nth-child(3) { animation-delay: .16s; }
-.left > *:nth-child(4) { animation-delay: .22s; }
-.form-card { animation: fadeUp .45s ease .06s both; }
-
-
-/* ══════════════════════════════════════════
-   TABLET  768px – 1024px
-   Two-column topbar stays. Main becomes
-   single column but form is pulled up to
-   sit right after a compact agent banner.
-══════════════════════════════════════════ */
-@media (max-width: 1024px) {
-  main {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px clamp(14px, 3vw, 32px);
-  }
-
-  /* On tablet: reorder — form appears before left content via CSS order */
-  .left  { order: 2; gap: 18px; }
-  aside  { order: 1; }
-
-  /* Form card no longer sticky */
-  .form-card { position: static; box-shadow: var(--sh-md); }
-
-  /* Agent card: side-by-side but shorter photo */
-  .agent-card {
-    grid-template-columns: 200px 1fr;
-    min-height: 260px;
-  }
-
-  /* Trust strip: 3 columns still fit on tablet */
-  .trust-strip { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .trust-item  { padding: 14px 12px; }
-
-  /* Steps: horizontal on tablet */
-  .steps-row { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* ── Tablet narrower (600–768px) ── */
-@media (max-width: 768px) {
-  .topbar { height: 56px; }
-  .remax-img { height: 30px; }
-
-  /* Agent card: photo on top, info below */
-  .agent-card {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .agent-photo {
-    height: 240px;
-  }
-  /* Photo fade becomes bottom gradient when stacked */
-  .agent-photo::after {
-    background:
-      linear-gradient(180deg, transparent 45%, rgba(255,255,255,.90) 100%);
-  }
-  .agent-info { padding: 18px 20px 20px; gap: 12px; }
-
-  h1 { font-size: clamp(22px, 5vw, 30px); }
-  .agent-sub { font-size: 14px; }
-
-  /* Trust: 3 cols still OK at 600+ */
-  .trust-strip { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-
-  /* Steps inline with number + text */
-  .steps-row {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .steps-row::before { display: none; }
-  .step-item { flex-direction: row; gap: 12px; align-items: flex-start; }
-  .step-num  { flex-shrink: 0; }
-}
-
-
-/* ══════════════════════════════════════════
-   MOBILE  < 600px
-   FORM FIRST strategy:
-   – Topbar shows only logo + phone pill
-   – Mobile hero: small photo strip + title
-     then FORM immediately
-   – Trust / how-it-works / reviews below
-══════════════════════════════════════════ */
-@media (max-width: 600px) {
-
-  /* ── Topbar ── */
-  .topbar { height: 52px; padding: 0 14px; gap: 8px; }
-  .logo-text .tag  { display: none; }
-  .remax-img       { height: 26px; }
-  /* phone pill: icon only */
-  .call-pill span  { display: none; }
-  .call-pill       { padding: 8px 10px; border-radius: 50%; }
-
-  /* ── Main: single column, tighter padding ── */
-  main {
-    padding: 14px 12px 24px;
-    gap: 14px;
-  }
-
-  /* Form comes first */
-  .left  { order: 2; gap: 14px; }
-  aside  { order: 1; }
-
-  /* ── Mobile hero inside agent-card ──
-     Show a horizontal strip: small photo left,
-     title + badge right. No tall photo.        */
-  .agent-card {
-    grid-template-columns: 110px 1fr;
-    min-height: auto;
-    border-radius: var(--r-md);
-  }
-
-  .agent-photo {
-    height: auto;          /* let it match grid row */
-    min-height: 140px;
-  }
-  /* Mobile photo fade: right edge only */
-  .agent-photo::after {
-    background:
-      linear-gradient(90deg, transparent 50%, rgba(255,255,255,.92) 100%);
-  }
-  .agent-photo img {
-    object-position: 50% 10%;
-  }
-
-  .agent-info { padding: 14px 14px; gap: 10px; }
-  .badge-remax { font-size: 10px; padding: 4px 8px 4px 5px; }
-  h1 { font-size: clamp(17px, 5.5vw, 22px); letter-spacing: -0.025em; }
-  .agent-sub { font-size: 13px; display: none; } /* hidden on mobile to save space */
-  .agent-meta { display: none; }
-
-  /* ── Form card ── */
-  .form-card { border-radius: var(--r-md); box-shadow: var(--sh-md); }
-  .form-card-header { padding: 16px 16px 14px; }
-  .form-card-header h2 { font-size: 16px; }
-  .form-card-body { padding: 16px 16px 18px; }
-
-  /* Bigger tap targets on mobile */
-  input, textarea {
-    font-size: 16px; /* prevents iOS zoom */
-    padding: 13px 12px;
-  }
-  .btn-primary  { padding: 15px 16px; font-size: 15px; }
-  .btn-secondary{ padding: 13px 14px; }
-
-  /* Back/submit stacked on mobile */
-  .step-actions.two { grid-template-columns: 1fr; }
-  .row2             { grid-template-columns: 1fr; }
-
-  /* Call box compact */
-  .callbox      { padding: 11px 12px; }
-  .calltext     { font-size: 12px; }
-  .calltext strong { font-size: 13px; }
-
-  /* ── Trust strip: 1 col horizontal pills ── */
-  .trust-strip {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .trust-item {
-    flex-direction: row;
-    align-items: center;
-    padding: 13px 14px;
-    gap: 12px;
-  }
-  .trust-icon { margin-bottom: 0; flex-shrink: 0; width: 32px; height: 32px; }
-  .trust-desc { display: none; } /* title alone is enough inline */
-
-  /* ── How: steps as numbered list ── */
-  .how { padding: 16px; border-radius: var(--r-md); }
-  .how h2 { font-size: 16px; margin-bottom: 14px; }
-  .steps-row { grid-template-columns: 1fr; gap: 10px; }
-  .steps-row::before { display: none; }
-  .step-item { flex-direction: row; gap: 12px; align-items: flex-start; }
-  .step-num  { width: 32px; height: 32px; font-size: 13px; flex-shrink: 0; }
-
-  /* ── Google reviews ── */
-  .gr-card  { padding: 14px 14px; gap: 12px; flex-wrap: wrap; }
-  .gr-cta   { margin-left: 0; width: 100%; justify-content: center; }
-  .gr-score { font-size: 22px; }
-  .gr-stars-big { font-size: 18px; }
-
-  /* ── Guarantee row ── */
-  .guarantee-row { gap: 10px; }
-  .guarantee-item { font-size: 10.5px; }
-
-  /* ── Footer ── */
-  footer { flex-direction: column; gap: 4px; text-align: center; padding: 12px 14px; }
-
-  /* Animations: simpler on mobile */
-  .left > *, .form-card { animation-duration: .3s; }
-}
-
-/* ── Very small screens < 380px ── */
-@media (max-width: 380px) {
-  .logo-icon   { display: none; }
-  .remax-img   { height: 22px; }
-  h1           { font-size: 16px; }
-  .agent-card  { grid-template-columns: 90px 1fr; }
-  .agent-photo { min-height: 120px; }
-  .form-card-header h2 { font-size: 15px; }
-}
-</style>
-</head>
-
-<body>
-<div style="min-height:100vh; display:grid; grid-template-rows: auto 1fr auto;">
-
-  <!-- ══ TOPBAR ══ -->
-  <header class="topbar">
-    <div class="logo-zone">
-      <div class="logo-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M3 9.5L12 3l9 6.5V21H3V9.5Z" fill="white" opacity=".9"/>
-          <path d="M9 21V13h6v8" fill="white" opacity=".5"/>
-        </svg>
-      </div>
-      <div class="logo-text">
-        <span class="name">Éric Fortier inc.</span>
-        <span class="tag">Courtier immobilier — Gatineau</span>
-      </div>
-    </div>
-    <div class="topbar-right">
-      <img class="remax-img" src="assets/remax-wide.png" alt="RE/MAX" />
-      <a class="call-pill" href="tel:+18192103124" aria-label="Appeler Éric Fortier au 819-210-3124">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M22 16.5v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 4.2 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L9.5 9.5a16 16 0 0 0 5 5l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.5Z"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>819-210-3124</span>
-      </a>
-    </div>
-  </header>
-
-  <!-- ══ MAIN ══ -->
-  <main>
-
-    <!-- ── LEFT COLUMN (content / trust) ── -->
-    <div class="left">
-
-      <!-- Agent Hero Card -->
-      <div class="agent-card">
-        <div class="agent-photo" aria-label="Éric Fortier, courtier immobilier">
-          <img src="assets/eric-fortier-cropped.webp" alt="Éric Fortier, courtier immobilier RE/MAX Gatineau" />
-        </div>
-        <div class="agent-info">
-          <div class="badge-remax" aria-label="RE/MAX Direct depuis 2012">
-            RE/MAX Direct · Depuis 2012
-          </div>
-          <h1>Avant de vendre, sachez exactement combien vaut votre maison <em>à Gatineau</em></h1>
-          <p class="agent-sub">
-            Évaluation professionnelle, sans pression, sans engagement — par un courtier local avec 14&nbsp;ans d'expérience du marché.
-          </p>
-          <p class="agent-meta">Éric Fortier · Courtier immobilier</p>
-        </div>
-      </div>
-
-      <!-- Trust items -->
-      <div class="trust-strip" role="list" aria-label="Nos engagements">
-        <div class="trust-item" role="listitem">
-          <div class="trust-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <div class="trust-title">100 % confidentiel</div>
-            <div class="trust-desc">Vos informations ne sont jamais partagées sans votre accord.</div>
-          </div>
-        </div>
-        <div class="trust-item" role="listitem">
-          <div class="trust-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
-              <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <div class="trust-title">Résultat en 24&nbsp;h</div>
-            <div class="trust-desc">Rapport d'évaluation personnalisé livré rapidement.</div>
-          </div>
-        </div>
-        <div class="trust-item" role="listitem">
-          <div class="trust-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <div class="trust-title">Sans obligation</div>
-            <div class="trust-desc">Aucune pression. Planifiez selon votre calendrier.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- How it works -->
-      <div class="how">
-        <p class="section-label">Comment ça fonctionne</p>
-        <h2>Simple. Rapide. Basé sur les données réelles du marché.</h2>
-        <div class="steps-row" role="list">
-          <div class="step-item" role="listitem">
-            <div class="step-num" aria-hidden="true">1</div>
-            <div>
-              <div class="step-title">Votre propriété</div>
-              <div class="step-desc">Entrez l'adresse de votre bien en quelques secondes.</div>
-            </div>
-          </div>
-          <div class="step-item" role="listitem">
-            <div class="step-num" aria-hidden="true">2</div>
-            <div>
-              <div class="step-title">Analyse locale</div>
-              <div class="step-desc">Comparaison avec les ventes récentes à Gatineau.</div>
-            </div>
-          </div>
-          <div class="step-item" role="listitem">
-            <div class="step-num" aria-hidden="true">3</div>
-            <div>
-              <div class="step-title">Résultat clair</div>
-              <div class="step-desc">Estimation réaliste et personnalisée sous 24&nbsp;h.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Google Reviews -->
-      <div class="gr-card" id="googleReviews" data-rating="4.9" data-count="56" aria-label="Avis Google vérifiés">
-        <div class="gr-stars-big" aria-hidden="true">★★★★★</div>
-        <div class="gr-divider" aria-hidden="true"></div>
-        <div>
-          <div class="gr-score">
-            <span id="grRating">4.9</span><span style="font-size:15px;font-weight:400;color:var(--ink3)">/5</span>
-          </div>
-          <div class="gr-label"><strong id="grCount">56</strong> avis vérifiés sur Google</div>
-        </div>
-        <a class="gr-cta" href="https://search.google.com/local/reviews?placeid=ChIJN6pSO-oczkwRokearKk12eE"
-           target="_blank" rel="noopener" aria-label="Voir les avis Google">
-          Voir les avis
-          <svg viewBox="0 0 24 24" fill="none" width="13" height="13" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-
-    </div><!-- /left -->
-
-    <!-- ── RIGHT COLUMN (form) ── -->
-    <aside>
-      <div class="form-card">
-
-        <div class="form-card-header">
-          <h2>Obtenez votre évaluation gratuitement</h2>
-          <p>
-            <span aria-hidden="true">🔒</span>
-            Formulaire sécurisé · Aucune obligation · Données confidentielles
-          </p>
-        </div>
-
-        <div class="form-card-body">
-
-          <div class="step-indicator" aria-label="Progression du formulaire">
-            <span class="step-label" id="stepLabel">Étape 1 sur 2</span>
-            <div class="step-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-              <div class="step-bar-fill" id="stepBarFill"></div>
-            </div>
-          </div>
-
-          <div class="callbox" aria-label="Contact direct par téléphone">
-            <div class="calltext">
-              Vous préférez parler tout de suite?
-              <strong><a href="tel:+18192103124" style="color:inherit;text-decoration:underline;">819-210-3124</a></strong>
-            </div>
-            <a class="callbtn" href="tel:+18192103124" aria-label="Appeler Éric Fortier">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M22 16.5v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3 4.2 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L9.5 9.5a16 16 0 0 0 5 5l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.5Z"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Appeler
-            </a>
-          </div>
-
-          <div id="formAlert" class="alert" role="status" aria-live="polite"></div>
-
-          <form id="leadForm" action="https://formspree.io/f/mbddarae" method="POST" autocomplete="on" novalidate>
-
-            <!-- STEP 1 -->
-            <div class="step-pane active" id="step1">
-              <div class="field">
-                <label for="adresse">Adresse de la propriété</label>
-                <textarea id="adresse" name="adresse" required
-                  placeholder="Ex : 2310 Rue Saint-Louis, Gatineau, J8T…"
-                  aria-describedby="adresse-hint"></textarea>
-                <p id="adresse-hint" style="font-size:11.5px;color:var(--ink3);margin-top:3px;">
-                  On commence par l'adresse, puis vos coordonnées.
-                </p>
-              </div>
-              <div class="step-actions">
-                <button class="btn-primary" type="button" id="nextStep">
-                  Obtenir mon rapport
-                  <svg viewBox="0 0 24 24" fill="none" width="15" height="15" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <!-- STEP 2 -->
-            <div class="step-pane" id="step2" aria-hidden="true">
-              <div class="row2">
-                <div class="field">
-                  <label for="prenom">Prénom</label>
-                  <input id="prenom" name="prenom" type="text" required autocomplete="given-name" />
-                </div>
-                <div class="field">
-                  <label for="nom">Nom</label>
-                  <input id="nom" name="nom" type="text" required autocomplete="family-name" />
-                </div>
-              </div>
-              <div class="field">
-                <label for="courriel">Courriel</label>
-                <input id="courriel" name="courriel" type="email" inputmode="email" required
-                  autocomplete="email" placeholder="votre@courriel.com" />
-              </div>
-              <div class="field">
-                <label for="telephone">Téléphone</label>
-                <input id="telephone" name="telephone" type="tel" inputmode="tel" required
-                  autocomplete="tel" placeholder="Ex. 819-555-1234" />
-              </div>
-
-              <input type="hidden" id="utm_source"   name="utm_source" />
-              <input type="hidden" id="utm_medium"   name="utm_medium" />
-              <input type="hidden" id="utm_campaign" name="utm_campaign" />
-              <input type="hidden" id="utm_term"     name="utm_term" />
-              <input type="hidden" id="utm_content"  name="utm_content" />
-              <input type="text"   name="_gotcha"    style="display:none" tabindex="-1" autocomplete="off" />
-
-              <div class="step-actions two">
-                <button class="btn-secondary" type="button" id="backStep">← Retour</button>
-                <button class="btn-primary" type="submit" id="submitBtn">Découvrir la valeur →</button>
-              </div>
-
-              <p class="fineprint">
-                En soumettant, vous acceptez d'être contacté au sujet de votre évaluation. Informations confidentielles.
-              </p>
-            </div>
-
-          </form>
-
-          <div class="guarantee-row" aria-label="Garanties">
-            <div class="guarantee-item">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Gratuit
-            </div>
-            <div class="guarantee-item">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Sans pression
-            </div>
-            <div class="guarantee-item">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Sécurisé
-            </div>
-            <div class="guarantee-item">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Résultat 24&nbsp;h
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </aside>
-
-  </main>
-
-  <!-- ══ FOOTER ══ -->
-  <footer>
-    <div>Service immobilier à Gatineau · © <span id="year"></span> Éric Fortier inc.</div>
-    <div>Formulaire sécurisé via Formspree · Optimisé pour mobile</div>
-  </footer>
-
-</div>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // UTM
-  (function(){
-    const p = new URLSearchParams(window.location.search);
-    ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(k => {
-      const el = document.getElementById(k);
-      if (el) el.value = p.get(k) || "";
-    });
-  })();
-
-  // Google reviews
-  (function(){
-    const box = document.getElementById("googleReviews");
-    if (!box) return;
-    const rEl = document.getElementById("grRating");
-    const cEl = document.getElementById("grCount");
-    if (rEl) rEl.textContent = box.getAttribute("data-rating") || rEl.textContent;
-    if (cEl) cEl.textContent = box.getAttribute("data-count")  || cEl.textContent;
-  })();
-
-  // Form 2-step
-  const form        = document.getElementById('leadForm');
-  const alertBox    = document.getElementById('formAlert');
-  const step1       = document.getElementById('step1');
-  const step2       = document.getElementById('step2');
-  const nextBtn     = document.getElementById('nextStep');
-  const backBtn     = document.getElementById('backStep');
-  const stepLabel   = document.getElementById('stepLabel');
-  const stepBarFill = document.getElementById('stepBarFill');
-
-  function goToStep(n) {
-    const isOne = n === 1;
-    step1.classList.toggle('active',  isOne);
-    step2.classList.toggle('active', !isOne);
-    step2.setAttribute('aria-hidden', isOne ? 'true' : 'false');
-    stepLabel.textContent   = isOne ? "Étape 1 sur 2" : "Étape 2 sur 2";
-    stepBarFill.style.width = isOne ? "50%" : "100%";
-    const focusId = isOne ? 'adresse' : 'prenom';
-    document.getElementById(focusId)?.focus({ preventScroll: false });
-  }
-
-  nextBtn.addEventListener('click', () => {
-    const adresse = document.getElementById('adresse');
-    if (!(adresse?.value || "").trim()) {
-      showAlert("Veuillez indiquer l'adresse de la propriété pour continuer.", "error");
-      adresse?.focus();
-      return;
-    }
-    clearAlert();
-    goToStep(2);
-  });
-
-  backBtn.addEventListener('click', () => { clearAlert(); goToStep(1); });
-
-  document.getElementById('adresse').addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); nextBtn.click(); }
-  });
-
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const submitBtn = document.getElementById('submitBtn');
-    const adresse   = document.getElementById('adresse');
-
-    if (!adresse.value.trim()) {
-      showAlert("Veuillez indiquer l'adresse de la propriété.", "error");
-      goToStep(1); return;
-    }
-
-    submitBtn.disabled  = true;
-    submitBtn.textContent = "Envoi en cours…";
-    showAlert("Envoi en cours…", "info");
-
-    try {
-      const res = await fetch(form.action, {
-        method: "POST", body: new FormData(form),
-        headers: { "Accept": "application/json" }
-      });
-      if (res.ok) {
-        window.location.href = "/merci.html";
-      } else {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Découvrir la valeur →';
-        showAlert("Impossible d'envoyer pour le moment. Veuillez réessayer.", "error");
+  <!-- Google tag (Google Ads) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-852570859"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-852570859');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Évaluation maison Gatineau gratuite | Éric Fortier RE/MAX</title>
+  <meta name="description" content="Combien vaut votre maison ou condo à Gatineau? Obtenez une évaluation immobilière gratuite et personnalisée basée sur les ventes comparables récentes.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://evaluation.eric-fortier.com/">
+  <link rel="alternate" hreflang="fr-CA" href="https://evaluation.eric-fortier.com/?lang=fr">
+  <link rel="alternate" hreflang="en-CA" href="https://evaluation.eric-fortier.com/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://evaluation.eric-fortier.com/">
+
+  <!-- Local / entity hints -->
+  <meta name="geo.region" content="CA-QC">
+  <meta name="geo.placename" content="Gatineau">
+  <meta name="author" content="Éric Fortier inc.">
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Éric Fortier | Courtier immobilier RE/MAX Direct">
+  <meta property="og:title" content="Évaluation immobilière gratuite à Gatineau">
+  <meta property="og:description" content="Découvrez la valeur marchande de votre maison, condo ou plex à Gatineau grâce à une analyse locale personnalisée.">
+  <meta property="og:url" content="https://evaluation.eric-fortier.com/">
+  <meta property="og:image" content="https://evaluation.eric-fortier.com/assets/eric-fortier-cropped.webp">
+  <meta property="og:image:alt" content="Éric Fortier, courtier immobilier résidentiel RE/MAX Direct à Gatineau">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Performance: same-origin assets only; no external font request -->
+  <link rel="preload" href="https://evaluation.eric-fortier.com/assets/eric-fortier-cropped.webp" as="image" fetchpriority="high">
+
+  <!-- Structured data: visible facts only; no self-serving review markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "RealEstateAgent",
+        "@id": "https://www.eric-fortier.com/#eric-fortier",
+        "name": "Éric Fortier inc.",
+        "alternateName": "Éric Fortier – Courtier immobilier RE/MAX Direct",
+        "url": "https://www.eric-fortier.com/fr",
+        "telephone": "+1-819-210-3124",
+        "email": "eric.fortier@remax-quebec.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "3 rue Picardie",
+          "addressLocality": "Gatineau",
+          "addressRegion": "QC",
+          "postalCode": "J8T 1N8",
+          "addressCountry": "CA"
+        },
+        "areaServed": [
+          {"@type":"City","name":"Gatineau"},
+          {"@type":"Place","name":"Aylmer"},
+          {"@type":"Place","name":"Hull"},
+          {"@type":"Place","name":"Buckingham"},
+          {"@type":"Place","name":"Masson-Angers"}
+        ],
+        "sameAs": [
+          "https://www.eric-fortier.com/fr",
+          "https://www.remax-quebec.com/fr/courtiers-immobiliers/eric.fortier"
+        ],
+        "identifier": "G3778",
+        "brand": {
+          "@type": "Brand",
+          "name": "RE/MAX Direct"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://evaluation.eric-fortier.com/#website",
+        "url": "https://evaluation.eric-fortier.com/",
+        "name": "Évaluation immobilière Gatineau | Éric Fortier",
+        "inLanguage": "fr-CA",
+        "publisher": {"@id":"https://www.eric-fortier.com/#eric-fortier"}
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://evaluation.eric-fortier.com/#webpage",
+        "url": "https://evaluation.eric-fortier.com/",
+        "name": "Évaluation maison Gatineau gratuite | Éric Fortier RE/MAX",
+        "description": "Évaluation immobilière gratuite et personnalisée pour maison, condo ou plex à Gatineau.",
+        "isPartOf": {"@id":"https://evaluation.eric-fortier.com/#website"},
+        "about": {"@id":"https://www.eric-fortier.com/#eric-fortier"},
+        "mainEntity": {"@id":"https://evaluation.eric-fortier.com/#service"},
+        "inLanguage": "fr-CA"
+      },
+      {
+        "@type": "Service",
+        "@id": "https://evaluation.eric-fortier.com/#service",
+        "name": "Évaluation immobilière gratuite à Gatineau",
+        "serviceType": "Évaluation de la valeur marchande d'une propriété résidentielle",
+        "provider": {"@id":"https://www.eric-fortier.com/#eric-fortier"},
+        "areaServed": ["Gatineau","Aylmer","Hull","Buckingham","Masson-Angers"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "CAD",
+          "description": "Demande d'évaluation immobilière sans frais et sans obligation."
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://evaluation.eric-fortier.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Comment est calculée la valeur de ma propriété à Gatineau?",
+            "acceptedAnswer": {"@type":"Answer","text":"L'analyse tient compte notamment des ventes comparables récentes, du secteur, du type de propriété, de sa superficie, de son état, de ses caractéristiques et des conditions du marché local."}
+          },
+          {
+            "@type": "Question",
+            "name": "L'évaluation immobilière est-elle gratuite?",
+            "acceptedAnswer": {"@type":"Answer","text":"Oui. La demande d'évaluation présentée sur cette page est gratuite et sans obligation de vendre."}
+          },
+          {
+            "@type": "Question",
+            "name": "Quels types de propriétés peuvent être évalués?",
+            "acceptedAnswer": {"@type":"Answer","text":"L'analyse peut viser notamment une maison unifamiliale, un condo, un duplex, un triplex ou une autre propriété résidentielle dans le secteur desservi."}
+          },
+          {
+            "@type": "Question",
+            "name": "Quels secteurs de Gatineau sont desservis?",
+            "acceptedAnswer": {"@type":"Answer","text":"Le service couvre Gatineau et plusieurs secteurs de la ville, notamment Aylmer, Hull, Buckingham et Masson-Angers."}
+          }
+        ]
       }
-    } catch {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Découvrir la valeur →';
-      showAlert("Erreur réseau. Vérifiez votre connexion et réessayez.", "error");
+    ]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#f5f4f1;--card:#fff;--ink:#131416;--muted:#5f6368;--line:#e5e3df;
+      --blue:#1647b8;--blue2:#0e3898;--red:#d71920;--gold:#b89038;--green:#18864b;
+      --r:18px;--shadow:0 18px 50px rgba(20,24,32,.10);--max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    button,input,textarea{font:inherit}
+    .skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;background:#fff;padding:10px 14px;z-index:9999;border-radius:8px}
+
+    .topbar{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(16px,calc((100vw - var(--max))/2));position:sticky;top:0;z-index:50}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--ink);display:grid;place-items:center;color:#fff;font-weight:800}.brand-copy{line-height:1.05}.brand-copy strong{display:block;font-size:14px}.brand-copy span{font-size:11px;color:var(--muted)}
+    .top-actions{display:flex;align-items:center;gap:9px}.remax{height:34px;width:auto}.phone{background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:9px 14px;font-weight:750;font-size:13px}
+    .site-return{display:inline-flex;align-items:center;gap:6px;border:1px solid #d9d9d6;background:#fff;color:var(--ink);text-decoration:none;border-radius:999px;padding:8px 12px;font-weight:800;font-size:12px;white-space:nowrap}.site-return:hover{background:#f6f6f4}.site-return svg{width:14px;height:14px;flex:0 0 auto}
+    .lang-switch{display:flex;align-items:center;background:#f1f1ef;border:1px solid #dededb;border-radius:999px;padding:2px}.lang-btn{border:0;background:transparent;color:#60646a;padding:6px 8px;border-radius:999px;font-size:11px;font-weight:850;cursor:pointer;line-height:1}.lang-btn.active{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.10)}
+
+    .wrap{max-width:var(--max);margin:auto;padding:42px 20px 28px}.hero{display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:28px;align-items:start}.hero-left{display:grid;gap:17px}
+    .identity{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:245px 1fr;min-height:340px;box-shadow:0 10px 35px rgba(20,24,32,.07)}
+    .portrait{position:relative;min-height:340px;background:#eee}.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}.portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(255,255,255,.92) 100%);pointer-events:none}
+    .hero-copy{padding:30px 30px 28px 24px;display:flex;flex-direction:column;justify-content:center;gap:14px}.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#fff;background:var(--red);border-radius:999px;padding:5px 10px;width:max-content}.hero h1{font-size:clamp(30px,4vw,48px);line-height:1.03;letter-spacing:-.045em;margin:0;max-width:750px}.hero h1 span{color:var(--blue)}.lead{font-size:17px;color:#41454b;margin:0;max-width:660px}.meta{font-size:13px;color:var(--muted);font-weight:650;border-left:3px solid var(--gold);padding-left:10px}
+
+    .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.trust-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}.trust-card strong{display:block;font-size:14px}.trust-card span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+
+    .form-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden;position:sticky;top:82px}.form-head{background:#131416;color:#fff;padding:20px 22px}.form-head h2{font-size:20px;margin:0 0 5px}.form-head p{margin:0;color:#c8cbd0;font-size:12px}.form-body{padding:20px 22px 22px}.progress-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}.progress-row small{font-weight:800;text-transform:uppercase;color:var(--muted);font-size:10px;white-space:nowrap}.bar{height:4px;background:#eceae6;flex:1;border-radius:999px;overflow:hidden}.fill{height:100%;width:50%;background:var(--blue);transition:width .25s ease}
+    .callbox{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px 12px;margin-bottom:14px;font-size:12px;color:var(--muted)}.callbox strong{display:block;color:var(--ink);font-size:14px}.call-mini{background:var(--ink);color:#fff;text-decoration:none;border-radius:8px;padding:8px 10px;font-weight:750}
+    form{display:grid;gap:11px}.pane{display:none;gap:11px}.pane.active{display:grid}.field{display:grid;gap:5px}.field label{font-size:12px;font-weight:750}.field input,.field textarea{width:100%;border:1.5px solid #d8d8d5;border-radius:10px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,71,184,.12)}textarea{min-height:78px;resize:vertical}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .btn{border:0;border-radius:12px;padding:14px 16px;font-weight:800;cursor:pointer}.primary{background:var(--blue);color:#fff;box-shadow:0 6px 18px rgba(22,71,184,.22)}.primary:hover{background:var(--blue2)}.secondary{background:#fff;border:1px solid #d8d8d5;color:#45484e}.actions.two{display:grid;grid-template-columns:1fr 1.7fr;gap:8px}.fine{font-size:10.5px;color:#767b82;text-align:center;margin:2px 0 0}.fine a{font-weight:700}.guarantees{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:13px;margin-top:13px;font-size:10.5px;color:#51555a}.guarantees span:before{content:"✓";color:var(--green);font-weight:900;margin-right:4px}.alert{display:none;border-radius:9px;padding:9px 11px;font-size:12px;margin-bottom:10px}.alert.show{display:block}.alert.error{background:#fff0f0;color:#8d1b1b}.alert.info{background:#eef4ff;color:#173e8a}
+
+    .below{max-width:var(--max);margin:auto;padding:18px 20px 70px;display:grid;gap:18px}.section{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}.section h2{font-size:clamp(23px,3vw,32px);letter-spacing:-.035em;line-height:1.15;margin:0 0 12px}.section h3{font-size:17px;margin:0 0 6px}.section p{color:#4c5056;margin:0 0 12px}.section p:last-child{margin-bottom:0}.kicker{font-size:11px!important;text-transform:uppercase;letter-spacing:.11em;color:var(--gold)!important;font-weight:850;margin-bottom:8px!important}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.step{border:1px solid var(--line);background:#fbfbfa;border-radius:14px;padding:16px}.step b{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;margin-bottom:10px}.step p{font-size:13px;margin:0}
+    .areas{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 2px}.areas span{background:#f2f5fb;color:#173b85;border:1px solid #dce5f7;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:750}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.bullet{padding-left:18px;color:#4c5056}.bullet li{margin:7px 0}.faq details{border-top:1px solid var(--line);padding:14px 0}.faq details:first-of-type{border-top:0}.faq summary{cursor:pointer;font-weight:800}.faq details p{font-size:14px;margin-top:8px}
+    .cta-band{background:#12151a;color:#fff;border:0}.cta-band p{color:#c9cdd4}.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.cta-primary,.cta-secondary{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:11px;padding:12px 16px;font-weight:800}.cta-primary{background:#fff;color:#12151a}.cta-secondary{border:1px solid #464b54;color:#fff}
+    footer{background:#fff;border-top:1px solid var(--line);padding:20px}.foot{max-width:var(--max);margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#666b72;font-size:11px}.foot a{font-weight:700}
+
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.form-card{position:static}.hero-left{order:2}.hero aside{order:1}.identity{grid-template-columns:190px 1fr;min-height:260px}.portrait{min-height:260px}.wrap{padding-top:22px}.below{padding-top:0}}
+    @media(max-width:680px){.topbar{height:56px;padding:0 10px}.brand-copy span,.remax{display:none}.top-actions{gap:5px}.phone{padding:8px 9px;font-size:11px}.site-return{padding:7px 8px}.site-return .site-return-text{display:none}.lang-btn{padding:6px 7px}.wrap{padding:12px 12px 18px}.hero{gap:12px}.identity{grid-template-columns:105px 1fr;min-height:142px;border-radius:14px}.portrait{min-height:142px}.hero-copy{padding:14px 12px;gap:8px}.eyebrow{font-size:9px}.hero h1{font-size:21px}.lead,.meta{display:none}.trust{grid-template-columns:1fr}.trust-card{padding:11px 12px}.trust-card span{display:none}.form-card{border-radius:14px}.form-head,.form-body{padding-left:16px;padding-right:16px}.row2,.actions.two{grid-template-columns:1fr}.field input,.field textarea{font-size:16px;padding:13px 12px}.below{padding:4px 12px 45px;gap:12px}.section{padding:20px 17px;border-radius:14px}.steps,.split{grid-template-columns:1fr}.cta-row>*{width:100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#evaluation" data-i18n="skip">Aller au formulaire d'évaluation</a>
+
+<header class="topbar">
+  <a class="brand" href="https://www.eric-fortier.com/fr" aria-label="Éric Fortier, courtier immobilier résidentiel à Gatineau">
+    <span class="brand-mark" aria-hidden="true">EF</span>
+    <span class="brand-copy"><strong>Éric Fortier inc.</strong><span data-i18n="brandSub">Courtier immobilier résidentiel · Gatineau</span></span>
+  </a>
+  <div class="top-actions">
+    <img class="remax" src="https://evaluation.eric-fortier.com/assets/remax-wide.png" alt="RE/MAX Direct" width="104" height="36">
+    <a class="site-return" id="mainSiteLink" href="https://www.eric-fortier.com/fr" aria-label="Retour au site principal d'Éric Fortier">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6M9 12h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="site-return-text" data-i18n="returnSite">Retour au site</span>
+    </a>
+    <div class="lang-switch" aria-label="Choisir la langue">
+      <button class="lang-btn active" type="button" id="langFr" aria-label="Français">FR</button>
+      <button class="lang-btn" type="button" id="langEn" aria-label="English">EN</button>
+    </div>
+    <a class="phone js-phone" href="tel:+18192103124">819-210-3124</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-left">
+        <article class="identity">
+          <div class="portrait">
+            <img src="https://evaluation.eric-fortier.com/assets/eric-fortier-cropped.webp" alt="Éric Fortier, courtier immobilier résidentiel RE/MAX Direct à Gatineau" fetchpriority="high" decoding="async">
+          </div>
+          <div class="hero-copy">
+            <div class="eyebrow" data-i18n="eyebrow">RE/MAX Direct · Courtier depuis 2012</div>
+            <h1 data-i18n-html="heroTitle">Combien vaut votre propriété <span>à Gatineau?</span></h1>
+            <p class="lead" data-i18n-html="heroLead">Obtenez une <strong>évaluation immobilière gratuite</strong> de votre maison, condo ou plex, basée sur les ventes comparables et la réalité de votre secteur.</p>
+            <div class="meta" data-i18n="meta">Éric Fortier · Courtier immobilier résidentiel à Gatineau</div>
+          </div>
+        </article>
+
+        <div class="trust" aria-label="Avantages de l'évaluation">
+          <div class="trust-card"><strong data-i18n="trust1t">Gratuite et sans obligation</strong><span data-i18n="trust1d">Aucune pression pour mettre votre propriété en vente.</span></div>
+          <div class="trust-card"><strong data-i18n="trust2t">Analyse du marché local</strong><span data-i18n="trust2d">Comparables récents et caractéristiques de votre propriété.</span></div>
+          <div class="trust-card"><strong data-i18n="trust3t">Réponse personnalisée</strong><span data-i18n="trust3d">Une analyse humaine plutôt qu'un simple calcul automatisé.</span></div>
+        </div>
+      </div>
+
+      <aside id="evaluation" aria-label="Formulaire de demande d'évaluation">
+        <section class="form-card">
+          <div class="form-head">
+            <h2 data-i18n="formTitle">Obtenez votre évaluation gratuite</h2>
+            <p data-i18n="formSub">Formulaire sécurisé · Sans obligation · Informations confidentielles</p>
+          </div>
+          <div class="form-body">
+            <div class="progress-row"><small id="stepLabel">Étape 1 sur 2</small><div class="bar" role="progressbar" aria-label="Progression" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="fill" id="stepFill"></div></div></div>
+
+            <div class="callbox"><div data-i18n-html="callText">Vous préférez parler directement?<strong>819-210-3124</strong></div><a class="call-mini js-phone" href="tel:+18192103124" data-i18n="call">Appeler</a></div>
+            <div id="formAlert" class="alert" role="status" aria-live="polite"></div>
+
+            <form id="leadForm" action="https://formspree.io/f/mbddarae" method="POST" autocomplete="on" novalidate>
+              <div class="pane active" id="step1">
+                <div class="field">
+                  <label for="adresse" data-i18n="addressLabel">Adresse de la propriété</label>
+                  <textarea id="adresse" name="adresse" required autocomplete="street-address" placeholder="Ex. 123, rue Exemple, Gatineau (QC)" data-placeholder-fr="Ex. 123, rue Exemple, Gatineau (QC)" data-placeholder-en="Ex. 123 Example Street, Gatineau, QC"></textarea>
+                </div>
+                <button class="btn primary" type="button" id="nextStep" data-i18n="next">Obtenir mon évaluation →</button>
+              </div>
+
+              <div class="pane" id="step2" aria-hidden="true">
+                <div class="row2">
+                  <div class="field"><label for="prenom" data-i18n="firstName">Prénom</label><input id="prenom" name="prenom" type="text" required autocomplete="given-name"></div>
+                  <div class="field"><label for="nom" data-i18n="lastName">Nom</label><input id="nom" name="nom" type="text" required autocomplete="family-name"></div>
+                </div>
+                <div class="field"><label for="courriel" data-i18n="email">Courriel</label><input id="courriel" name="courriel" type="email" required autocomplete="email" inputmode="email" placeholder="votre@courriel.com" data-placeholder-fr="votre@courriel.com" data-placeholder-en="you@email.com"></div>
+                <div class="field"><label for="telephone" data-i18n="phoneLabel">Téléphone</label><input id="telephone" name="telephone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="819-555-1234"></div>
+
+                <input type="hidden" id="utm_source" name="utm_source">
+                <input type="hidden" id="utm_medium" name="utm_medium">
+                <input type="hidden" id="utm_campaign" name="utm_campaign">
+                <input type="hidden" id="utm_term" name="utm_term">
+                <input type="hidden" id="utm_content" name="utm_content">
+                <input type="hidden" id="gclid" name="gclid">
+                <input type="hidden" id="gbraid" name="gbraid">
+                <input type="hidden" id="wbraid" name="wbraid">
+                <input type="hidden" id="landing_page" name="landing_page">
+                <input type="hidden" id="lead_language" name="language" value="fr">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+
+                <div class="actions two"><button class="btn secondary" type="button" id="backStep" data-i18n="back">← Retour</button><button class="btn primary" type="submit" id="submitBtn" data-i18n="submit">Recevoir mon évaluation →</button></div>
+                <p class="fine" data-i18n-html="privacyText">En soumettant ce formulaire, vous acceptez d'être contacté concernant votre demande. Consultez la <a class="privacy-link" href="https://www.eric-fortier.com/fr/privacy-policy" target="_blank" rel="noopener">politique de confidentialité</a>.</p>
+              </div>
+            </form>
+
+            <div class="guarantees"><span data-i18n="g1">Gratuit</span><span data-i18n="g2">Sans obligation</span><span data-i18n="g3">Confidentiel</span><span data-i18n="g4">Local</span></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <div class="below">
+    <section class="section" aria-labelledby="methode-title">
+      <p class="kicker" data-i18n="kickerMarket">Valeur marchande à Gatineau</p>
+      <h2 id="methode-title" data-i18n="methodTitle">Une évaluation immobilière basée sur votre propriété et votre secteur</h2>
+      <p data-i18n="methodIntro">La valeur d'une propriété ne se résume pas à un prix moyen au pied carré. Pour estimer une maison, un condo ou un plex à Gatineau, il faut comparer des propriétés réellement comparables et tenir compte des différences qui influencent le prix de vente.</p>
+      <div class="steps">
+        <div class="step"><b>1</b><h3 data-i18n="step1t">Votre propriété</h3><p data-i18n="step1d">Type de propriété, superficie, terrain, garage, rénovations, état général et caractéristiques particulières.</p></div>
+        <div class="step"><b>2</b><h3 data-i18n="step2t">Les ventes comparables</h3><p data-i18n="step2d">Analyse de propriétés vendues récemment dans un secteur pertinent, plutôt qu'une moyenne générale de la ville.</p></div>
+        <div class="step"><b>3</b><h3 data-i18n="step3t">Le positionnement</h3><p data-i18n="step3d">Une fourchette réaliste pour mieux comprendre la valeur actuelle et, si vous pensez vendre, le positionnement possible sur le marché.</p></div>
+      </div>
+    </section>
+
+    <section class="section split" aria-labelledby="local-title">
+      <div>
+        <p class="kicker" data-i18n="localKicker">Expertise locale</p>
+        <h2 id="local-title" data-i18n="localTitle">Évaluation de maison et condo dans les secteurs de Gatineau</h2>
+        <p data-i18n="localIntro">Deux propriétés semblables peuvent se vendre à des prix différents selon le quartier, la proximité des services, le type de construction, le terrain, les rénovations et l'offre concurrente au moment de la vente.</p>
+        <div class="areas" aria-label="Secteurs desservis"><span>Gatineau</span><span>Aylmer</span><span>Hull</span><span>Buckingham</span><span>Masson-Angers</span></div>
+      </div>
+      <div>
+        <h3 data-i18n="typesTitle">Types de propriétés analysées</h3>
+        <ul class="bullet">
+          <li data-i18n="type1">Maison unifamiliale, jumelé et maison en rangée</li>
+          <li data-i18n="type2">Condo et copropriété divise</li>
+          <li data-i18n="type3">Duplex et triplex résidentiels</li>
+          <li data-i18n="type4">Propriété avec garage, piscine, grand terrain ou rénovations importantes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="why-title">
+      <p class="kicker" data-i18n="beforeKicker">Avant de vendre</p>
+      <h2 id="why-title" data-i18n="whyTitle">Pourquoi connaître la valeur de votre maison avant de choisir un prix?</h2>
+      <p data-i18n="why1">Un prix de départ influence directement la façon dont les acheteurs perçoivent une propriété. Une évaluation permet de mieux comprendre la concurrence, les ventes récentes et les caractéristiques qui peuvent ajouter ou retirer de la valeur. Elle peut aussi vous aider à planifier la suite : achat d'une autre propriété, date de possession, budget, rénovations à prioriser ou stratégie de mise en marché.</p>
+      <p data-i18n="why2">L'objectif n'est pas de vous donner un chiffre automatique en quelques secondes, mais une analyse qui tient compte de la réalité immobilière de Gatineau et de votre situation.</p>
+    </section>
+
+    <section class="section faq" aria-labelledby="faq-title">
+      <p class="kicker" data-i18n="faqKicker">Questions fréquentes</p>
+      <h2 id="faq-title" data-i18n="faqTitle">Questions sur l'évaluation immobilière à Gatineau</h2>
+      <details><summary data-i18n="q1">Comment est calculée la valeur de ma propriété à Gatineau?</summary><p data-i18n="a1">L'analyse tient compte notamment des ventes comparables récentes, du secteur, du type de propriété, de sa superficie, de son état, de ses caractéristiques et des conditions du marché local.</p></details>
+      <details><summary data-i18n="q2">L'évaluation immobilière est-elle gratuite?</summary><p data-i18n="a2">Oui. La demande d'évaluation présentée sur cette page est gratuite et sans obligation de vendre.</p></details>
+      <details><summary data-i18n="q3">Quels types de propriétés peuvent être évalués?</summary><p data-i18n="a3">Maison unifamiliale, condo, duplex, triplex et plusieurs autres propriétés résidentielles peuvent être analysés. Les caractéristiques particulières de la propriété sont prises en compte dans la comparaison.</p></details>
+      <details><summary data-i18n="q4">Quels secteurs de Gatineau sont desservis?</summary><p data-i18n="a4">Le service couvre Gatineau et plusieurs secteurs de la ville, notamment Aylmer, Hull, Buckingham et Masson-Angers.</p></details>
+      <details><summary data-i18n="q5">Est-ce la même chose qu'une évaluation agréée?</summary><p data-i18n="a5">Non. Il s'agit d'une opinion de valeur marchande préparée dans un contexte de courtage immobilier afin d'aider un propriétaire à comprendre le positionnement potentiel de sa propriété. Une évaluation agréée répond à un mandat professionnel différent.</p></details>
+    </section>
+
+    <section class="section cta-band" aria-labelledby="cta-title">
+      <p class="kicker">Éric Fortier · RE/MAX Direct</p>
+      <h2 id="cta-title" data-i18n="ctaTitle">Vous pensez vendre à Gatineau?</h2>
+      <p data-i18n="ctaText">Commencez par connaître la valeur actuelle de votre propriété. La demande est gratuite et ne vous engage pas à mettre votre maison ou votre condo en vente.</p>
+      <div class="cta-row"><a class="cta-primary" href="#evaluation" data-i18n="ctaEval">Demander mon évaluation</a><a class="cta-secondary js-phone" href="tel:+18192103124" data-i18n="ctaPhone">Appeler au 819-210-3124</a><a class="cta-secondary main-site-link" href="https://www.eric-fortier.com/fr" target="_blank" rel="noopener" data-i18n="ctaSite">Voir le site d'Éric Fortier</a></div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="foot">
+    <div data-i18n-html="footerCopy">© <span id="year"></span> Éric Fortier inc. · Courtier immobilier résidentiel · RE/MAX Direct · Gatineau, Québec</div>
+    <div><a class="privacy-link" href="https://www.eric-fortier.com/fr/privacy-policy" target="_blank" rel="noopener" data-i18n="privacy">Confidentialité</a> · <a class="main-site-link" href="https://www.eric-fortier.com/fr" target="_blank" rel="noopener">eric-fortier.com</a></div>
+  </div>
+</footer>
+
+<script>
+  const I18N = {
+    fr: {
+      title: "Évaluation maison Gatineau gratuite | Éric Fortier RE/MAX",
+      description: "Combien vaut votre maison ou condo à Gatineau? Obtenez une évaluation immobilière gratuite et personnalisée basée sur les ventes comparables récentes.",
+      ogTitle: "Évaluation immobilière gratuite à Gatineau",
+      ogDescription: "Découvrez la valeur marchande de votre maison, condo ou plex à Gatineau grâce à une analyse locale personnalisée.",
+      returnSite:"Retour au site", skip:"Aller au formulaire d'évaluation", brandSub:"Courtier immobilier résidentiel · Gatineau",
+      eyebrow:"RE/MAX Direct · Courtier depuis 2012", heroTitle:'Combien vaut votre propriété <span>à Gatineau?</span>',
+      heroLead:'Obtenez une <strong>évaluation immobilière gratuite</strong> de votre maison, condo ou plex, basée sur les ventes comparables et la réalité de votre secteur.',
+      meta:"Éric Fortier · Courtier immobilier résidentiel à Gatineau", trust1t:"Gratuite et sans obligation",trust1d:"Aucune pression pour mettre votre propriété en vente.",trust2t:"Analyse du marché local",trust2d:"Comparables récents et caractéristiques de votre propriété.",trust3t:"Réponse personnalisée",trust3d:"Une analyse humaine plutôt qu'un simple calcul automatisé.",
+      formTitle:"Obtenez votre évaluation gratuite",formSub:"Formulaire sécurisé · Sans obligation · Informations confidentielles",callText:'Vous préférez parler directement?<strong>819-210-3124</strong>',call:"Appeler",addressLabel:"Adresse de la propriété",next:"Obtenir mon évaluation →",firstName:"Prénom",lastName:"Nom",email:"Courriel",phoneLabel:"Téléphone",back:"← Retour",submit:"Recevoir mon évaluation →",privacyText:'En soumettant ce formulaire, vous acceptez d\'être contacté concernant votre demande. Consultez la <a class="privacy-link" href="https://www.eric-fortier.com/fr/privacy-policy" target="_blank" rel="noopener">politique de confidentialité</a>.',g1:"Gratuit",g2:"Sans obligation",g3:"Confidentiel",g4:"Local",
+      kickerMarket:"Valeur marchande à Gatineau",methodTitle:"Une évaluation immobilière basée sur votre propriété et votre secteur",methodIntro:"La valeur d'une propriété ne se résume pas à un prix moyen au pied carré. Pour estimer une maison, un condo ou un plex à Gatineau, il faut comparer des propriétés réellement comparables et tenir compte des différences qui influencent le prix de vente.",step1t:"Votre propriété",step1d:"Type de propriété, superficie, terrain, garage, rénovations, état général et caractéristiques particulières.",step2t:"Les ventes comparables",step2d:"Analyse de propriétés vendues récemment dans un secteur pertinent, plutôt qu'une moyenne générale de la ville.",step3t:"Le positionnement",step3d:"Une fourchette réaliste pour mieux comprendre la valeur actuelle et, si vous pensez vendre, le positionnement possible sur le marché.",
+      localKicker:"Expertise locale",localTitle:"Évaluation de maison et condo dans les secteurs de Gatineau",localIntro:"Deux propriétés semblables peuvent se vendre à des prix différents selon le quartier, la proximité des services, le type de construction, le terrain, les rénovations et l'offre concurrente au moment de la vente.",typesTitle:"Types de propriétés analysées",type1:"Maison unifamiliale, jumelé et maison en rangée",type2:"Condo et copropriété divise",type3:"Duplex et triplex résidentiels",type4:"Propriété avec garage, piscine, grand terrain ou rénovations importantes",
+      beforeKicker:"Avant de vendre",whyTitle:"Pourquoi connaître la valeur de votre maison avant de choisir un prix?",why1:"Un prix de départ influence directement la façon dont les acheteurs perçoivent une propriété. Une évaluation permet de mieux comprendre la concurrence, les ventes récentes et les caractéristiques qui peuvent ajouter ou retirer de la valeur. Elle peut aussi vous aider à planifier la suite : achat d'une autre propriété, date de possession, budget, rénovations à prioriser ou stratégie de mise en marché.",why2:"L'objectif n'est pas de vous donner un chiffre automatique en quelques secondes, mais une analyse qui tient compte de la réalité immobilière de Gatineau et de votre situation.",
+      faqKicker:"Questions fréquentes",faqTitle:"Questions sur l'évaluation immobilière à Gatineau",q1:"Comment est calculée la valeur de ma propriété à Gatineau?",a1:"L'analyse tient compte notamment des ventes comparables récentes, du secteur, du type de propriété, de sa superficie, de son état, de ses caractéristiques et des conditions du marché local.",q2:"L'évaluation immobilière est-elle gratuite?",a2:"Oui. La demande d'évaluation présentée sur cette page est gratuite et sans obligation de vendre.",q3:"Quels types de propriétés peuvent être évalués?",a3:"Maison unifamiliale, condo, duplex, triplex et plusieurs autres propriétés résidentielles peuvent être analysés. Les caractéristiques particulières de la propriété sont prises en compte dans la comparaison.",q4:"Quels secteurs de Gatineau sont desservis?",a4:"Le service couvre Gatineau et plusieurs secteurs de la ville, notamment Aylmer, Hull, Buckingham et Masson-Angers.",q5:"Est-ce la même chose qu'une évaluation agréée?",a5:"Non. Il s'agit d'une opinion de valeur marchande préparée dans un contexte de courtage immobilier afin d'aider un propriétaire à comprendre le positionnement potentiel de sa propriété. Une évaluation agréée répond à un mandat professionnel différent.",
+      ctaTitle:"Vous pensez vendre à Gatineau?",ctaText:"Commencez par connaître la valeur actuelle de votre propriété. La demande est gratuite et ne vous engage pas à mettre votre maison ou votre condo en vente.",ctaEval:"Demander mon évaluation",ctaPhone:"Appeler au 819-210-3124",ctaSite:"Voir le site d'Éric Fortier",footerCopy:'© <span id="year"></span> Éric Fortier inc. · Courtier immobilier résidentiel · RE/MAX Direct · Gatineau, Québec',privacy:"Confidentialité",
+      stepOne:"Étape 1 sur 2",stepTwo:"Étape 2 sur 2",needAddress:"Veuillez indiquer l'adresse de la propriété pour continuer.",sending:"Envoi en cours…",sendError:"Impossible d'envoyer pour le moment. Vous pouvez aussi appeler au 819-210-3124.",submitDefault:"Recevoir mon évaluation →"
+    },
+    en: {
+      title: "Free Home Evaluation Gatineau | Eric Fortier RE/MAX",
+      description: "What is your Gatineau home or condo worth? Request a free personalized real estate market evaluation based on recent comparable sales.",
+      ogTitle: "Free Real Estate Evaluation in Gatineau",
+      ogDescription: "Discover the market value of your home, condo or plex in Gatineau with a personalized local market analysis.",
+      returnSite:"Main website", skip:"Go to the home evaluation form", brandSub:"Residential real estate broker · Gatineau",
+      eyebrow:"RE/MAX Direct · Real estate broker since 2012", heroTitle:'What is your property worth <span>in Gatineau?</span>',
+      heroLead:'Get a <strong>free real estate market evaluation</strong> for your house, condo or plex, based on comparable sales and the realities of your local area.',
+      meta:"Eric Fortier · Residential real estate broker in Gatineau", trust1t:"Free with no obligation",trust1d:"No pressure to list your property for sale.",trust2t:"Local market analysis",trust2d:"Recent comparable sales and your property's specific features.",trust3t:"Personalized response",trust3d:"A human analysis rather than a simple automated estimate.",
+      formTitle:"Get your free home evaluation",formSub:"Secure form · No obligation · Confidential information",callText:'Prefer to speak directly?<strong>819-210-3124</strong>',call:"Call",addressLabel:"Property address",next:"Get my evaluation →",firstName:"First name",lastName:"Last name",email:"Email",phoneLabel:"Phone",back:"← Back",submit:"Receive my evaluation →",privacyText:'By submitting this form, you agree to be contacted regarding your request. See the <a class="privacy-link" href="https://www.eric-fortier.com/en/privacy-policy" target="_blank" rel="noopener">privacy policy</a>.',g1:"Free",g2:"No obligation",g3:"Confidential",g4:"Local",
+      kickerMarket:"Market value in Gatineau",methodTitle:"A real estate evaluation based on your property and your neighbourhood",methodIntro:"A property's value cannot be reduced to an average price per square foot. To evaluate a house, condo or plex in Gatineau, the right comparable properties must be analyzed along with the differences that can influence the final sale price.",step1t:"Your property",step1d:"Property type, living area, lot, garage, renovations, overall condition and distinctive features.",step2t:"Comparable sales",step2d:"Analysis of recently sold properties in a relevant area rather than relying on a city-wide average.",step3t:"Market positioning",step3d:"A realistic value range to help you understand today's market and, if you are considering selling, how your property could be positioned.",
+      localKicker:"Local expertise",localTitle:"Home and condo evaluations throughout Gatineau",localIntro:"Two similar properties can sell for different prices depending on the neighbourhood, nearby services, construction type, lot, renovations and competing inventory at the time of sale.",typesTitle:"Property types analyzed",type1:"Single-family homes, semi-detached homes and townhouses",type2:"Condos and divided co-ownership properties",type3:"Residential duplexes and triplexes",type4:"Properties with a garage, pool, large lot or major renovations",
+      beforeKicker:"Before selling",whyTitle:"Why know your home's value before choosing an asking price?",why1:"The starting price directly influences how buyers perceive a property. A market evaluation helps you understand the competition, recent sales and the features that may add or reduce value. It can also help you plan your next steps, such as buying another property, choosing a possession date, budgeting, prioritizing renovations or preparing a marketing strategy.",why2:"The goal is not to give you an automatic number in a few seconds, but an analysis that reflects the Gatineau real estate market and your specific situation.",
+      faqKicker:"Frequently asked questions",faqTitle:"Questions about real estate evaluations in Gatineau",q1:"How is the value of my Gatineau property determined?",a1:"The analysis considers recent comparable sales, the neighbourhood, property type, size, condition, specific features and current local market conditions.",q2:"Is the real estate evaluation free?",a2:"Yes. The evaluation request on this page is free and there is no obligation to sell.",q3:"What types of properties can be evaluated?",a3:"Single-family homes, condos, duplexes, triplexes and many other residential properties can be analyzed. The property's specific features are considered when selecting and adjusting comparable sales.",q4:"Which Gatineau areas are served?",a4:"The service covers Gatineau and several sectors of the city, including Aylmer, Hull, Buckingham and Masson-Angers.",q5:"Is this the same as a certified appraisal?",a5:"No. This is a market value opinion prepared in a real estate brokerage context to help an owner understand the potential market positioning of a property. A certified appraisal is a different professional mandate.",
+      ctaTitle:"Thinking of selling in Gatineau?",ctaText:"Start by understanding your property's current market value. The request is free and does not commit you to listing your house or condo for sale.",ctaEval:"Request my evaluation",ctaPhone:"Call 819-210-3124",ctaSite:"Visit Eric Fortier's website",footerCopy:'© <span id="year"></span> Eric Fortier inc. · Residential real estate broker · RE/MAX Direct · Gatineau, Quebec',privacy:"Privacy",
+      stepOne:"Step 1 of 2",stepTwo:"Step 2 of 2",needAddress:"Please enter the property address to continue.",sending:"Sending…",sendError:"Unable to send the form right now. You can also call 819-210-3124.",submitDefault:"Receive my evaluation →"
+    }
+  };
+
+  let currentLang = 'fr';
+  function setLanguage(lang, updateUrl=true){
+    currentLang = lang === 'en' ? 'en' : 'fr';
+    const t=I18N[currentLang];
+    document.documentElement.lang=currentLang==='en'?'en-CA':'fr-CA';
+    document.title=t.title;
+    const metaDesc=document.querySelector('meta[name="description"]'); if(metaDesc) metaDesc.content=t.description;
+    const ogLocale=document.querySelector('meta[property="og:locale"]'); if(ogLocale) ogLocale.content=currentLang==='en'?'en_CA':'fr_CA';
+    const ogTitle=document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.content=t.ogTitle;
+    const ogDesc=document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.content=t.ogDescription;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[k]!==undefined)el.textContent=t[k]});
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(t[k]!==undefined)el.innerHTML=t[k]});
+    document.querySelectorAll('[data-placeholder-fr]').forEach(el=>el.placeholder=currentLang==='en'?el.dataset.placeholderEn:el.dataset.placeholderFr);
+    const mainUrl=currentLang==='en'?'https://www.eric-fortier.com/en':'https://www.eric-fortier.com/fr';
+    const privacyUrl=currentLang==='en'?'https://www.eric-fortier.com/en/privacy-policy':'https://www.eric-fortier.com/fr/privacy-policy';
+    const topMain=document.getElementById('mainSiteLink'); if(topMain){topMain.href=mainUrl;topMain.setAttribute('aria-label',currentLang==='en'?"Return to Eric Fortier's main website":"Retour au site principal d'Éric Fortier")}
+    document.querySelectorAll('.main-site-link').forEach(a=>a.href=mainUrl);
+    document.querySelectorAll('.privacy-link').forEach(a=>a.href=privacyUrl);
+    const brand=document.querySelector('.brand'); if(brand) brand.href=mainUrl;
+    document.getElementById('langFr').classList.toggle('active',currentLang==='fr');
+    document.getElementById('langEn').classList.toggle('active',currentLang==='en');
+    document.getElementById('lead_language').value=currentLang;
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Keep the current form step label correctly translated.
+    const secondActive=document.getElementById('step2').classList.contains('active');
+    document.getElementById('stepLabel').textContent=secondActive?t.stepTwo:t.stepOne;
+    if(updateUrl){const u=new URL(location.href);u.searchParams.set('lang',currentLang);history.replaceState({},'',u)}
+  }
+
+  document.getElementById('langFr').addEventListener('click',()=>setLanguage('fr'));
+  document.getElementById('langEn').addEventListener('click',()=>setLanguage('en'));
+  const initialLang=new URLSearchParams(location.search).get('lang')==='en'?'en':'fr';
+  setLanguage(initialLang,false);
+
+  // Preserve ad attribution in the lead submission.
+  (function(){
+    const p = new URLSearchParams(location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','gbraid','wbraid'].forEach(k=>{
+      const el=document.getElementById(k); if(el) el.value=p.get(k)||'';
+    });
+    document.getElementById('landing_page').value=location.href;
+  })();
+
+  // Lightweight engagement events. These become useful in Google Ads/GA only if configured as conversions/events in the account.
+  document.querySelectorAll('.js-phone').forEach(a=>a.addEventListener('click',()=>{
+    if(typeof gtag==='function') gtag('event','phone_click',{event_category:'lead',event_label:'819-210-3124'});
+  }));
+
+  const form=document.getElementById('leadForm');
+  const step1=document.getElementById('step1');
+  const step2=document.getElementById('step2');
+  const nextBtn=document.getElementById('nextStep');
+  const backBtn=document.getElementById('backStep');
+  const label=document.getElementById('stepLabel');
+  const fill=document.getElementById('stepFill');
+  const progress=document.querySelector('[role="progressbar"]');
+  const alertBox=document.getElementById('formAlert');
+
+  function alertMsg(msg,type='error'){
+    alertBox.textContent=msg; alertBox.className='alert show '+type;
+  }
+  function clearAlert(){alertBox.textContent='';alertBox.className='alert'}
+  function go(n){
+    const first=n===1;
+    step1.classList.toggle('active',first);step2.classList.toggle('active',!first);
+    step2.setAttribute('aria-hidden',first?'true':'false');
+    label.textContent=first?I18N[currentLang].stepOne:I18N[currentLang].stepTwo;
+    fill.style.width=first?'50%':'100%';
+    progress.setAttribute('aria-valuenow',first?'50':'100');
+    (first?document.getElementById('adresse'):document.getElementById('prenom')).focus();
+  }
+
+  nextBtn.addEventListener('click',()=>{
+    const a=document.getElementById('adresse');
+    if(!a.value.trim()){alertMsg(I18N[currentLang].needAddress);a.focus();return;}
+    clearAlert();
+    if(typeof gtag==='function') gtag('event','form_step_1_complete',{event_category:'lead'});
+    go(2);
+  });
+  backBtn.addEventListener('click',()=>{clearAlert();go(1)});
+  document.getElementById('adresse').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();nextBtn.click()}});
+
+  form.addEventListener('submit',async e=>{
+    e.preventDefault(); clearAlert();
+    if(!form.checkValidity()){form.reportValidity();return;}
+    const btn=document.getElementById('submitBtn');
+    btn.disabled=true;btn.textContent=I18N[currentLang].sending;alertMsg(I18N[currentLang].sending,'info');
+    try{
+      const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+      if(!res.ok) throw new Error('Formspree');
+      // IMPORTANT: install the Google Ads conversion event on /merci.html with your actual conversion label.
+      location.href='/merci.html';
+    }catch(err){
+      btn.disabled=false;btn.textContent=I18N[currentLang].submitDefault;
+      alertMsg(I18N[currentLang].sendError);
     }
   });
-
-  function showAlert(msg, type) {
-    alertBox.textContent = msg;
-    alertBox.className   = "alert show " + (type || "");
-  }
-  function clearAlert() {
-    alertBox.textContent = "";
-    alertBox.className   = "alert";
-  }
 </script>
 </body>
 </html>
