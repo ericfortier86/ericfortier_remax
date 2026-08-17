@@ -129,6 +129,10 @@
     .benefits{display:grid;gap:15px;margin:0 0 23px}.benefit{display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:center}.benefit-icon{width:30px;height:30px;display:grid;place-items:center;color:var(--gold)}.benefit-icon svg{width:25px;height:25px}.benefit strong{display:block;font-size:13px}.benefit span{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
     .review-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.stars{display:flex;gap:3px}.star{width:20px;height:20px;border-radius:4px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:13px;line-height:1}.review-line strong{font-size:12px}.review-line span{font-size:11px;color:var(--muted)}
 
+    /* GOOGLE REVIEWS */
+    .mobile-google-proof{display:none}
+
+
     /* FORM */
     .form-card{background:#fff;border:1px solid rgba(20,24,32,.07);border-radius:18px;box-shadow:var(--shadow);padding:22px 23px 20px}
     .form-title{font-size:19px;font-weight:900;margin:0 0 16px;letter-spacing:-.025em}
@@ -213,6 +217,12 @@
       .mobile-back-btn{border:1px solid #ddd9d2;background:#fff;color:var(--ink);min-height:42px}
       .mobile-trust{grid-template-columns:repeat(3,1fr);gap:5px;margin-top:-2px}
       .mobile-trust span{font-size:9.5px;font-weight:800;color:#565c63;text-align:center;white-space:nowrap}
+      .mobile-google-proof{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding:10px 11px;border:1px solid #e5e0d7;border-radius:10px;background:#fff}
+      .mobile-google-proof-left{min-width:0}
+      .mobile-google-proof-stars{color:#f2aa00;font-size:14px;letter-spacing:1px;line-height:1}
+      .mobile-google-proof-score{font-size:10.5px;font-weight:900;margin-top:3px}
+      .mobile-google-proof-score span{font-weight:600;color:var(--muted)}
+      .mobile-google-proof a{flex:0 0 auto;color:var(--blue);font-size:10.5px;font-weight:900;text-decoration:none;border-left:1px solid #e8e3da;padding-left:10px}
       .mobile-step-note{display:block;font-size:10.5px;color:var(--muted);margin:-4px 0 1px}
 
       .agent-inner{grid-template-columns:120px 1fr;gap:18px;padding:18px 14px}.agent-photo{height:165px}.agent-copy h2{font-size:21px}.agent-copy>p{font-size:12px;margin-bottom:12px}.credentials{grid-template-columns:1fr 1fr}.credential{padding:9px 5px}.credential svg{width:25px;height:25px}.section{padding:34px 14px}.process{grid-template-columns:1fr 1fr;gap:24px 14px}.process:before{display:none}.faq-grid{grid-template-columns:1fr}.cta-wrap{padding:0 14px}.cta-band{align-items:flex-start;flex-direction:column}.cta-button{width:100%;text-align:center}.footer-inner{padding-left:14px;padding-right:14px}.footer-grid{grid-template-columns:1fr 1fr;gap:20px}
@@ -316,6 +326,13 @@
           </form>
         </section>
       </aside>
+      <div class="mobile-google-proof" aria-label="Avis Google">
+        <div class="mobile-google-proof-left">
+          <div class="mobile-google-proof-stars">★★★★★</div>
+          <div class="mobile-google-proof-score">4.9/5 Google <span>· 56 avis</span></div>
+        </div>
+        <a href="https://search.google.com/local/reviews?placeid=ChIJN6pSO-oczkwRokearKk12eE" target="_blank" rel="noopener" data-i18n="seeReviews">Voir les avis</a>
+      </div>
     </div>
   </section>
 
@@ -334,6 +351,8 @@
       </div>
     </div>
   </section>
+
+
 
   <section class="section">
     <div class="section-inner center">
@@ -393,7 +412,7 @@
 const I18N={
   fr:{
     title:"Évaluation immobilière gratuite à Gatineau | Éric Fortier RE/MAX",description:"Découvrez la valeur marchande de votre maison, condo ou plex à Gatineau. Évaluation immobilière gratuite, personnalisée et sans obligation par Éric Fortier, courtier RE/MAX Direct.",
-    skip:"Aller au formulaire",brandSub:"Courtier immobilier résidentiel · Gatineau",returnSite:"Retour au site",eyebrow:"Évaluation immobilière gratuite",heroTitle:'Combien vaut votre propriété <span class="accent">à Gatineau?</span>',heroLead:"Obtenez une évaluation gratuite, réaliste et sans obligation de votre maison, condo ou immeuble, basée sur les ventes comparables récentes et ma connaissance du marché local.",mobileLead:"Évaluation gratuite basée sur les ventes récentes de votre secteur. Sans obligation.",b1t:"Réponse rapide",b1d:"Une analyse personnalisée de votre propriété.",b2t:"Données de marché à jour",b2d:"Analyse basée sur les ventes récentes de votre secteur.",b3t:"Service confidentiel",b3d:"Sans pression et sans obligation de vendre.",reviews:"Basé sur les avis de mes clients",
+    skip:"Aller au formulaire",brandSub:"Courtier immobilier résidentiel · Gatineau",returnSite:"Retour au site",eyebrow:"Évaluation immobilière gratuite",heroTitle:'Combien vaut votre propriété <span class="accent">à Gatineau?</span>',heroLead:"Obtenez une évaluation gratuite, réaliste et sans obligation de votre maison, condo ou immeuble, basée sur les ventes comparables récentes et ma connaissance du marché local.",mobileLead:"Évaluation gratuite basée sur les ventes récentes de votre secteur. Sans obligation.",b1t:"Réponse rapide",b1d:"Une analyse personnalisée de votre propriété.",b2t:"Données de marché à jour",b2d:"Analyse basée sur les ventes récentes de votre secteur.",b3t:"Service confidentiel",b3d:"Sans pression et sans obligation de vendre.",reviews:"Basé sur les avis de mes clients",seeReviews:"Voir les avis",
     formTitle:"Obtenez votre évaluation gratuite",mobileNext:"Continuer",mobileBack:"Retour à l’adresse",trustFree:"✓ Gratuit",trustPrivate:"✓ Confidentiel",trustNoObligation:"✓ Sans obligation",infoTitle:"Vos informations",firstName:"Prénom",lastName:"Nom",email:"Courriel",phone:"Téléphone",propertyTitle:"Votre propriété",address:"Adresse de la propriété",propertyType:"Type de propriété",selectType:"Sélectionnez le type de propriété",optHouse:"Maison unifamiliale / jumelé",optCondo:"Condo",optPlex:"Duplex / triplex / plex",optOther:"Autre",timeline:"Quand souhaitez-vous vendre?",selectTimeline:"Sélectionnez",time1:"Dans les 0 à 3 mois",time2:"Dans les 3 à 6 mois",time3:"Dans les 6 à 12 mois",time4:"Plus tard / je m'informe",submit:"Obtenir mon évaluation gratuite",secure:"Vos informations sont confidentielles et sécurisées.",privacy:'En soumettant ce formulaire, vous acceptez notre <a class="privacy-link" href="https://www.eric-fortier.com/fr/privacy-policy" target="_blank" rel="noopener">politique de confidentialité</a>.',
     whyEric:"Pourquoi faire affaire avec Éric Fortier?",whyEricText:"Courtier immobilier résidentiel à Gatineau depuis plus de 14 ans, j'accompagne les propriétaires avec une approche simple, personnalisée et fondée sur la réalité du marché de l'Outaouais.",cred1:"d'expérience dans l'Outaouais",cred2t:"Expert du marché",cred2:"Gatineau, Aylmer, Hull et environs",cred3t:"Service personnalisé",cred3:"accessible et adapté à votre situation",cred4t:"Approche humaine",cred4:"sans pression et orientée résultats",
     processTitle:"Comment se déroule l'évaluation?",processSub:"Un processus simple, rapide et sans engagement.",p1t:"Remplissez le formulaire",p1d:"Indiquez vos coordonnées et les informations de base sur votre propriété.",p2t:"Analyse du marché",p2d:"J'analyse les ventes récentes et les tendances du marché local.",p3t:"Évaluation personnalisée",p3d:"Vous recevez une estimation adaptée à votre propriété et à votre secteur.",p4t:"Discussion optionnelle",p4d:"Nous pouvons ensuite discuter de vos objectifs et des prochaines étapes.",areasTitle:"Expert du marché de Gatineau et des environs",
@@ -402,7 +421,7 @@ const I18N={
   },
   en:{
     title:"Free Home Evaluation in Gatineau | Eric Fortier RE/MAX",description:"Find out the market value of your home, condo or plex in Gatineau. Free personalized real estate evaluation with no obligation from Eric Fortier, RE/MAX Direct broker.",
-    skip:"Skip to the form",brandSub:"Residential real estate broker · Gatineau",returnSite:"Back to website",eyebrow:"Free real estate evaluation",heroTitle:'What is your property worth <span class="accent">in Gatineau?</span>',heroLead:"Get a free, realistic, no-obligation evaluation of your house, condo or income property based on recent comparable sales and my knowledge of the local market.",mobileLead:"Free evaluation based on recent sales in your area. No obligation.",b1t:"Fast response",b1d:"A personalized analysis of your property.",b2t:"Current market data",b2d:"Analysis based on recent sales in your area.",b3t:"Confidential service",b3d:"No pressure and no obligation to sell.",reviews:"Based on reviews from my clients",
+    skip:"Skip to the form",brandSub:"Residential real estate broker · Gatineau",returnSite:"Back to website",eyebrow:"Free real estate evaluation",heroTitle:'What is your property worth <span class="accent">in Gatineau?</span>',heroLead:"Get a free, realistic, no-obligation evaluation of your house, condo or income property based on recent comparable sales and my knowledge of the local market.",mobileLead:"Free evaluation based on recent sales in your area. No obligation.",b1t:"Fast response",b1d:"A personalized analysis of your property.",b2t:"Current market data",b2d:"Analysis based on recent sales in your area.",b3t:"Confidential service",b3d:"No pressure and no obligation to sell.",reviews:"Based on reviews from my clients",seeReviews:"See reviews",
     formTitle:"Get your free property evaluation",mobileNext:"Continue",mobileBack:"Back to address",trustFree:"✓ Free",trustPrivate:"✓ Confidential",trustNoObligation:"✓ No obligation",infoTitle:"Your information",firstName:"First name",lastName:"Last name",email:"Email",phone:"Phone",propertyTitle:"Your property",address:"Property address",propertyType:"Property type",selectType:"Select property type",optHouse:"Single-family / semi-detached",optCondo:"Condo",optPlex:"Duplex / triplex / plex",optOther:"Other",timeline:"When are you planning to sell?",selectTimeline:"Select",time1:"Within 0 to 3 months",time2:"Within 3 to 6 months",time3:"Within 6 to 12 months",time4:"Later / just researching",submit:"Get my free evaluation",secure:"Your information is confidential and secure.",privacy:'By submitting this form, you agree to our <a class="privacy-link" href="https://www.eric-fortier.com/en/privacy-policy" target="_blank" rel="noopener">privacy policy</a>.',
     whyEric:"Why work with Eric Fortier?",whyEricText:"A residential real estate broker in Gatineau for more than 14 years, I help homeowners with a straightforward, personalized approach grounded in the realities of the Outaouais market.",cred1:"of experience in the Outaouais",cred2t:"Local market expert",cred2:"Gatineau, Aylmer, Hull and surrounding areas",cred3t:"Personalized service",cred3:"accessible and adapted to your situation",cred4t:"Human approach",cred4:"no pressure and results-focused",
     processTitle:"How does the evaluation work?",processSub:"A simple, quick, no-obligation process.",p1t:"Complete the form",p1d:"Provide your contact information and basic property details.",p2t:"Market analysis",p2d:"I review recent sales and local market trends.",p3t:"Personalized evaluation",p3d:"You receive an estimate tailored to your property and neighbourhood.",p4t:"Optional discussion",p4d:"We can then discuss your objectives and possible next steps.",areasTitle:"Gatineau and surrounding market expertise",
