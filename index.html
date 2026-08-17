@@ -111,6 +111,9 @@
     .lang-btn{height:30px;min-width:31px;border:0;border-radius:999px;background:transparent;color:#666b72;font-size:11px;font-weight:900;padding:0 8px}.lang-btn.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.09)}
     .phone-pill{height:40px;display:inline-flex;align-items:center;gap:7px;padding:0 15px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:850;font-size:12.5px;white-space:nowrap}.phone-pill svg{width:14px;height:14px}
 
+    /* MOBILE CONVERSION LAYER (hidden on desktop) */
+    .mobile-hero-copy,.mobile-next-btn,.mobile-back-btn,.mobile-trust{display:none}
+
     /* HERO */
     .hero{position:relative;overflow:hidden;background:linear-gradient(110deg,#fbfaf7 0%,#f7f3eb 56%,#f2eee7 100%);border-bottom:1px solid #eee9e1}
     .hero:before{content:"";position:absolute;inset:0;background:
@@ -163,7 +166,56 @@
     }
     @media(max-width:720px){
       .topbar{height:62px}.brand-copy span{display:none}.brand-mark{width:34px;height:34px}.remax-logo{height:42px}.site-return{width:36px;padding:0;justify-content:center}.site-return-text{display:none}.phone-pill{width:38px;padding:0;justify-content:center}.phone-number{display:none}.top-actions{gap:5px}.lang-switch{height:34px}.lang-btn{height:26px;padding:0 6px;min-width:27px}
-      .hero-inner{padding:26px 14px 28px}.hero h1{font-size:40px}.hero-lead{font-size:14px}.row2{grid-template-columns:1fr}.form-card{padding:18px 16px}.agent-inner{grid-template-columns:120px 1fr;gap:18px;padding:18px 14px}.agent-photo{height:165px}.agent-copy h2{font-size:21px}.agent-copy>p{font-size:12px;margin-bottom:12px}.credentials{grid-template-columns:1fr 1fr}.credential{padding:9px 5px}.credential svg{width:25px;height:25px}.section{padding:34px 14px}.process{grid-template-columns:1fr 1fr;gap:24px 14px}.process:before{display:none}.faq-grid{grid-template-columns:1fr}.cta-wrap{padding:0 14px}.cta-band{align-items:flex-start;flex-direction:column}.cta-button{width:100%;text-align:center}.footer-inner{padding-left:14px;padding-right:14px}.footer-grid{grid-template-columns:1fr 1fr;gap:20px}
+
+      /* Google Ads mobile: message first, form immediately after */
+      .hero-inner{padding:18px 14px 24px;gap:14px;display:grid;grid-template-columns:1fr}
+      .hero-copy{display:none}
+      .mobile-hero-copy{display:block}
+      .mobile-hero-copy .eyebrow{font-size:9.5px;padding:5px 9px}
+      .mobile-hero-copy h1{font-size:clamp(32px,9.5vw,42px);line-height:1.01;letter-spacing:-.05em;margin:12px 0 11px;max-width:560px}
+      .mobile-hero-copy .gold-rule{width:48px;height:3px;margin-bottom:10px}
+      .mobile-hero-copy .hero-lead{font-size:13.5px;line-height:1.45;margin:0;max-width:590px}
+
+      .form-card{padding:16px 14px 15px;border-radius:15px;box-shadow:0 12px 36px rgba(15,20,30,.12)}
+      .form-title{font-size:17px;margin-bottom:12px}
+      .form-grid{gap:11px}
+      .row2{grid-template-columns:1fr}
+      .field input,.field select,.field textarea{font-size:16px;padding:12px 11px}
+      .field textarea{min-height:56px}
+
+      /* Two-step form exists only on mobile. Desktop markup/design is untouched. */
+      #leadForm.mobile-step-1 .personal-label,
+      #leadForm.mobile-step-1 .personal-block,
+      #leadForm.mobile-step-1 .property-label,
+      #leadForm.mobile-step-1 .property-extra,
+      #leadForm.mobile-step-1 .final-submit,
+      #leadForm.mobile-step-1 .mobile-back-btn,
+      #leadForm.mobile-step-1 .lock-note,
+      #leadForm.mobile-step-1 .privacy-note,
+      #leadForm.mobile-step-1 .mobile-trust-final{display:none!important}
+      #leadForm.mobile-step-1 .address-block,
+      #leadForm.mobile-step-1 .mobile-next-btn,
+      #leadForm.mobile-step-1 .mobile-trust-first{display:grid}
+
+      #leadForm.mobile-step-2 .property-label,
+      #leadForm.mobile-step-2 .address-block,
+      #leadForm.mobile-step-2 .property-extra,
+      #leadForm.mobile-step-2 .mobile-next-btn,
+      #leadForm.mobile-step-2 .mobile-trust-first{display:none!important}
+      #leadForm.mobile-step-2 .personal-label{display:flex}
+      #leadForm.mobile-step-2 .personal-block{display:grid}
+      #leadForm.mobile-step-2 .final-submit{display:flex}
+      #leadForm.mobile-step-2 .mobile-back-btn{display:flex}
+      #leadForm.mobile-step-2 .mobile-trust-final{display:grid}
+
+      .mobile-next-btn,.mobile-back-btn{width:100%;min-height:48px;border-radius:10px;font-weight:900;font-size:13px;align-items:center;justify-content:center;gap:8px}
+      .mobile-next-btn{border:0;background:var(--blue);color:#fff;box-shadow:0 6px 18px rgba(22,71,184,.22)}
+      .mobile-back-btn{border:1px solid #ddd9d2;background:#fff;color:var(--ink);min-height:42px}
+      .mobile-trust{grid-template-columns:repeat(3,1fr);gap:5px;margin-top:-2px}
+      .mobile-trust span{font-size:9.5px;font-weight:800;color:#565c63;text-align:center;white-space:nowrap}
+      .mobile-step-note{display:block;font-size:10.5px;color:var(--muted);margin:-4px 0 1px}
+
+      .agent-inner{grid-template-columns:120px 1fr;gap:18px;padding:18px 14px}.agent-photo{height:165px}.agent-copy h2{font-size:21px}.agent-copy>p{font-size:12px;margin-bottom:12px}.credentials{grid-template-columns:1fr 1fr}.credential{padding:9px 5px}.credential svg{width:25px;height:25px}.section{padding:34px 14px}.process{grid-template-columns:1fr 1fr;gap:24px 14px}.process:before{display:none}.faq-grid{grid-template-columns:1fr}.cta-wrap{padding:0 14px}.cta-band{align-items:flex-start;flex-direction:column}.cta-button{width:100%;text-align:center}.footer-inner{padding-left:14px;padding-right:14px}.footer-grid{grid-template-columns:1fr 1fr;gap:20px}
     }
     @media(max-width:460px){
       .brand-copy{display:none}.remax-logo{height:38px}.hero h1{font-size:34px}.benefit{grid-template-columns:28px 1fr}.agent-inner{grid-template-columns:95px 1fr}.agent-photo{height:145px}.credentials{display:none}.process{grid-template-columns:1fr}.areas{justify-content:flex-start}.footer-grid{grid-template-columns:1fr}.footer-col:nth-child(4){display:none}
@@ -199,6 +251,13 @@
 <main>
   <section class="hero">
     <div class="hero-inner">
+      <div class="mobile-hero-copy" aria-label="Présentation de l'évaluation">
+        <div class="eyebrow" data-i18n="eyebrow">Évaluation immobilière gratuite</div>
+        <h1 data-i18n-html="heroTitle">Combien vaut votre propriété <span class="accent">à Gatineau?</span></h1>
+        <div class="gold-rule"></div>
+        <p class="hero-lead" data-i18n="mobileLead">Évaluation gratuite basée sur les ventes récentes de votre secteur. Sans obligation.</p>
+      </div>
+
       <div class="hero-copy">
         <div class="eyebrow" data-i18n="eyebrow">Évaluation immobilière gratuite</div>
         <h1 data-i18n-html="heroTitle">Combien vaut votre propriété <span class="accent">à Gatineau?</span></h1>
@@ -232,22 +291,26 @@
           <h2 class="form-title" data-i18n="formTitle">Obtenez votre évaluation gratuite</h2>
           <div id="formAlert" class="alert" role="status" aria-live="polite"></div>
           <form id="leadForm" class="form-grid" action="https://formspree.io/f/mbddarae" method="POST" autocomplete="on" novalidate>
-            <div class="form-section-label"><span class="num">1</span><span data-i18n="infoTitle">Vos informations</span></div>
-            <div class="row2">
+            <div class="form-section-label personal-label"><span class="num">1</span><span data-i18n="infoTitle">Vos informations</span></div>
+            <div class="row2 personal-block">
               <div class="field"><label for="prenom"><span data-i18n="firstName">Prénom</span> <span class="req">*</span></label><input id="prenom" name="prenom" type="text" required autocomplete="given-name"></div>
               <div class="field"><label for="nom"><span data-i18n="lastName">Nom</span> <span class="req">*</span></label><input id="nom" name="nom" type="text" required autocomplete="family-name"></div>
             </div>
-            <div class="field"><label for="courriel"><span data-i18n="email">Courriel</span> <span class="req">*</span></label><input id="courriel" name="courriel" type="email" required autocomplete="email" inputmode="email" placeholder="exemple@courriel.com" data-placeholder-fr="exemple@courriel.com" data-placeholder-en="example@email.com"></div>
-            <div class="field"><label for="telephone"><span data-i18n="phone">Téléphone</span> <span class="req">*</span></label><input id="telephone" name="telephone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="819-123-4567"></div>
+            <div class="field personal-block"><label for="courriel"><span data-i18n="email">Courriel</span> <span class="req">*</span></label><input id="courriel" name="courriel" type="email" required autocomplete="email" inputmode="email" placeholder="exemple@courriel.com" data-placeholder-fr="exemple@courriel.com" data-placeholder-en="example@email.com"></div>
+            <div class="field personal-block"><label for="telephone"><span data-i18n="phone">Téléphone</span> <span class="req">*</span></label><input id="telephone" name="telephone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="819-123-4567"></div>
 
-            <div class="form-section-label"><span class="num">2</span><span data-i18n="propertyTitle">Votre propriété</span></div>
-            <div class="field"><label for="adresse"><span data-i18n="address">Adresse de la propriété</span> <span class="req">*</span></label><textarea id="adresse" name="adresse" required autocomplete="street-address" placeholder="123, rue Principale, Gatineau" data-placeholder-fr="123, rue Principale, Gatineau" data-placeholder-en="123 Main Street, Gatineau"></textarea></div>
-            <div class="field"><label for="typeProp"><span data-i18n="propertyType">Type de propriété</span> <span class="req">*</span></label><select id="typeProp" name="type_propriete" required><option value="" data-i18n="selectType">Sélectionnez le type de propriété</option><option value="Maison" data-i18n="optHouse">Maison unifamiliale / jumelé</option><option value="Condo" data-i18n="optCondo">Condo</option><option value="Plex" data-i18n="optPlex">Duplex / triplex / plex</option><option value="Autre" data-i18n="optOther">Autre</option></select></div>
-            <div class="field"><label for="timeline" data-i18n="timeline">Quand souhaitez-vous vendre?</label><select id="timeline" name="delai_vente"><option value="" data-i18n="selectTimeline">Sélectionnez</option><option value="0-3 mois" data-i18n="time1">Dans les 0 à 3 mois</option><option value="3-6 mois" data-i18n="time2">Dans les 3 à 6 mois</option><option value="6-12 mois" data-i18n="time3">Dans les 6 à 12 mois</option><option value="Plus tard" data-i18n="time4">Plus tard / je m'informe</option></select></div>
+            <div class="form-section-label property-label"><span class="num">2</span><span data-i18n="propertyTitle">Votre propriété</span></div>
+            <div class="field address-block"><label for="adresse"><span data-i18n="address">Adresse de la propriété</span> <span class="req">*</span></label><textarea id="adresse" name="adresse" required autocomplete="street-address" placeholder="123, rue Principale, Gatineau" data-placeholder-fr="123, rue Principale, Gatineau" data-placeholder-en="123 Main Street, Gatineau"></textarea></div>
+            <button class="mobile-next-btn" id="mobileNextBtn" type="button"><span data-i18n="mobileNext">Continuer</span><span>→</span></button>
+            <div class="mobile-trust mobile-trust-first" aria-label="Garanties"><span data-i18n="trustFree">✓ Gratuit</span><span data-i18n="trustPrivate">✓ Confidentiel</span><span data-i18n="trustNoObligation">✓ Sans obligation</span></div>
+            <div class="field property-extra"><label for="typeProp"><span data-i18n="propertyType">Type de propriété</span> <span class="req">*</span></label><select id="typeProp" name="type_propriete" required><option value="" data-i18n="selectType">Sélectionnez le type de propriété</option><option value="Maison" data-i18n="optHouse">Maison unifamiliale / jumelé</option><option value="Condo" data-i18n="optCondo">Condo</option><option value="Plex" data-i18n="optPlex">Duplex / triplex / plex</option><option value="Autre" data-i18n="optOther">Autre</option></select></div>
+            <div class="field property-extra"><label for="timeline" data-i18n="timeline">Quand souhaitez-vous vendre?</label><select id="timeline" name="delai_vente"><option value="" data-i18n="selectTimeline">Sélectionnez</option><option value="0-3 mois" data-i18n="time1">Dans les 0 à 3 mois</option><option value="3-6 mois" data-i18n="time2">Dans les 3 à 6 mois</option><option value="6-12 mois" data-i18n="time3">Dans les 6 à 12 mois</option><option value="Plus tard" data-i18n="time4">Plus tard / je m'informe</option></select></div>
 
             <input type="hidden" id="utm_source" name="utm_source"><input type="hidden" id="utm_medium" name="utm_medium"><input type="hidden" id="utm_campaign" name="utm_campaign"><input type="hidden" id="utm_term" name="utm_term"><input type="hidden" id="utm_content" name="utm_content"><input type="hidden" id="gclid" name="gclid"><input type="hidden" id="gbraid" name="gbraid"><input type="hidden" id="wbraid" name="wbraid"><input type="hidden" id="landing_page" name="landing_page"><input type="hidden" id="lead_language" name="language" value="fr"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
 
-            <button class="submit-btn" id="submitBtn" type="submit"><span data-i18n="submit">Obtenir mon évaluation gratuite</span><span>→</span></button>
+            <button class="mobile-back-btn" id="mobileBackBtn" type="button"><span>←</span><span data-i18n="mobileBack">Retour à l’adresse</span></button>
+            <button class="submit-btn final-submit" id="submitBtn" type="submit"><span data-i18n="submit">Obtenir mon évaluation gratuite</span><span>→</span></button>
+            <div class="mobile-trust mobile-trust-final" aria-label="Garanties"><span data-i18n="trustFree">✓ Gratuit</span><span data-i18n="trustPrivate">✓ Confidentiel</span><span data-i18n="trustNoObligation">✓ Sans obligation</span></div>
             <div class="lock-note"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8"/></svg><span data-i18n="secure">Vos informations sont confidentielles et sécurisées.</span></div>
             <p class="privacy-note" data-i18n-html="privacy">En soumettant ce formulaire, vous acceptez notre <a class="privacy-link" href="https://www.eric-fortier.com/fr/privacy-policy" target="_blank" rel="noopener">politique de confidentialité</a>.</p>
           </form>
@@ -330,8 +393,8 @@
 const I18N={
   fr:{
     title:"Évaluation immobilière gratuite à Gatineau | Éric Fortier RE/MAX",description:"Découvrez la valeur marchande de votre maison, condo ou plex à Gatineau. Évaluation immobilière gratuite, personnalisée et sans obligation par Éric Fortier, courtier RE/MAX Direct.",
-    skip:"Aller au formulaire",brandSub:"Courtier immobilier résidentiel · Gatineau",returnSite:"Retour au site",eyebrow:"Évaluation immobilière gratuite",heroTitle:'Combien vaut votre propriété <span class="accent">à Gatineau?</span>',heroLead:"Obtenez une évaluation gratuite, réaliste et sans obligation de votre maison, condo ou immeuble, basée sur les ventes comparables récentes et ma connaissance du marché local.",b1t:"Réponse rapide",b1d:"Une analyse personnalisée de votre propriété.",b2t:"Données de marché à jour",b2d:"Analyse basée sur les ventes récentes de votre secteur.",b3t:"Service confidentiel",b3d:"Sans pression et sans obligation de vendre.",reviews:"Basé sur les avis de mes clients",
-    formTitle:"Obtenez votre évaluation gratuite",infoTitle:"Vos informations",firstName:"Prénom",lastName:"Nom",email:"Courriel",phone:"Téléphone",propertyTitle:"Votre propriété",address:"Adresse de la propriété",propertyType:"Type de propriété",selectType:"Sélectionnez le type de propriété",optHouse:"Maison unifamiliale / jumelé",optCondo:"Condo",optPlex:"Duplex / triplex / plex",optOther:"Autre",timeline:"Quand souhaitez-vous vendre?",selectTimeline:"Sélectionnez",time1:"Dans les 0 à 3 mois",time2:"Dans les 3 à 6 mois",time3:"Dans les 6 à 12 mois",time4:"Plus tard / je m'informe",submit:"Obtenir mon évaluation gratuite",secure:"Vos informations sont confidentielles et sécurisées.",privacy:'En soumettant ce formulaire, vous acceptez notre <a class="privacy-link" href="https://www.eric-fortier.com/fr/privacy-policy" target="_blank" rel="noopener">politique de confidentialité</a>.',
+    skip:"Aller au formulaire",brandSub:"Courtier immobilier résidentiel · Gatineau",returnSite:"Retour au site",eyebrow:"Évaluation immobilière gratuite",heroTitle:'Combien vaut votre propriété <span class="accent">à Gatineau?</span>',heroLead:"Obtenez une évaluation gratuite, réaliste et sans obligation de votre maison, condo ou immeuble, basée sur les ventes comparables récentes et ma connaissance du marché local.",mobileLead:"Évaluation gratuite basée sur les ventes récentes de votre secteur. Sans obligation.",b1t:"Réponse rapide",b1d:"Une analyse personnalisée de votre propriété.",b2t:"Données de marché à jour",b2d:"Analyse basée sur les ventes récentes de votre secteur.",b3t:"Service confidentiel",b3d:"Sans pression et sans obligation de vendre.",reviews:"Basé sur les avis de mes clients",
+    formTitle:"Obtenez votre évaluation gratuite",mobileNext:"Continuer",mobileBack:"Retour à l’adresse",trustFree:"✓ Gratuit",trustPrivate:"✓ Confidentiel",trustNoObligation:"✓ Sans obligation",infoTitle:"Vos informations",firstName:"Prénom",lastName:"Nom",email:"Courriel",phone:"Téléphone",propertyTitle:"Votre propriété",address:"Adresse de la propriété",propertyType:"Type de propriété",selectType:"Sélectionnez le type de propriété",optHouse:"Maison unifamiliale / jumelé",optCondo:"Condo",optPlex:"Duplex / triplex / plex",optOther:"Autre",timeline:"Quand souhaitez-vous vendre?",selectTimeline:"Sélectionnez",time1:"Dans les 0 à 3 mois",time2:"Dans les 3 à 6 mois",time3:"Dans les 6 à 12 mois",time4:"Plus tard / je m'informe",submit:"Obtenir mon évaluation gratuite",secure:"Vos informations sont confidentielles et sécurisées.",privacy:'En soumettant ce formulaire, vous acceptez notre <a class="privacy-link" href="https://www.eric-fortier.com/fr/privacy-policy" target="_blank" rel="noopener">politique de confidentialité</a>.',
     whyEric:"Pourquoi faire affaire avec Éric Fortier?",whyEricText:"Courtier immobilier résidentiel à Gatineau depuis plus de 14 ans, j'accompagne les propriétaires avec une approche simple, personnalisée et fondée sur la réalité du marché de l'Outaouais.",cred1:"d'expérience dans l'Outaouais",cred2t:"Expert du marché",cred2:"Gatineau, Aylmer, Hull et environs",cred3t:"Service personnalisé",cred3:"accessible et adapté à votre situation",cred4t:"Approche humaine",cred4:"sans pression et orientée résultats",
     processTitle:"Comment se déroule l'évaluation?",processSub:"Un processus simple, rapide et sans engagement.",p1t:"Remplissez le formulaire",p1d:"Indiquez vos coordonnées et les informations de base sur votre propriété.",p2t:"Analyse du marché",p2d:"J'analyse les ventes récentes et les tendances du marché local.",p3t:"Évaluation personnalisée",p3d:"Vous recevez une estimation adaptée à votre propriété et à votre secteur.",p4t:"Discussion optionnelle",p4d:"Nous pouvons ensuite discuter de vos objectifs et des prochaines étapes.",areasTitle:"Expert du marché de Gatineau et des environs",
     faqTitle:"Questions fréquentes",q1:"Combien coûte l'évaluation?",a1:"La demande d'évaluation est entièrement gratuite et sans obligation de vendre votre propriété.",q2:"Sur quoi basez-vous l'évaluation?",a2:"Sur les ventes comparables récentes, l'emplacement, le type de propriété, sa superficie, son état, ses caractéristiques et les conditions du marché local.",q3:"Combien de temps avant d'obtenir mon évaluation?",a3:"Je traite les demandes rapidement. Le délai dépend des caractéristiques de la propriété et de la quantité de données comparables disponibles.",q4:"Évaluez-vous aussi les condos et immeubles à revenus?",a4:"Oui. Je peux analyser notamment les maisons, condos, duplex, triplex et plusieurs autres propriétés résidentielles.",q5:"L'évaluation m'engage-t-elle à vendre?",a5:"Non. Vous pouvez demander une opinion de valeur simplement pour connaître le marché ou planifier un projet futur.",q6:"Dans quels secteurs travaillez-vous?",a6:"Principalement à Gatineau, Aylmer, Hull, Buckingham, Masson-Angers et dans plusieurs municipalités environnantes de l'Outaouais.",
@@ -339,8 +402,8 @@ const I18N={
   },
   en:{
     title:"Free Home Evaluation in Gatineau | Eric Fortier RE/MAX",description:"Find out the market value of your home, condo or plex in Gatineau. Free personalized real estate evaluation with no obligation from Eric Fortier, RE/MAX Direct broker.",
-    skip:"Skip to the form",brandSub:"Residential real estate broker · Gatineau",returnSite:"Back to website",eyebrow:"Free real estate evaluation",heroTitle:'What is your property worth <span class="accent">in Gatineau?</span>',heroLead:"Get a free, realistic, no-obligation evaluation of your house, condo or income property based on recent comparable sales and my knowledge of the local market.",b1t:"Fast response",b1d:"A personalized analysis of your property.",b2t:"Current market data",b2d:"Analysis based on recent sales in your area.",b3t:"Confidential service",b3d:"No pressure and no obligation to sell.",reviews:"Based on reviews from my clients",
-    formTitle:"Get your free property evaluation",infoTitle:"Your information",firstName:"First name",lastName:"Last name",email:"Email",phone:"Phone",propertyTitle:"Your property",address:"Property address",propertyType:"Property type",selectType:"Select property type",optHouse:"Single-family / semi-detached",optCondo:"Condo",optPlex:"Duplex / triplex / plex",optOther:"Other",timeline:"When are you planning to sell?",selectTimeline:"Select",time1:"Within 0 to 3 months",time2:"Within 3 to 6 months",time3:"Within 6 to 12 months",time4:"Later / just researching",submit:"Get my free evaluation",secure:"Your information is confidential and secure.",privacy:'By submitting this form, you agree to our <a class="privacy-link" href="https://www.eric-fortier.com/en/privacy-policy" target="_blank" rel="noopener">privacy policy</a>.',
+    skip:"Skip to the form",brandSub:"Residential real estate broker · Gatineau",returnSite:"Back to website",eyebrow:"Free real estate evaluation",heroTitle:'What is your property worth <span class="accent">in Gatineau?</span>',heroLead:"Get a free, realistic, no-obligation evaluation of your house, condo or income property based on recent comparable sales and my knowledge of the local market.",mobileLead:"Free evaluation based on recent sales in your area. No obligation.",b1t:"Fast response",b1d:"A personalized analysis of your property.",b2t:"Current market data",b2d:"Analysis based on recent sales in your area.",b3t:"Confidential service",b3d:"No pressure and no obligation to sell.",reviews:"Based on reviews from my clients",
+    formTitle:"Get your free property evaluation",mobileNext:"Continue",mobileBack:"Back to address",trustFree:"✓ Free",trustPrivate:"✓ Confidential",trustNoObligation:"✓ No obligation",infoTitle:"Your information",firstName:"First name",lastName:"Last name",email:"Email",phone:"Phone",propertyTitle:"Your property",address:"Property address",propertyType:"Property type",selectType:"Select property type",optHouse:"Single-family / semi-detached",optCondo:"Condo",optPlex:"Duplex / triplex / plex",optOther:"Other",timeline:"When are you planning to sell?",selectTimeline:"Select",time1:"Within 0 to 3 months",time2:"Within 3 to 6 months",time3:"Within 6 to 12 months",time4:"Later / just researching",submit:"Get my free evaluation",secure:"Your information is confidential and secure.",privacy:'By submitting this form, you agree to our <a class="privacy-link" href="https://www.eric-fortier.com/en/privacy-policy" target="_blank" rel="noopener">privacy policy</a>.',
     whyEric:"Why work with Eric Fortier?",whyEricText:"A residential real estate broker in Gatineau for more than 14 years, I help homeowners with a straightforward, personalized approach grounded in the realities of the Outaouais market.",cred1:"of experience in the Outaouais",cred2t:"Local market expert",cred2:"Gatineau, Aylmer, Hull and surrounding areas",cred3t:"Personalized service",cred3:"accessible and adapted to your situation",cred4t:"Human approach",cred4:"no pressure and results-focused",
     processTitle:"How does the evaluation work?",processSub:"A simple, quick, no-obligation process.",p1t:"Complete the form",p1d:"Provide your contact information and basic property details.",p2t:"Market analysis",p2d:"I review recent sales and local market trends.",p3t:"Personalized evaluation",p3d:"You receive an estimate tailored to your property and neighbourhood.",p4t:"Optional discussion",p4d:"We can then discuss your objectives and possible next steps.",areasTitle:"Gatineau and surrounding market expertise",
     faqTitle:"Frequently asked questions",q1:"How much does the evaluation cost?",a1:"The evaluation request is completely free and there is no obligation to sell your property.",q2:"What is the evaluation based on?",a2:"Recent comparable sales, location, property type, size, condition, specific features and current local market conditions.",q3:"How long does it take to receive my evaluation?",a3:"I process requests promptly. Timing depends on the property's characteristics and the amount of relevant comparable sales data available.",q4:"Do you evaluate condos and income properties?",a4:"Yes. I can analyze houses, condos, duplexes, triplexes and many other residential properties.",q5:"Does the evaluation commit me to selling?",a5:"No. You can request a market value opinion simply to understand the market or plan a future project.",q6:"Which areas do you serve?",a6:"Primarily Gatineau, Aylmer, Hull, Buckingham, Masson-Angers and several surrounding Outaouais municipalities.",
@@ -382,6 +445,34 @@ document.getElementById('year').textContent=new Date().getFullYear();
 document.querySelectorAll('.js-phone').forEach(a=>a.addEventListener('click',()=>{if(typeof gtag==='function')gtag('event','phone_click',{event_category:'lead',event_label:'819-210-3124'})}));
 
 const form=document.getElementById('leadForm'),alertBox=document.getElementById('formAlert'),submitBtn=document.getElementById('submitBtn');
+const mobileNextBtn=document.getElementById('mobileNextBtn'),mobileBackBtn=document.getElementById('mobileBackBtn'),typeProp=document.getElementById('typeProp');
+const mobileMQ=window.matchMedia('(max-width:720px)');
+function syncMobileForm(){
+  if(mobileMQ.matches){
+    if(!form.classList.contains('mobile-step-2'))form.classList.add('mobile-step-1');
+    typeProp.required=false;
+  }else{
+    form.classList.remove('mobile-step-1','mobile-step-2');
+    typeProp.required=true;
+  }
+}
+function setMobileStep(step){
+  if(!mobileMQ.matches)return;
+  form.classList.toggle('mobile-step-1',step===1);
+  form.classList.toggle('mobile-step-2',step===2);
+  clearAlert();
+  if(step===2){document.getElementById('prenom')?.focus({preventScroll:true})}
+  document.querySelector('.form-card')?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+mobileNextBtn?.addEventListener('click',()=>{
+  const address=document.getElementById('adresse');
+  if(!address.value.trim()){address.reportValidity();address.focus();return}
+  if(typeof gtag==='function')gtag('event','form_step_1_complete',{event_category:'lead'});
+  setMobileStep(2);
+});
+mobileBackBtn?.addEventListener('click',()=>setMobileStep(1));
+syncMobileForm();
+if(mobileMQ.addEventListener)mobileMQ.addEventListener('change',syncMobileForm);else mobileMQ.addListener(syncMobileForm);
 function showAlert(msg,type='error'){alertBox.textContent=msg;alertBox.className='alert show '+type}
 function clearAlert(){alertBox.textContent='';alertBox.className='alert'}
 form.addEventListener('submit',async e=>{
