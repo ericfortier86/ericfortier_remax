@@ -542,8 +542,20 @@ function setLanguage(lang,updateUrl=true){
   const privacy=currentLang==='en'?'https://www.eric-fortier.com/en/privacy-policy':'https://www.eric-fortier.com/fr/privacy-policy';
   document.querySelectorAll('.main-site-link').forEach(a=>a.href=main);
   document.querySelectorAll('.privacy-link').forEach(a=>a.href=privacy);
-  const sectorsUrl=currentLang==='en'?'https://www.eric-fortier.com/en#sectors':'https://www.eric-fortier.com/fr#secteurs';
-  document.querySelectorAll('.sector-link').forEach(a=>a.href=sectorsUrl);
+  const sectorPaths={
+    'gatineau':'secteur-gatineau',
+    'hull':'secteur-hull',
+    'aylmer':'secteur-aylmer',
+    'cantley':'secteur-cantley',
+    'chelsea':'secteur-chelsea',
+    'val-des-monts':'secteur-val-des-monts',
+    'buckingham':'secteur-buckingham',
+    'masson-angers':'secteur-masson-angers'
+  };
+  document.querySelectorAll('.sector-link').forEach(a=>{
+    const path=sectorPaths[a.dataset.sector];
+    if(path)a.href=`https://www.eric-fortier.com/${currentLang}/${path}`;
+  });
   document.getElementById('langFr')?.classList.toggle('active',currentLang==='fr');
   document.getElementById('langEn')?.classList.toggle('active',currentLang==='en');
   document.getElementById('lead_language').value=currentLang;
