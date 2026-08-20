@@ -156,7 +156,7 @@
     .section{padding:42px 20px}.section-inner{max-width:var(--max);margin:auto}.center{text-align:center}.section h2{font-size:clamp(26px,3vw,34px);line-height:1.1;letter-spacing:-.04em;margin:0 0 6px}.section-sub{font-size:13px;color:var(--muted);margin:0}
     .process{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;margin-top:30px;position:relative}.process:before{content:"";position:absolute;top:17px;left:12.5%;right:12.5%;border-top:1px dashed #d6d1c8;z-index:0}.process-item{position:relative;z-index:1;text-align:center}.process-num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;margin:0 auto 14px;background:var(--gold-soft);color:#7d5912;font-weight:900;font-size:12px}.process-icon{width:42px;height:42px;margin:0 auto 9px;color:var(--ink)}.process-icon svg{width:100%;height:100%}.process-item strong{display:block;font-size:12px}.process-item p{font-size:11.5px;color:#545a62;margin:4px auto 0;max-width:215px}
 
-    .areas-wrap{margin-top:35px}.areas-title{font-size:23px!important;margin-bottom:9px!important}.areas{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.area{display:inline-flex;align-items:center;gap:6px;border:1px solid #ddd7ce;background:#fff;border-radius:999px;padding:7px 12px;font-size:10.5px;font-weight:750}.area svg{width:12px;height:12px;color:var(--ink)}
+    .areas-wrap{margin-top:35px}.areas-title{font-size:23px!important;margin-bottom:9px!important}.areas{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.area{display:inline-flex;align-items:center;gap:6px;border:1px solid #ddd7ce;background:#fff;border-radius:999px;padding:7px 12px;font-size:10.5px;font-weight:750}.area svg{width:12px;height:12px;color:var(--ink)}.area{text-decoration:none;transition:.15s}.area:hover{border-color:#bdb6aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(15,20,30,.06)}
 
     .faq-section{padding-top:8px}.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;margin-top:18px}.faq details{border:1px solid #e5e1da;border-radius:7px;background:#fff;overflow:hidden}.faq summary{list-style:none;cursor:pointer;padding:11px 13px;font-size:11px;font-weight:800;position:relative;padding-right:35px}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"⌄";position:absolute;right:13px;top:9px;font-size:15px;color:#555}.faq details[open] summary:after{content:"⌃"}.faq p{margin:0;padding:0 13px 12px;color:#565c63;font-size:11px;line-height:1.5}
 
@@ -252,6 +252,10 @@
     }
     .ws-return:hover{opacity:.58}
     .ws-return-arrow{font-size:18px;line-height:1;transform:translateY(-1px)}
+    .ws-header-actions{display:flex;align-items:center;gap:22px}
+    .ws-lang-switch{height:36px;display:flex;align-items:center;border:1px solid #d9d9d9;border-radius:999px;padding:3px;background:#fff}
+    .ws-lang-btn{height:28px;min-width:34px;border:0;border-radius:999px;background:transparent;color:#777;font-size:11px;font-weight:800;letter-spacing:.03em;padding:0 8px}
+    .ws-lang-btn.active{background:#111;color:#fff}
 
     .ws-footer{background:#fff;border-top:1px solid #e7e7e7;color:#171717;font-family:Arial,Helvetica,sans-serif}
     .ws-footer-main{max-width:1440px;margin:0 auto;padding:54px 42px 38px;display:grid;grid-template-columns:minmax(360px,1.65fr) minmax(220px,.8fr) minmax(220px,.85fr);gap:74px;align-items:start}
@@ -284,7 +288,7 @@
       .ws-footer-bottom-inner{padding:17px 22px 20px}
     }
     @media(max-width:600px){
-      .ws-header{height:68px}.ws-header-inner{padding:0 16px;gap:14px}.ws-logo{height:34px;max-width:190px}.ws-return{font-size:11px;gap:7px}.ws-return-arrow{font-size:16px}
+      .ws-header{height:68px}.ws-header-inner{padding:0 16px;gap:10px}.ws-logo{height:34px;max-width:190px}.ws-header-actions{gap:10px}.ws-lang-switch{height:32px}.ws-lang-btn{height:24px;min-width:29px;padding:0 6px;font-size:10px}.ws-return{font-size:11px;gap:7px}.ws-return-arrow{font-size:16px}
       .ws-footer-main{padding:34px 16px 26px;grid-template-columns:1fr;gap:30px}.ws-agent{grid-template-columns:90px minmax(0,1fr);gap:16px}.ws-agent-photo{width:90px;height:112px}.ws-agent-name{font-size:20px}.ws-footer-actions{display:grid;grid-template-columns:1fr}.ws-footer-btn{width:100%}.ws-footer-bottom-inner{padding:16px;display:grid;gap:10px}
     }
 
@@ -298,10 +302,16 @@
     <a class="ws-logo-link main-site-link" href="https://www.eric-fortier.com/fr" aria-label="Éric Fortier — retour au site principal">
       <img class="ws-logo" src="https://prdapi.welcomespaces.io/aws_assets/public/client-migpc17d6uqtj7e2ua8axpm0dc/files/pro-website/menu_bar_logo.png" alt="Éric Fortier, courtier immobilier">
     </a>
-    <a class="ws-return main-site-link" href="https://www.eric-fortier.com/fr">
-      <span class="ws-return-arrow" aria-hidden="true">←</span>
-      <span data-i18n="returnSite">Retour</span>
-    </a>
+    <div class="ws-header-actions">
+      <div class="ws-lang-switch" aria-label="Langue / Language">
+        <button class="ws-lang-btn active" id="langFr" type="button" aria-label="Français">FR</button>
+        <button class="ws-lang-btn" id="langEn" type="button" aria-label="English">EN</button>
+      </div>
+      <a class="ws-return main-site-link" href="https://www.eric-fortier.com/fr">
+        <span class="ws-return-arrow" aria-hidden="true">←</span>
+        <span data-i18n="returnSite">Retour</span>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -415,7 +425,7 @@
       <div class="areas-wrap">
         <h2 class="areas-title" data-i18n="areasTitle">Expert du marché de Gatineau et des environs</h2>
         <div class="areas">
-          <span class="area">⌖ Gatineau</span><span class="area">⌖ Aylmer</span><span class="area">⌖ Hull</span><span class="area">⌖ Buckingham</span><span class="area">⌖ Masson-Angers</span><span class="area">⌖ Cantley</span><span class="area">⌖ Chelsea</span><span class="area">⌖ Val-des-Monts</span>
+          <a class="area sector-link" data-sector="gatineau" href="https://www.eric-fortier.com/fr#secteurs">⌖ Gatineau</a><a class="area sector-link" data-sector="aylmer" href="https://www.eric-fortier.com/fr#secteurs">⌖ Aylmer</a><a class="area sector-link" data-sector="hull" href="https://www.eric-fortier.com/fr#secteurs">⌖ Hull</a><a class="area sector-link" data-sector="buckingham" href="https://www.eric-fortier.com/fr#secteurs">⌖ Buckingham</a><a class="area sector-link" data-sector="masson-angers" href="https://www.eric-fortier.com/fr#secteurs">⌖ Masson-Angers</a><a class="area sector-link" data-sector="cantley" href="https://www.eric-fortier.com/fr#secteurs">⌖ Cantley</a><a class="area sector-link" data-sector="chelsea" href="https://www.eric-fortier.com/fr#secteurs">⌖ Chelsea</a><a class="area sector-link" data-sector="val-des-monts" href="https://www.eric-fortier.com/fr#secteurs">⌖ Val-des-Monts</a>
         </div>
       </div>
     </div>
@@ -532,6 +542,8 @@ function setLanguage(lang,updateUrl=true){
   const privacy=currentLang==='en'?'https://www.eric-fortier.com/en/privacy-policy':'https://www.eric-fortier.com/fr/privacy-policy';
   document.querySelectorAll('.main-site-link').forEach(a=>a.href=main);
   document.querySelectorAll('.privacy-link').forEach(a=>a.href=privacy);
+  const sectorsUrl=currentLang==='en'?'https://www.eric-fortier.com/en#sectors':'https://www.eric-fortier.com/fr#secteurs';
+  document.querySelectorAll('.sector-link').forEach(a=>a.href=sectorsUrl);
   document.getElementById('langFr')?.classList.toggle('active',currentLang==='fr');
   document.getElementById('langEn')?.classList.toggle('active',currentLang==='en');
   document.getElementById('lead_language').value=currentLang;
