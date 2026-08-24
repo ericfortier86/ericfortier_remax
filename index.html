@@ -425,7 +425,7 @@
       <div class="areas-wrap">
         <h2 class="areas-title" data-i18n="areasTitle">Expert du marché de Gatineau et des environs</h2>
         <div class="areas">
-          <a class="area sector-link" data-sector="gatineau" href="https://www.eric-fortier.com/fr#secteurs">⌖ Gatineau</a><a class="area sector-link" data-sector="aylmer" href="https://www.eric-fortier.com/fr#secteurs">⌖ Aylmer</a><a class="area sector-link" data-sector="hull" href="https://www.eric-fortier.com/fr#secteurs">⌖ Hull</a><a class="area sector-link" data-sector="buckingham" href="https://www.eric-fortier.com/fr#secteurs">⌖ Buckingham</a><a class="area sector-link" data-sector="masson-angers" href="https://www.eric-fortier.com/fr#secteurs">⌖ Masson-Angers</a><a class="area sector-link" data-sector="cantley" href="https://www.eric-fortier.com/fr#secteurs">⌖ Cantley</a><a class="area sector-link" data-sector="chelsea" href="https://www.eric-fortier.com/fr#secteurs">⌖ Chelsea</a><a class="area sector-link" data-sector="val-des-monts" href="https://www.eric-fortier.com/fr#secteurs">⌖ Val-des-Monts</a>
+          <a class="area sector-link" data-sector="gatineau" href="https://www.eric-fortier.com/fr/pages/secteur-gatineau">⌖ Gatineau</a><a class="area sector-link" data-sector="aylmer" href="https://www.eric-fortier.com/fr/pages/secteur-aylmer">⌖ Aylmer</a><a class="area sector-link" data-sector="hull" href="https://www.eric-fortier.com/fr/pages/secteur-hull">⌖ Hull</a><a class="area sector-link" data-sector="buckingham" href="https://www.eric-fortier.com/fr/pages/secteur-buckingham">⌖ Buckingham</a><a class="area sector-link" data-sector="masson-angers" href="https://www.eric-fortier.com/fr/pages/secteur-masson-angers">⌖ Masson-Angers</a><a class="area sector-link" data-sector="cantley" href="https://www.eric-fortier.com/fr/pages/secteur-cantley">⌖ Cantley</a><a class="area sector-link" data-sector="chelsea" href="https://www.eric-fortier.com/fr/pages/secteur-chelsea">⌖ Chelsea</a><a class="area sector-link" data-sector="val-des-monts" href="https://www.eric-fortier.com/fr/pages/secteur-val-des-monts">⌖ Val-des-Monts</a>
         </div>
       </div>
     </div>
@@ -554,7 +554,7 @@ function setLanguage(lang,updateUrl=true){
   };
   document.querySelectorAll('.sector-link').forEach(a=>{
     const path=sectorPaths[a.dataset.sector];
-    if(path)a.href=`https://www.eric-fortier.com/${currentLang}/${path}`;
+    if(path)a.href=`https://www.eric-fortier.com/${currentLang}/pages/${path}`;
   });
   document.getElementById('langFr')?.classList.toggle('active',currentLang==='fr');
   document.getElementById('langEn')?.classList.toggle('active',currentLang==='en');
