@@ -2,6 +2,8 @@
 
 Ce dossier contient la landing « Acheter ou louer? La question se pose! ». Il est séparé du site d’évaluation qui se trouve à la racine du dépôt et utilise evaluation.eric-fortier.com.
 
+La première publication publique a été effectuée le 26 octobre 2026 sur https://ericfortier-remax.ericfortier86.workers.dev. La base D1 et les trois réglages Cloudflare Builds ont été renseignés. Le compte Cloudflare est fixé dans wrangler.json pour que les déploiements ciblent le bon compte.
+
 ## Configuration à compléter
 
 1. Worker identifié : `ericfortier-remax`, adresse `https://ericfortier-remax.ericfortier86.workers.dev`. Cette configuration et les URL SEO sont renseignées.
@@ -34,6 +36,7 @@ La configuration d’exemple ne se déploie pas : la commande refuse de publier 
 - La page est accessible sans connexion ChatGPT.
 - Les menus restent en haut au défilement et le curseur du calculateur atteint 25 ans.
 - Une demande réelle de test est enregistrée dans D1 et reçue à eric.fortier@remax-quebec.com.
+- L’envoi FormSubmit s’effectue depuis le navigateur après l’enregistrement D1. Le statut `client_confirmed` enregistre le retour positif du navigateur; il ne prouve pas la remise dans la boîte de réception. En cas d’échec, la demande reste enregistrée avec le statut `pending`.
 - Le pixel Meta est chargé après acceptation des témoins et l’événement Lead suit un enregistrement réussi.
 
 La nouvelle base D1 commence vide. Les demandes conservées sur l’hébergement Sites ne sont pas transférées automatiquement.

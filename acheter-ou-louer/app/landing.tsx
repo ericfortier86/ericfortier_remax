@@ -44,9 +44,20 @@ export default function Landing() {
     const summary = mode==='compare' ? `Comparaison sur ${v.years} ans; prix ${money(v.price)}; mise de fonds ${money(v.down)}; loyer ${money(v.rent)}; taux illustratif ${v.rate} %; écart de patrimoine ${money(comparison.selected.difference)} en faveur de ${comparison.selected.difference>=0?'l’achat':'la location'}.` : `Budget indicatif ${money(affordability.price)}; revenus bruts annuels ${money(v.income)}; épargne ${money(v.savings)}; dettes mensuelles ${money(v.debts)}. Ceci n’est pas une préapprobation.`;
     try {
       const res = await fetch('/api/leads',{ method:'POST',headers:{ 'Content-Type':'application/json' }, body:JSON.stringify({ firstName:f.get('firstName'),lastName:f.get('lastName'),email:f.get('email'),phone:f.get('phone'),goal,sectors:selectedSectors,propertyTypes:types,budget:f.get('budget'),timeline:f.get('timeline'),message:f.get('message'),contactConsent:f.get('contactConsent')==='on',newsletterConsent:f.get('newsletterConsent')==='on',website:f.get('website'),attribution,calculation:f.get('shareCalculation')==='on'?summary:undefined,requestId:requestId.current }) });
-      const result = await res.json() as { ok?:boolean; error?:string; emailDelivered?:boolean };
+      const result = await res.json() as { ok?:boolean; error?:string; emailDelivered?:boolean; notification?:Record<string,string> };
       if (!res.ok || !result.ok) throw new Error(result.error || 'Impossible d’envoyer la demande.');
-      setMailPending(!result.emailDelivered); setStatus('success'); track('Lead'); document.getElementById('form-result')?.focus();
+      let delivered = !!result.emailDelivered;
+      if (!delivered && result.notification) {
+        const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 12000);
+        try {
+          const notice = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(result.notification), signal: controller.signal });
+          const noticeResult = await notice.json() as { success?:boolean|string; message?:string };
+          delivered = notice.ok && (noticeResult.success === true || noticeResult.success === 'true') && !/activat|confirm/i.test(noticeResult.message || '');
+          if (delivered) await fetch('/api/leads/notification', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ requestId: requestId.current, email: f.get('email') }) }).catch(() => undefined);
+        } catch { /* The saved lead remains available if notification fails. */ }
+        finally { clearTimeout(timeout); }
+      }
+      setMailPending(!delivered); setStatus('success'); track('Lead'); document.getElementById('form-result')?.focus();
     } catch(err) { setFormError(err instanceof Error ? err.message : 'La connexion a été interrompue. Réessayez.'); setStatus('error'); }
   }
   const graphMax = Math.max(1,...comparison.points.flatMap(p=>[p.owner,p.renter])), graphMin = Math.min(0,...comparison.points.flatMap(p=>[p.owner,p.renter]));
