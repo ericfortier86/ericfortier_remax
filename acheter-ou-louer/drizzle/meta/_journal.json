@@ -8,6 +8,13 @@
       "when": 1792772308323,
       "tag": "0000_amused_owl",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1793020662686,
+      "tag": "0001_square_earthquake",
+      "breakpoints": true
     }
   ]
 }

@@ -1,0 +1,1 @@
+ALTER TABLE `leads` ADD `language` text DEFAULT 'fr' NOT NULL;

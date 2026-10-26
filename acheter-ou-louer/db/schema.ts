@@ -6,5 +6,6 @@ export const leads = sqliteTable('leads', {
   sectors: text('sectors').notNull().default('[]'), propertyTypes: text('property_types').notNull().default('[]'), budget: text('budget').notNull().default(''),
   timeline: text('timeline').notNull(), message: text('message').notNull().default(''), newsletterConsent: integer('newsletter_consent').notNull().default(0),
   contactConsent: integer('contact_consent').notNull(), consentVersion: text('consent_version').notNull(), attribution: text('attribution').notNull().default('{}'),
+  language: text('language').notNull().default('fr'),
   calculation: text('calculation'), emailStatus: text('email_status').notNull().default('pending'), createdAt: text('created_at').notNull().default(sql`CURRENT_TIMESTAMP`),
 });
