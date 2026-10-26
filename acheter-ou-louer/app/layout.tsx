@@ -12,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { metadataBase: new URL(SITE_URL), ...localizedMetadata('/', localeFrom((await headers()).get('x-ef-locale'))), authors: [{ name: 'Eric Fortier' }], twitter: { card: 'summary_large_image' }, icons: { icon: '/favicon.svg' } };
 }
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const locale = localeFrom((await headers()).get('x-ef-locale'));
-  return <html lang={languageTag(locale)}><head><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></head><body><LanguageProvider initialLocale={locale}>{children}</LanguageProvider></body></html>;
+  const requestHeaders = await headers();
+  const locale = localeFrom(requestHeaders.get('x-ef-locale'));
+  return <html lang={languageTag(locale)}><head><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></head><body><LanguageProvider initialLocale={locale} initialPath={requestHeaders.get('x-ef-path') || '/'}>{children}</LanguageProvider></body></html>;
 }

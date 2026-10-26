@@ -11,13 +11,13 @@ Ce projet est isolé dans `acheter-ou-louer` pour conserver le site d’évaluat
 - Compilation : `npm run build`
 - Déploiement : `npm run deploy`
 
-Le nom du Worker, son URL publique et la base D1 doivent être configurés avant le premier déploiement. Voir [DEPLOIEMENT-CLOUDFLARE.md](DEPLOIEMENT-CLOUDFLARE.md) pour les réglages exacts.
+Le Worker conserve l’API et la base D1. Le site public acheteurs est exporté dans le dépôt GitHub Pages distinct `ericfortier86/louer-ou-acheter`. Voir [DEPLOIEMENT-GITHUB-PAGES.md](DEPLOIEMENT-GITHUB-PAGES.md) pour publier les deux parties, et [DEPLOIEMENT-CLOUDFLARE.md](DEPLOIEMENT-CLOUDFLARE.md) pour les réglages du Worker. Le domaine Pages du dépôt racine reste `evaluation.eric-fortier.com`.
 
 Le formulaire conserve les demandes dans D1 et tente une notification FormSubmit à eric.fortier@remax-quebec.com. Le pixel Meta est conditionné au consentement. Les calculs restent dans le navigateur, sauf si le visiteur choisit de joindre un résumé à sa demande.
 
 ## Français et anglais
 
-Le français est la version par défaut. Le paramètre `?lang=en` affiche la version anglaise (y compris le calculateur, le formulaire, la checklist et la confidentialité). Les boutons EN/FR de l’entête et du pied de page changent la langue sans réinitialiser les saisies, en conservant les paramètres publicitaires. Les liens de ressources internes conservent la langue. Les titres, descriptions, URL canoniques et liens `hreflang` sont rendus dans la bonne langue dès la réponse du serveur.
+Le français est la version par défaut; `/en/` affiche la version anglaise (y compris le calculateur, le formulaire, la checklist et la confidentialité). Le paramètre historique `?lang=en` est également reconnu. Les boutons EN/FR de l’entête et du pied de page changent la langue sans réinitialiser les saisies, en conservant les paramètres publicitaires. Les liens de ressources internes conservent la langue. Les titres, descriptions, URL canoniques et liens `hreflang` sont pré-rendus dans la bonne langue dans les fichiers HTML publics.
 
 Les traductions se trouvent dans `lib/translations.ts`. Les valeurs internes des choix du formulaire restent identiques dans les deux langues; la langue de la demande est enregistrée dans D1 et indiquée dans le courriel de notification pour faciliter le suivi.
 

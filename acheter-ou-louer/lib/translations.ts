@@ -1,5 +1,6 @@
 // French source strings and their Canadian English equivalents.
 export const english: Record<string, string> = {
+  "Les fichiers publics de cette page sont hébergés sur GitHub Pages. GitHub peut enregistrer l’adresse IP des visiteurs à des fins de sécurité. Aucun renseignement envoyé par le formulaire n’est publié dans le dépôt GitHub.": "The public files for this page are hosted on GitHub Pages. GitHub may record visitors’ IP addresses for security purposes. Information submitted through the form is never published in the GitHub repository.",
   "Discuter de mon projet": "Discuss my plans",
   "Recevoir des propriétés": "Receive property listings",
   "Préparer mon futur achat": "Prepare for a future purchase",

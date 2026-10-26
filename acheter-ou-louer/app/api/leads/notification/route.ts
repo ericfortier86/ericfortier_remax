@@ -2,9 +2,10 @@ import { getDb } from '@/db';
 import { leads } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
+import { allowedLeadOrigin } from '@/lib/lead-origin';
 const schema = z.object({ requestId: z.string().uuid(), email: z.string().trim().email().max(200) });
 export async function POST(request: Request) {
-  if (request.headers.get('origin') !== new URL(request.url).origin) return Response.json({ error: 'Origine invalide.' }, { status: 403 });
+  if (!allowedLeadOrigin(request)) return Response.json({ error: 'Origine invalide.' }, { status: 403 });
   try {
     const raw = await request.text();
     if (raw.length > 1000) return Response.json({ error: 'Demande trop volumineuse.' }, { status: 413 });

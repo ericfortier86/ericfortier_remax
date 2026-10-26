@@ -12,5 +12,5 @@ export function pageMetadata(path: string, locale: Locale) {
 export function localizedMetadata(path: string, locale: Locale): Metadata {
   const content = pageMetadata(path, locale);
   const url = `${SITE_URL}${localizedPath(path, locale)}`;
-  return { ...content, alternates: { canonical: url, languages: { 'fr-CA': `${SITE_URL}${path}`, 'en-CA': `${SITE_URL}${localizedPath(path, 'en')}`, 'x-default': `${SITE_URL}${path}` } }, openGraph: { ...content, url, locale: locale === 'en' ? 'en_CA' : 'fr_CA', alternateLocale: locale === 'en' ? 'fr_CA' : 'en_CA', type: 'website', siteName: 'Eric Fortier | RE/MAX Direct', images: [{ url: '/images/hero.png', width: 1600, height: 893, alt: locale === 'en' ? 'A bright home interior' : 'Un intérieur lumineux' }] } };
+  return { ...content, alternates: { canonical: url, languages: { 'fr-CA': `${SITE_URL}${localizedPath(path, 'fr')}`, 'en-CA': `${SITE_URL}${localizedPath(path, 'en')}`, 'x-default': `${SITE_URL}${localizedPath(path, 'fr')}` } }, openGraph: { ...content, url, locale: locale === 'en' ? 'en_CA' : 'fr_CA', alternateLocale: locale === 'en' ? 'fr_CA' : 'en_CA', type: 'website', siteName: 'Eric Fortier | RE/MAX Direct', images: [{ url: '/images/hero.png', width: 1600, height: 893, alt: locale === 'en' ? 'A bright home interior' : 'Un intérieur lumineux' }] } };
 }

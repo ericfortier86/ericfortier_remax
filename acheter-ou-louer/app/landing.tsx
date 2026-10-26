@@ -3,7 +3,7 @@ import { useLanguage } from './language-provider';
 import { useMemo, useRef, useState, type FormEvent } from 'react';
 import { ArrowUpRight, ArrowRight, ArrowDown, Check, ChevronDown, Phone, MapPin, Calculator, ShieldCheck, SlidersHorizontal, House, Mail, KeyRound, CheckCircle2, Info, FileCheck2, TrendingUp, Handshake, LockKeyhole } from 'lucide-react';
 import { compare, capacity, defaultInputs, minimumDown, MAX_COMPARISON_YEARS, type Inputs } from '@/lib/calculations';
-import { sectors, CONTACT_EMAIL } from '@/lib/site';
+import { sectors, CONTACT_EMAIL, leadApiUrl } from '@/lib/site';
 import { track } from './tracking';
 import { BrandedHero, BrandedFooter } from './brand-sections';
 import SiteNavigation from './site-navigation';
@@ -47,7 +47,7 @@ export default function Landing() {
       ? mode === 'compare' ? `Comparison over ${v.years} years; price ${money(v.price)}; down payment ${money(v.down)}; rent ${money(v.rent)}; illustrative rate ${v.rate}%; net worth difference ${money(Math.abs(comparison.selected.difference))} in favour of ${comparison.selected.difference >= 0 ? 'buying' : 'renting'}.` : `Estimated budget ${money(affordability.price)}; annual gross income ${money(v.income)}; savings ${money(v.savings)}; monthly debts ${money(v.debts)}. This is not a pre-approval.`
       : mode === 'compare' ? `Comparaison sur ${v.years} ans; prix ${money(v.price)}; mise de fonds ${money(v.down)}; loyer ${money(v.rent)}; taux illustratif ${v.rate} %; écart de patrimoine ${money(Math.abs(comparison.selected.difference))} en faveur de ${comparison.selected.difference >= 0 ? 'l’achat' : 'la location'}.` : `Budget indicatif ${money(affordability.price)}; revenus bruts annuels ${money(v.income)}; épargne ${money(v.savings)}; dettes mensuelles ${money(v.debts)}. Ceci n’est pas une préapprobation.`;
     try {
-      const res = await fetch('/api/leads',{ method:'POST',headers:{ 'Content-Type':'application/json' }, body:JSON.stringify({ language:locale,firstName:f.get('firstName'),lastName:f.get('lastName'),email:f.get('email'),phone:f.get('phone'),goal,sectors:selectedSectors,propertyTypes:types,budget:f.get('budget'),timeline:f.get('timeline'),message:f.get('message'),contactConsent:f.get('contactConsent')==='on',newsletterConsent:f.get('newsletterConsent')==='on',website:f.get('website'),attribution,calculation:f.get('shareCalculation')==='on'?summary:undefined,requestId:requestId.current }) });
+      const res = await fetch(leadApiUrl('/api/leads'),{ method:'POST',headers:{ 'Content-Type':'application/json' }, body:JSON.stringify({ language:locale,firstName:f.get('firstName'),lastName:f.get('lastName'),email:f.get('email'),phone:f.get('phone'),goal,sectors:selectedSectors,propertyTypes:types,budget:f.get('budget'),timeline:f.get('timeline'),message:f.get('message'),contactConsent:f.get('contactConsent')==='on',newsletterConsent:f.get('newsletterConsent')==='on',website:f.get('website'),attribution,calculation:f.get('shareCalculation')==='on'?summary:undefined,requestId:requestId.current }) });
       const result = await res.json() as { ok?:boolean; error?:string; emailDelivered?:boolean; notification?:Record<string,string> };
       if (!res.ok || !result.ok) throw new Error(result.error || 'Impossible d’envoyer la demande.');
       let delivered = !!result.emailDelivered;
@@ -57,7 +57,7 @@ export default function Landing() {
           const notice = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(result.notification), signal: controller.signal });
           const noticeResult = await notice.json() as { success?:boolean|string; message?:string };
           delivered = notice.ok && (noticeResult.success === true || noticeResult.success === 'true') && !/activat|confirm/i.test(noticeResult.message || '');
-          if (delivered) await fetch('/api/leads/notification', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ requestId: requestId.current, email: f.get('email') }) }).catch(() => undefined);
+          if (delivered) await fetch(leadApiUrl('/api/leads/notification'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ requestId: requestId.current, email: f.get('email') }) }).catch(() => undefined);
         } catch { /* The saved lead remains available if notification fails. */ }
         finally { clearTimeout(timeout); }
       }

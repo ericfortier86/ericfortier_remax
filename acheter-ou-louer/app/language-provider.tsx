@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { languageTag, localeFrom, localizedPath, professionalHref, type Locale } from '@/lib/i18n';
+import { contentPath, languageTag, localeFromUrl, localizedPath, professionalHref, type Locale } from '@/lib/i18n';
 import { english } from '@/lib/translations';
 import { pageMetadata } from '@/lib/page-metadata';
 import { SITE_URL } from '@/lib/site';
@@ -17,17 +17,17 @@ type LanguageContext = {
 };
 const Context = createContext<LanguageContext | null>(null);
 
-export default function LanguageProvider({ initialLocale, children }: { initialLocale: Locale; children: React.ReactNode }) {
+export default function LanguageProvider({ initialLocale, initialPath = '/', children }: { initialLocale: Locale; initialPath?: string; children: React.ReactNode }) {
   const [locale, setLocale] = useState(initialLocale);
-  const [currentPath, setCurrentPath] = useState('/');
+  const [currentPath, setCurrentPath] = useState(initialPath);
   useEffect(() => {
-    function sync() { setLocale(localeFrom(new URLSearchParams(window.location.search).get('lang'))); setCurrentPath(window.location.pathname + window.location.search + window.location.hash); }
-    sync(); window.addEventListener('popstate', sync);
-    return () => window.removeEventListener('popstate', sync);
+    function sync() { setLocale(localeFromUrl(new URL(window.location.href))); setCurrentPath(window.location.pathname + window.location.search + window.location.hash); }
+    sync(); window.addEventListener('popstate', sync); window.addEventListener('hashchange', sync);
+    return () => { window.removeEventListener('popstate', sync); window.removeEventListener('hashchange', sync); };
   }, []);
   useEffect(() => {
     document.documentElement.lang = languageTag(locale);
-    const path = window.location.pathname;
+    const path = contentPath(window.location.pathname);
     const meta = pageMetadata(path, locale);
     document.title = meta.title;
     const canonical = `${SITE_URL}${localizedPath(path, locale)}`;
