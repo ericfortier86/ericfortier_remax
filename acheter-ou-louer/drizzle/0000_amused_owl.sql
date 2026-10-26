@@ -1,0 +1,20 @@
+CREATE TABLE `leads` (
+	`id` text PRIMARY KEY NOT NULL,
+	`first_name` text NOT NULL,
+	`last_name` text NOT NULL,
+	`email` text NOT NULL,
+	`phone` text DEFAULT '' NOT NULL,
+	`goal` text NOT NULL,
+	`sectors` text DEFAULT '[]' NOT NULL,
+	`property_types` text DEFAULT '[]' NOT NULL,
+	`budget` text DEFAULT '' NOT NULL,
+	`timeline` text NOT NULL,
+	`message` text DEFAULT '' NOT NULL,
+	`newsletter_consent` integer DEFAULT 0 NOT NULL,
+	`contact_consent` integer NOT NULL,
+	`consent_version` text NOT NULL,
+	`attribution` text DEFAULT '{}' NOT NULL,
+	`calculation` text,
+	`email_status` text DEFAULT 'pending' NOT NULL,
+	`created_at` text DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
