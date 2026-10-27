@@ -112,7 +112,7 @@
     document.querySelectorAll('.privacy-link').forEach(element=>{element.href=`https://www.eric-fortier.com/${language}/privacy-policy`;});
     document.querySelectorAll('[data-evaluation-return]').forEach(element=>{element.href=localizedUrl(element.classList.contains('nav-contact')?'./index.html#evaluation':'./index.html');});
     if(updateUrl)history.pushState({},'',localizedUrl(location.href));
-    renderNavigation();renderFooter();renderAreas();updateMetadata();
+    renderNavigation();renderFooter();renderAreas();updateMetadata();closeNavigation();
     document.querySelectorAll('[data-language-switch]').forEach(element=>{
       element.href=localizedUrl(location.href,language==='fr'?'en':'fr');
       if(element.classList.contains('language-switch'))element.textContent=language==='fr'?'EN':'FR';
