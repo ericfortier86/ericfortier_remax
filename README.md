@@ -18,7 +18,7 @@ La refonte approuvée conserve les textes français et anglais, les sept champs 
 
 Le pixel Meta `2378121756324783` et le compte Google Ads `AW-852570859` sont chargés seulement après acceptation des témoins publicitaires. Un événement `Lead` est déclenché après une soumission acceptée et n’est pas répété par un rafraîchissement de la confirmation. Les données des champs ne sont pas envoyées dans les paramètres publicitaires.
 
-La note Google a été vérifiée à 5,0/5 le 27 octobre 2026 sur la fiche Google Maps correspondant au Place ID existant. La page conduit directement aux avis Google au lieu de présenter un nombre d’avis figé non vérifié. `googleReviewCount` peut rester `null`; ne renseigner un total que depuis la fiche Google ou une confirmation du propriétaire. Cette configuration ne synchronise pas automatiquement les totaux Google.
+La note Google a été vérifiée à 5,0/5 le 27 octobre 2026 sur la fiche Google Maps correspondant au Place ID existant. Eric a confirmé un total de 26 avis ce même jour. Le badge affiche cette note et ce total, et conduit directement aux avis Google. Mettre à jour `googleReviewCount` depuis la fiche Google ou une confirmation du propriétaire; cette configuration ne synchronise pas automatiquement les totaux Google. Si le total n’est plus vérifié, le remettre à `null` pour afficher uniquement un lien vers les avis.
 
 Le champ `googleLeadSendTo` reste vide tant qu’une véritable étiquette de conversion n’a pas été fournie depuis Google Ads. L’événement personnalisé existant `lead_form_submit` est conservé. Ne pas inventer d’étiquette de conversion.
 
