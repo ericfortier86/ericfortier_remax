@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://evaluation.eric-fortier.com/sitemap.xml
